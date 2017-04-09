@@ -13,7 +13,7 @@ namespace OnlineApp.DAL.SqlServer
     /// 对象名称：配置设置SQL Server数据访问子类（数据访问层）
     /// 对象说明：提供“配置设置类（业务逻辑层）”针对SQL Server的“增删改查”等各种数据访问方法，继承通用数据访问父类。
     /// 调用说明：通常不需要直接实例化本类，而使用“配置设置类（业务逻辑层）”中的DataAccess属性来调用本类所实现的方法。
-    /// 作者姓名：牛大宝
+    /// 作者姓名：chr
     /// 编写日期：2013-8-6 15:37:18
     /// </summary>
     public class PTConfigDAL:DAL.Common.PTConfigDAL

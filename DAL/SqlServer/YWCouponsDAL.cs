@@ -13,7 +13,7 @@ namespace OnlineApp.DAL.SqlServer
     /// 对象名称：优惠券SQL Server数据访问子类（数据访问层）
     /// 对象说明：提供“优惠券类（业务逻辑层）”针对SQL Server的“增删改查”等各种数据访问方法，继承通用数据访问父类。
     /// 调用说明：通常不需要直接实例化本类，而使用“优惠券类（业务逻辑层）”中的DataAccess属性来调用本类所实现的方法。
-    /// 作者姓名：牛大宝
+    /// 作者姓名：chr
     /// 编写日期：2016-4-16 16:34:11
     /// </summary>
     public class YWCouponsDAL:DAL.Common.YWCouponsDAL

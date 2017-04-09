@@ -9,7 +9,7 @@ namespace OnlineApp.Public
     /// <summary>
     /// 对象名称：App主界面功能列表（界面层层）
     /// 对象说明：该类作为数据载体，供AJAX接口调用。
-    /// 作者姓名：牛大宝
+    /// 作者姓名：chr
     /// 编写日期：2013-8-6 15:37:18
     /// </summary>
     [Serializable]

@@ -13,7 +13,7 @@ namespace OnlineApp.DAL.Common
     /// 对象名称：角色权限关联表通用数据访问父类（数据访问层）
     /// 对象说明：提供“角色权限关联表类（业务逻辑层）”对SqlServer,Oracle,OleDb等数据库进行访问的相关方法，以及部分通用方法供其子类进行调用。
     /// 调用说明：本类为抽象类无法进行实例化，通常可以使用“角色权限关联表类（业务逻辑层）”中的DataAccess属性来调用本类中所定义数据访问方法。
-    /// 作者姓名：牛大宝
+    /// 作者姓名：chr
     /// 编写日期：2013-8-6 15:37:18
     /// </summary>
     public abstract class PTRoleLinkDAL
