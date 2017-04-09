@@ -61,6 +61,7 @@
     <Content Include="bs-config.js" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="Static\css\onLineApp.css" />
     <Content Include="Static\html\class\index.html" />
     <Content Include="Static\html\comment\index.html" />
     <Content Include="Static\html\comon\footer.html" />
@@ -70,12 +71,15 @@
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
     <Content Include="Static\html\homework\index.html" />
+    <Content Include="Static\html\people\action.html" />
     <Content Include="Static\html\people\index.html" />
     <Content Include="Static\html\setting\index.html" />
     <Content Include="Static\html\testmanage\index.html" />
+    <Content Include="Static\img\loading.gif" />
     <Content Include="Static\img\user\admin.png" />
     <Content Include="Static\img\user\leo.png" />
     <Content Include="Static\script\app\onlineApp.js" />
+    <Content Include="Static\script\constants.js" />
     <Content Include="Static\script\controller\index\head.js" />
     <Content Include="Static\script\controller\index\home.js" />
     <Content Include="Static\script\controller\index\side.js" />
@@ -2862,7 +2866,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Static\css\" />
     <Folder Include="UI\components\data-table\extensions\FixedColumns\examples\integration\" />
     <Folder Include="UI\components\floating-action-button\js\" />
     <Folder Include="UI\components\notification\" />

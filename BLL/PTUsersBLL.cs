@@ -176,7 +176,7 @@ namespace OnlineApp.BLL
             Parameter parameter = new Parameter();
 
             parameter.SqlString = "SELECT DISTINCT [PT_USER].[Id],[PT_USER].[UserName],[PT_USER].[Password],[PT_USER].[OrgId],[PT_ORG].[OrgName], [PT_USER].[Nickname], CONVERT( BIT, [PT_USER].[StateId]) AS [StateId], [PT_USER].[Alternate1],[PT_USER].[Alternate2],[PT_USER].[Alternate3],[PT_USER].[Alternate4],[PT_USER].[Alternate5] "
-                           + ", [PT_USER].[Balance], [PT_USER].[ValidityDT], [PT_USER].[Position], [PT_USER].[Company], [PT_USER].[Tel], [PT_USER].[QQ], [PT_USER].[WeChat], [PT_USER].[Email], [PT_USER].[HomePage] "
+                           + ", [PT_USER].[Balance], [PT_USER].[ValidityDT], [PT_USER].[Position], [PT_USER].[Company], [PT_USER].[Tel], [PT_USER].[QQ], [PT_USER].[WeChat], [PT_USER].[Email], [PT_USER].[HomePage], [PT_USER].[Type], [PT_USER].[Layer], [PT_USER].[Note] "
                            + "FROM [PT_USER], [PT_ORG], [PT_UserLink] "
                            + "WHERE [PT_USER].[OrgId]=[PT_ORG].[Id] AND [PT_USER].[UserName]=[PT_UserLink].[UserName]";
             List<SqlParameter> paramList = new List<SqlParameter>();

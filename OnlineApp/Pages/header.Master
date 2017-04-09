@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-theme.css" />
     <!-- main page theme css-->
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-admin.css">
+    <!-- app page theme css-->
+    <link rel="stylesheet" type="text/css" href="../Static/css/onLineApp.css">
         
     <script src="../UI/node_modules/angular/angular.js"></script>
     <script src="../UI/node_modules/angular-route/angular-route.js"></script>

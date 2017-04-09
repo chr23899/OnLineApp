@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                <input class="form-control" id="exampleInputPassword2" type="text" ng-model="query.phone" placeholder="联系方式"><span class="pmd-textfield-focused"></span>
+                                <input class="form-control" id="exampleInputPassword2" type="text" ng-model="query.Tel" placeholder="联系方式"><span class="pmd-textfield-focused"></span>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -67,140 +67,15 @@
 
         <div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;">
 
-            <div tabindex="-1" class="modal fade" id="form-dialog">
-                <!--add or edit new form-->
-                <div class="modal-dialog" ng-show="userCtrlType=='add' || userCtrlType=='edit'">
-                    <div class="modal-content">
-                        <div class="modal-header bordered">
-                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}{{newperson.type}}</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-horizontal">
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">姓名</label>
-                                    <input type="text" class="form-control" id="userName" ng-model="newperson.userName">
-                                </div>
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">电话</label>
-                                    <input type="text" class="form-control" id="Tel" ng-model="newperson.Tel">
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="家长" ng-model="newperson.type"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 家长</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="教师" ng-model="newperson.type"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 教师</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="学生" ng-model="newperson.type"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 学生</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="管理员" ng-model="newperson.type"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 管理员</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.type != '管理员'">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType" value="中学" ng-model="newperson.layerType"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 中学</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType" value="小学" ng-model="newperson.layerType"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 小学</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label">个人说明</label>
-                                    <textarea required class="form-control" ng-model="newperson.note"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pmd-modal-action">
-                            <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewPerson()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- view new form -->
-                <div class="modal-dialog" ng-show="userCtrlType=='view'">
-                    <div class="modal-content">
-                        <div class="modal-header bordered">
-                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h2 class="pmd-card-title-text">{{peopleList[nowindex].title}}</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-horizontal"> 
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">姓名</label>
-                                    <input type="text" class="form-control" id="name" value="{{peopleList[nowindex].userName}}" disabled>
-                                </div>
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">电话</label>
-                                    <input type="text" class="form-control" id="phone" ng-model="peopleList[nowindex].phone" disabled>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="家长" ng-model="peopleList[nowindex].type" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 家长</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="教师" ng-model="peopleList[nowindex].type" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 教师</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="学生" ng-model="peopleList[nowindex].type" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 学生</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="userType" value="管理员" ng-model="peopleList[nowindex].type" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 管理员</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="peopleList[nowindex].type != '管理员'">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType" value="中学" ng-model="peopleList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 中学</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType" value="小学" ng-model="peopleList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 小学</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label">个人说明</label>
-                                    <textarea required class="form-control" ng-model="peopleList[nowindex].note" disabled></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pmd-modal-action"> 
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- confirm delete-->
-                <div class="modal-dialog" ng-show="userCtrlType=='delete'" style="margin-top: 204px;">
-                    <div class="modal-content">
-                        <div class="modal-body"> 你确定删除当前对象吗? </div>
-                        <div class="pmd-modal-action text-right">
-                            <button class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button" ng-click="confirmDel()">确定</button>
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!--#include file="action.html" -->
 
             <div class="col-md-4 col-sm-6 masonry-brick" ng-if="user.StateId" ng-repeat="user in peopleList track by $index">
-                <h3 class="text-muted">{{user.OrgName}}</h3>
+                <h3 class="text-muted">{{userRoles[user.Type].name}}</h3>
                 <div class="pmd-card pmd-card-media-inline pmd-card-default pmd-z-depth-3">
                     <div class="pmd-card-media">
                         <div class="media-body">
-                            <h2 class="pmd-card-title-text">{{user.Nickname}}</h2>
-                            <span class="pmd-card-subtitle-text">{{user.Company}}</span>
+                            <h2 class="pmd-card-title-text">{{user.UserName}}</h2>
+                            <span class="pmd-card-subtitle-text">{{user.Note}}</span>
                             <br />
                             <span class="pmd-card-subtitle-text">电话: {{user.Tel}}</span>
                         </div>
@@ -213,7 +88,7 @@
                     <div class="pmd-card-actions">
                         <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showDeatil($index)">查看</button>
                         <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-success" ng-click="showEditWnd($index)">更新</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="delPerson($index)" type="button">删除</button>
+                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-show="user.UserName != 'admin'" ng-click="delPerson($index)" type="button">删除</button>
                     </div>
                 </div>
             </div>

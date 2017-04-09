@@ -1,11 +1,19 @@
 ﻿//define menu controller
-onlineApp.controller('peopleManager', function ($scope, userService, $window, peopleStore) {
+onlineApp.controller('peopleManager', function ($scope, userService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
     //显示当前人员列表内容
     $scope.peopleList;// = peopleStore;
+    //是否正在加载页面
+    $scope.loadingForm = true;
+    //用来保存用户角色
+    $scope.userRoles = USER_ROLES;
+    //用来保存用户所在层级(小学、中学)
+    $scope.userLayers = USER_LAYERS;
+
+    $('#form-dialog').modal('show');
 
     $scope.query = {
-        userName: "",
-        phone: "",
+        UserName: "",
+        Tel: "",
         isParent: true,
         isTeacher: true,
         isStudent: true,
@@ -22,6 +30,8 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
                 //console.log(data);
                 $scope.peopleList = data.result.PageList;
                 $scope.$apply();
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
             }
         });
     }
@@ -36,33 +46,33 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
     $scope.serachData = function () {
         for (var i = 0; i < $scope.peopleList.length; i++) {
             $scope.peopleList[i].show = true;
-            if ($scope.query.userName != "" && $scope.peopleList[i].userName.indexOf($scope.query.userName) < 0) {
+            if ($scope.query.UserName != "" && $scope.peopleList[i].UserName.indexOf($scope.query.UserName) < 0) {
                 $scope.peopleList[i].show = false;
             }
-            if ($scope.query.phone != "" && $scope.peopleList[i].phone.indexOf($scope.query.phone) < 0) {
+            if ($scope.query.Tel != "" && $scope.peopleList[i].Tel.indexOf($scope.query.Tel) < 0) {
                 $scope.peopleList[i].show = false;
             }
-            if ($scope.peopleList[i].type == "student" && $scope.query.isStudent != true) {
+            if ($scope.peopleList[i].Type == "student" && $scope.query.isStudent != true) {
                 $scope.peopleList[i].show = false;
             }
-            if ($scope.peopleList[i].type == "teacher" && $scope.query.isTeacher != true) {
+            if ($scope.peopleList[i].Type == "teacher" && $scope.query.isTeacher != true) {
                 $scope.peopleList[i].show = false;
             }
-            if ($scope.peopleList[i].type == "parent" && $scope.query.isParent != true) {
+            if ($scope.peopleList[i].Type == "parent" && $scope.query.isParent != true) {
                 $scope.peopleList[i].show = false;
             }
-            if ($scope.peopleList[i].type == "manager" && $scope.query.isManager != true) {
+            if ($scope.peopleList[i].Type == "manager" && $scope.query.isManager != true) {
                 $scope.peopleList[i].show = false;
             }
         }
     }
 
     $scope.newperson = {
-        userName: "",
-        phone: "",
-        type: "学生",
-        layerType: "中学",
-        note: "",
+        UserName: "",
+        Tel: "",
+        Type: $scope.userRoles[11].id,
+        layerType: $scope.userLayers[1].id,
+        Note: "",
         content: "2017年3月27号加入",
         show: true,
         title: "",
@@ -73,11 +83,11 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
     $scope.showAddPerson = function () {
         $scope.userCtrlType = 'add';
         $scope.newperson = {
-            userName: "",
-            phone: "",
-            type: "学生",
-            layerType: "中学",
-            note: "",
+            UserName: "",
+            Tel: "",
+            Type: $scope.userRoles[11].id,
+            layerType: $scope.userLayers[1].id,
+            Note: "",
             content: "2017年3月27号加入",
             show: true,
             title: "",
@@ -89,16 +99,16 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
     $scope.validate = false;
     $scope.$watch("newperson", function () {
         $scope.validate =
-        $scope.newperson.userName &&
-        $scope.newperson.phone &&
-        $scope.newperson.note;
+        $scope.newperson.UserName &&
+        $scope.newperson.Tel &&
+        $scope.newperson.Note;
     }, true);
 
     $scope.editPersonIndex = 0;
 
     $scope.addNewPerson = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
-            $scope.newperson.title = $scope.newperson.layerType + $scope.newperson.type;
+            $scope.newperson.title = $scope.newperson.layerType + $scope.newperson.Type;
             $scope.peopleList.push($scope.newperson);
             $('#form-dialog').modal('hide');
         }
@@ -134,11 +144,11 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
         $scope.userCtrlType = 'edit';
         $scope.editPersonIndex = index;
         $scope.newperson = {
-            userName: $scope.peopleList[index].userName,
-            phone: $scope.peopleList[index].phone,
-            type: $scope.peopleList[index].type,
+            UserName: $scope.peopleList[index].UserName,
+            Tel: $scope.peopleList[index].Tel,
+            Type: +$scope.peopleList[index].Type,
             layerType: $scope.peopleList[index].layerType,
-            note: $scope.peopleList[index].note,
+            Note: $scope.peopleList[index].Note,
             content: $scope.peopleList[index].content,
             show: $scope.peopleList[index].show,
             title: $scope.peopleList[index].title,

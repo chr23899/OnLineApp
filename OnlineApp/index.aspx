@@ -6,6 +6,10 @@
     
     <!-- inital the angulr app -->
     <script src="/Static/script/app/onlineApp.js"></script>
+
+    <!-- inital the constant of system-->
+    <script src="/Static/script/constants.js"></script>
+
     <!-- inital the store of system-->
     <script src="/Static/script/factory/index/noticesStore.js"></script>
     <script src="/Static/script/factory/index/menusStore.js"></script>

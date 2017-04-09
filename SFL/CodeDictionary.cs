@@ -42,14 +42,10 @@ namespace OnlineApp.SFL
         public static Dictionary<string, int> UserRole = new Dictionary<string, int>
         {
             {"超级管理员", 1},
-            {"业务管理员", 2},
-            {"一般用户（初始默认）", 3},
-            {"餐厅管理员", 7},
-            {"采购员", 8},
-            {"销售经理", 9},
-            {"仓库负责人", 10},
-            {"切配员", 11},
-            {"传菜员", 12}
+            {"业务管理员", 2}, 
+            {"学生", 11},
+            {"家长", 12},
+            {"教师", 13}
         };
 
         /// <summary>
