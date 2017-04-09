@@ -1,0 +1,14 @@
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\OnlineApp.dll.config
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\OnlineApp.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\OnlineApp.pdb
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\obj\Debug\OnlineApp.csprojResolveAssemblyReference.cache
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\obj\Debug\OnlineApp.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\obj\Debug\OnlineApp.pdb
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\BLL.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\COL.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\SFL.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\DAL.dll
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\BLL.pdb
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\COL.pdb
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\SFL.pdb
+E:\StudyHigh\EduApp\OnlineApp\OnlineApp\bin\DAL.pdb

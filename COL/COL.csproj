@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8C7A8C8-9A4A-40B8-8AD2-C7346245E31A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DFG.Platform.COL</RootNamespace>
+    <AssemblyName>COL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsumeJsonObject.cs" />
+    <Compile Include="FunctionType.cs" />
+    <Compile Include="PTNoticeType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PageData.cs" />
+    <Compile Include="PTAttachment.cs" />
+    <Compile Include="PTOrg.cs" />
+    <Compile Include="PTUsers.cs" />
+    <Compile Include="PTRoles.cs" />
+    <Compile Include="PTFunctions.cs" />
+    <Compile Include="PTRoleLink.cs" />
+    <Compile Include="PTUserLink.cs" />
+    <Compile Include="PTFunctionType.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="PTConfig.cs" />
+    <Compile Include="PTConfigValue.cs" />
+    <Compile Include="PTConfigGroup.cs" />
+    <Compile Include="PTConfigType.cs" />
+    <Compile Include="PTNotices.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="YWBook.cs" />
+    <Compile Include="YWBuying.cs" />
+    <Compile Include="YWConsume.cs" />
+    <Compile Include="YWCoupons.cs" />
+    <Compile Include="YWDictionary.cs" />
+    <Compile Include="YWDictionaryType.cs" />
+    <Compile Include="YWFood.cs" />
+    <Compile Include="YWFoodReturn.cs" />
+    <Compile Include="YWInStore.cs" />
+    <Compile Include="YWInventory.cs" />
+    <Compile Include="YWLog.cs" />
+    <Compile Include="YWMaterial.cs" />
+    <Compile Include="YWOutStore.cs" />
+    <Compile Include="YWPayBack.cs" />
+    <Compile Include="YWPerson.cs" />
+    <Compile Include="YWPrePay.cs" />
+    <Compile Include="YWProduct.cs" />
+    <Compile Include="YWProductGroup.cs" />
+    <Compile Include="YWRequirement.cs" />
+    <Compile Include="YWRestaurant.cs" />
+    <Compile Include="YWTable.cs" />
+    <Compile Include="YWUserTips.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,5 @@
+E:\StudyHigh\EduApp\OnlineApp\COL\bin\Release\COL.dll
+E:\StudyHigh\EduApp\OnlineApp\COL\bin\Release\COL.pdb
+E:\StudyHigh\EduApp\OnlineApp\COL\obj\Release\COL.csprojResolveAssemblyReference.cache
+E:\StudyHigh\EduApp\OnlineApp\COL\obj\Release\COL.dll
+E:\StudyHigh\EduApp\OnlineApp\COL\obj\Release\COL.pdb
