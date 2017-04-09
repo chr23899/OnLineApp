@@ -29,7 +29,7 @@
 *.app
 
 # 忽略Web.config文件 
-/Web.config   
+Web.config   
 # 忽略BLL文件夹下bin和obj文件夹
 /BLL/bin
 /BLL/obj
