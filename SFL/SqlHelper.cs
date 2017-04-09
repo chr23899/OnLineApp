@@ -92,7 +92,7 @@ namespace OnlineApp.SFL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 通过事务方式执行多个SQL语句，不返回任何对象。
         /// </summary>
         /// <param name="paramList">多个SQL对象</param>
@@ -130,7 +130,7 @@ namespace OnlineApp.SFL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 通过事务方式执行多个SQL语句，不返回任何对象（其中第一条SQL执行结果与传入参数对比判断，结果为真才继续执行，否则回滚）。
         /// </summary>
         /// <param name="paramList">多个sql对象</param>
@@ -175,7 +175,7 @@ namespace OnlineApp.SFL
 
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 执行SQL语句，返回查询结果的第一行第一列对象。
         /// </summary>
         /// <param name="commandText">SQL语句</param>

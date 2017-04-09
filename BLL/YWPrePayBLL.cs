@@ -178,7 +178,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //检查用户是否存在未归还的预支记录
         public static Boolean CheckIsExistNotReturnedPrePayList(string strUserName)
         {
@@ -202,7 +202,7 @@ namespace OnlineApp.BLL
                 return false;
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有预支记录列表
         public static PageData GetSystemPrePayList(int pageSize, int curPage)
         {
@@ -224,7 +224,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取我的预支列表
         public static PageData GetMyPrePayListByUserName(int pageSize, int curPage, string strUserName, string strType)
         {
@@ -273,7 +273,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据用户名获取饭店预支列表
         public static PageData GetPrePayListByUserName(int pageSize, int curPage, string strUserName, string strType, string strDateNow)
         {
@@ -319,7 +319,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取饭店预支列表
         public static PageData GetWaitReturnPrePayListByUserName(int pageSize, int curPage, string strUserName)
         {
@@ -351,7 +351,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据预支记录ID完成付款
         public static int CompleteLentOutById(string strPrePayId, string strUserName, string strLentAmount, string strNotes, string strDateNow)
         {
@@ -376,7 +376,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //删除预支记录
         public static void DeletePrePayDataById(string strPrePayId)
         {

@@ -164,7 +164,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// </summary>
         /// <param name="strUserName"></param>
         /// <returns></returns>
@@ -181,7 +181,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //检查是否存在重复的工作人员记录
         public static Boolean CheckPersonDataDuplicate(string strUserName, int iOrgId)
         {
@@ -201,7 +201,7 @@ namespace OnlineApp.BLL
                 return false;
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有工作人员列表
         public static PageData GetSystemUserList(int iPageSize, int iCurPage, string sOrgId, string sName, string sPhone, string sIDCardId)
         {
@@ -223,7 +223,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据餐厅组织机构Id获取餐厅的所有工作人员列表
         public static PageData GetRestaurantPersonListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName, string sPhone, string sIDCardId)
         {

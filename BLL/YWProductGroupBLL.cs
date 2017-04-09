@@ -140,7 +140,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
 
-        //add by zy
+        //add by chr
         //获取系统所有套餐信息
         public static PageData GetSystemProductGroupList(int iPageSize, int iCurPage, string sOrgId, string sName)
         {
@@ -157,7 +157,7 @@ namespace OnlineApp.BLL
             return pg;
         }
 
-        //add by zy
+        //add by chr
         //根据餐厅组织机构Id获取菜单列表
         public static PageData GetRestaurantProductGroupListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName)
         {
@@ -179,7 +179,7 @@ namespace OnlineApp.BLL
             return pg;
         }
 
-        //add by zy
+        //add by chr
         //根据Id获取套餐基本信息
         public static DataTable GetProductGroupDataById(int iId)
         {
@@ -198,7 +198,7 @@ namespace OnlineApp.BLL
             return dt;
         }
 
-        //add by zy
+        //add by chr
         //翻译结果集中的Products的Id信息
         private static void TransProductsId(DataTable dt)
         {

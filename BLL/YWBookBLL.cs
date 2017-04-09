@@ -178,7 +178,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //根据Id获取预定记录当前状态
         public static int GetBookSateById(int iBookId)
         {
@@ -193,7 +193,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有预定记录列表
         public static PageData GetSystemBookList(int iPageSize, int iCurPage)
         {
@@ -211,7 +211,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取本店预定列表数据
         public static PageData GetBookListByUserName(string strBookingType, string strUserName, string strDateTimeNow, int iPageSize, int iCurPage)
         {
@@ -270,7 +270,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //检查是否存在重复预定记录
         public static Boolean CheckBookDataDuplicate(int iBookTableId, string strBookTime, int iConsumeTimeBlockId)
         {
@@ -291,7 +291,7 @@ namespace OnlineApp.BLL
               return false;
         }
 
-        //add by zy
+        //add by chr
         //根据预订单ID，把预订单状态设置为已到店
         public static void UpdateBookStateIdById(string strBookId)
         {

@@ -169,7 +169,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
 
-        //add by zy
+        //add by chr
         //根据提出人用户名、需求类型获取需求列表
         public static PageData GetPageDataTableByUserNameAndRequirementType(int pageSize, int curPage, string strUserName, string strRequirementType)
         {
@@ -223,7 +223,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据提出人用户名、需求类型获取需求列表
         public static PageData GetDataTableByMaterialIdAndReceiptor(int pageSize, int curPage, int iMaterialId, string strReceiveUserName)
         {
@@ -253,7 +253,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据组织机构、领取人、需求类型获取需求分组汇总数据
         public static PageData GetGroupListByUserNameAndRequirementType(int pageSize, int curPage, string strUserName, string strRequirementType)
         {
@@ -316,7 +316,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据Id字符串获取需求列表数据
         public static DataTable GetRequirementListById(string strRequirementId)
         {
@@ -352,7 +352,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据分组列表的信息获取需求列表的明细数据
         public static PageData GetRequirementListByGroupInfo(int pageSize, int curPage, string strUserName, int iRequirementStateId, int iMaterialId, string strReceiveUserName)
         {
@@ -384,7 +384,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据提出人用户名、需求类型获取需求列表
         public static PageData GetSystemRequirementList(int pageSize, int curPage)
         {
@@ -405,7 +405,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据RequirementId查找需求列表，并根据领取人用户名和领取时间更新对应需求列表
         public static void UpdateRequirementListByRequirementId(string strRequirementId, string strReceiveUserName, string strDateTimeNow)
         {
@@ -437,7 +437,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据RequirementId、Receiptor查找需求列表，并将领取人用户名和领取时间更新为空
         public static void UpdateRequirementListByRequirementIdAndReceiptor(string strRequirementId, string strReceiveUserName, string strDateTimeNow)
         {
@@ -469,7 +469,7 @@ namespace OnlineApp.BLL
 
         }
 
-        //add by zy
+        //add by chr
         //根据RequirementId查找需求记录，并将RequirementState字段更新为32，必须为33的记录
         public static void UpdateRequirementStateByIdTo32(string strRequirementId, string strUserName, string strDateTimeNow)
         {
@@ -497,7 +497,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据RequirementId查找需求记录，并将RequirementState字段更新为33，必须为32的记录
         public static void UpdateRequirementStateByIdTo33(string strRequirementId, string strUserName, string strDateTimeNow)
         {
@@ -525,7 +525,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据RequirementId查找RequirementStateId=32的需求记录，并删除
         public static void DeleteRequirementDataById(string strRequirementId)
         {
@@ -553,7 +553,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据参数插入新增的需求记录
         public static void InsertRequirementData(int iMaterialId, int iQuantity, string strUserName, string strSpecialRequirement, int iRequirementState, string strDateTimeNow)
         {
@@ -597,7 +597,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据参数更新YWRequirement并插入YWBuying记录，必须为33,34状态的需求记录才允许更新
         public static void UpdateRequirementListAndInsertBuyingRecord(string strRequirementId, string strUserName, int iMaterialId, int iQuantity, double dPrice, string strDateTimeNow)
         {

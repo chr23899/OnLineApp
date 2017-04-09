@@ -320,7 +320,7 @@ namespace OnlineApp.BLL
             return BLL.CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有厨房信息
         public static PageData GetSystemKitchenList(int iPageSize, int iCurPage, string sOrgId, string sName)
         {
@@ -339,7 +339,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有仓库信息
         public static PageData GetSystemStorehouseList(int iPageSize, int iCurPage, string sOrgId, string sName)
         {
@@ -358,7 +358,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据餐厅组织机构Id获取餐厅的所有厨房信息
         public static PageData GetRestaurantKitchenListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName)
         {
@@ -380,7 +380,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据餐厅组织机构Id获取餐厅的所有仓库信息
         public static PageData GetRestaurantStorehouseListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName)
         {

@@ -175,7 +175,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //根据ID检查记录是否已出库
         public static Boolean CheckRecordOutStoreOrNot(int iOutStoreId)
         {
@@ -194,7 +194,7 @@ namespace OnlineApp.BLL
                 return false;
         }
 
-        //add by zy
+        //add by chr
         //根据ID字符串检查记录中是否存在已出库的记录，并返回数量
         public static Boolean CheckExistsOrNotOutStoreRecord(string strOutStoreId)
         {
@@ -208,7 +208,7 @@ namespace OnlineApp.BLL
                 return false;
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取我的出库记录列表
         public static PageData GetOutStoreListByUserName(string strUserName, string strType, string strDateNow, int iPageSize, int iCurPage)
         {
@@ -256,7 +256,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取所在饭店的出库记录列表
         public static PageData GetRestrauntOutStoreListByUserName(string strUserName, string strType, string strDateNow, int iPageSize, int iCurPage)
         {
@@ -317,7 +317,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有出库记录列表
         public static PageData GetSystemOutStoreList(int iPageSize, int iCurPage)
         {
@@ -339,7 +339,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据Id修改出库数量
         public static int UpdateOutQuantityAndNotesById(int iOutStoreId, int iOutQuantity, string strNotes)
         {
@@ -357,7 +357,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.ExcuteSql(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据Id更新出库信息
         public static void UpdateOutStoreInfoById(string strOutStoreId, string strConfirmUserName, int iOutQuantity, string strNotes, string strDateNow)
         {
@@ -385,7 +385,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //删除出库记录
         public static void DeleteOutStoreListById(string strOutStoreId)
         {

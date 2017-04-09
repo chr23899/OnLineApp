@@ -118,7 +118,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据用户名数组和用户提示类型字典，生成update语句并执行
         /// </summary>
         /// <param name="strUserList"></param>
@@ -169,7 +169,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据用户名获取提示信息
         /// </summary>
         /// <param name="strUserName"></param>

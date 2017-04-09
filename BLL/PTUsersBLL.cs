@@ -210,7 +210,7 @@ namespace OnlineApp.BLL
 
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// </summary>
         /// <param name="strUserName"></param>
         /// <returns></returns>
@@ -246,7 +246,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据功能id和组织机构id，获取相应的用户列表
         /// </summary>
         /// <param name="strFunctionId"></param>
@@ -267,7 +267,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据用户名获取本单位的所有已启用的用户列表
         /// </summary>
         /// <returns></returns>
@@ -289,7 +289,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据用户名获取本餐厅可用的餐桌负责人列表
         /// </summary>
         /// <returns></returns>
@@ -337,7 +337,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据餐厅组织机构Id获取获取餐厅所有用户列表
         /// </summary>
         /// <returns></returns>

@@ -167,7 +167,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
 
-        //add by zy
+        //add by chr
         //获取系统所有菜品信息
         public static PageData GetSystemProductList(int iPageSize, int iCurPage, string sOrgId, string sName, string sProductTypeId, string sHotDegreeId, string sBlongOrgId, string sMakeTimeId)
         {
@@ -203,7 +203,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取菜单列表
         public static PageData GetRestaurantProductListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName, string sProductTypeId, string sHotDegreeId, string sBlongOrgId, string sMakeTimeId)
         {
@@ -238,7 +238,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取菜单列表
         public static DataTable GetProductDataById(int iId)
         {

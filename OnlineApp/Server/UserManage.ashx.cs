@@ -78,5 +78,11 @@ namespace OnlineApp.Server
             string strResult = CommonToolsBLL.PageDataToJson(PTUsersBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strNickname, strOrgName, strRoleId, strMobile));
             CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
+
+        //新增用户接口
+        public void AddUser(HttpContext context)
+        {
+
+        }
     }
 }

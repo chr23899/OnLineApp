@@ -163,7 +163,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //根据购买记录Id获取拼接的需求Id字符串
         public static string GetRequirementIdStringByBuyingId(string strBuyingId)
         {
@@ -173,7 +173,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter).ToString();
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有购买记录列表
         public static PageData GetSystemBuyingList(int iPageSize, int iCurPage)
         {
@@ -191,7 +191,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据物料ID获取所有待入库的购买记录
         public static PageData GetBuyingListByMaterialId(string strUserName, int iMaterialId, int iPageSize, int iCurPage)
         {
@@ -218,7 +218,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据购买人获取所有待入库的购买记录
         public static PageData GetBuyingListByUserNameAndState(string strUserName, int iBuyStateId, int iPageSize, int iCurPage)
         {
@@ -245,7 +245,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据Id获取购买记录明细
         //public static DataTable GetBuyingRecordById(int iBuyingId)
         //{
@@ -268,7 +268,7 @@ namespace OnlineApp.BLL
         //    return CommonToolsBLL.GetAllListByParams(parameter);
         //}
 
-        //add by zy
+        //add by chr
         //根据用户名获取待入库的物料
         public static PageData GetBuyingMaterialList(string strUserName, int iPageSize, int iCurPage)
         {
@@ -291,7 +291,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取所有待入库任务的采购员列表
         public static PageData GetBuyUserList(string strUserName, int iPageSize, int iCurPage)
         {
@@ -317,7 +317,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据待结算的购买记录完成结算（单条）
         public static int UpdateBuyStateIdBySingleId(int iBuyingId, string strUserName, double douBuyPrice)
         {
@@ -336,7 +336,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.ExcuteSql(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据待结算的购买记录完成结算（多条）
         public static void UpdateBuyStateIdByMultiId(string strBuyingId, string strUserName)
         {

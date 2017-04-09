@@ -154,7 +154,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
 
-        //add by zy
+        //add by chr
         //根据用户名获取可预订的餐桌列表
         public static PageData GetCanBeBookedTableListByUserName(string strUserName, string strBookTime, int iConsumeTimeBlockId, int iReachNumber, int iTableTypeId, int iPageSize, int iCurPage)
         {
@@ -188,7 +188,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取本店可开桌的餐桌列表，验证失败返回错误信息（参数：用户名）
         public static PageData GetCanBeOpenedTableListByUserName(string strUserName, int iReachNumber, int iPageSize, int iCurPage, string strDateNow)
         {
@@ -225,7 +225,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有餐桌信息
         public static PageData GetSystemTableList(int iPageSize, int iCurPage, string sOrgId, string sName, string sTableTypeId, string sOwnerUserName)
         {
@@ -251,7 +251,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取餐厅所有餐桌信息
         public static PageData GetRestaurantTableListByOrgId(int iOrgId, int iPageSize, int iCurPage, string sName, string sTableTypeId, string sOwnerUserName)
         {

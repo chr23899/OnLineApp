@@ -169,7 +169,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据业务类型id、业务记录id，获取相应的日志记录，按时间排序
         /// </summary>
         /// <param name="iYWTypeId"></param>
@@ -193,7 +193,7 @@ namespace OnlineApp.BLL
          }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 构建日志表单条记录Insert的Parameter对象，并返回（供事务模式使用）
         /// </summary>
         /// <param name="iYWTypeId"></param>
@@ -221,7 +221,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 构建日志表单条记录Insert的Parameter对象，并返回（供事务模式使用）（YWRecordId由前一条执行语句中的业务表名通过函数获取）
         /// </summary>
         /// <param name="iYWTypeId"></param>
@@ -249,7 +249,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 构建日志表多条记录Insert的Parameter对象，并返回（供事务模式使用）
         /// </summary>
         /// <param name="iYWTypeId"></param>
@@ -276,7 +276,7 @@ namespace OnlineApp.BLL
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 根据传入的业务类型Id以及业务记录Id字符串，构建多条日志删除的Parameter，并返回
         /// </summary>
         /// <param name="iYWTypeId"></param>

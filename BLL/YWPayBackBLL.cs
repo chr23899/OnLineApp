@@ -156,7 +156,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //获取系统所有还款记录列表
         public static PageData GetSystemPayBackList(int iPageSize, int iCurPage)
         {
@@ -173,7 +173,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据预支记录ID完成还款
         public static void InsertPayBackDataByPrePayId(int iPrePayId, double douReturnAmount, string strConfirmUserName, string strNotes, string strDateNow)
         {

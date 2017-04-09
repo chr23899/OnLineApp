@@ -189,7 +189,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据待入库的购买记录完成入库
         public static void InsertInStoreDataByBuyingData(int iBuyingId, string strUserName, int iStorageQuantity, string strNotes, string strDateTimeNow)
         {
@@ -247,7 +247,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList,1);
         }
 
-        //add by zy
+        //add by chr
         //根据购买记录的信息插入入库记录（多条）
         public static void InsertInStoreDataByBuyingId(string strBuyingId, string strUserName, string strDateTimeNow)
         {

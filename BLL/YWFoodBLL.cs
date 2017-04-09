@@ -161,7 +161,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //切配窗口1
         public static DataTable WaitCutFoodForm1(string strUserName)
         {
@@ -266,7 +266,7 @@ namespace OnlineApp.BLL
             return dtResult;
         }
 
-        //add by zy
+        //add by chr
         //切配窗口3
         public static DataTable WaitCutFoodForm3(string strUserName)
         {
@@ -318,7 +318,7 @@ namespace OnlineApp.BLL
             return dtResult;
         }
 
-        //add by zy
+        //add by chr
         //根据消费记录Id获取消费总价（标准价）
         public static double GetStdTotalPriceByConsumeId(int iConsumeId)
         {
@@ -337,7 +337,7 @@ namespace OnlineApp.BLL
             return Convert.ToDouble(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //根据FoodId获取记录的预定状态
         public static int GetFoodOrderStateIdById(int iFoodId)
         {
@@ -351,7 +351,7 @@ namespace OnlineApp.BLL
             parameter.Parameters = parameters;
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
-        //add by zy
+        //add by chr
         //根据FoodId字符串获取记录的消费记录Id（FoodId字符串中的Id必须来源于同一消费单）
         public static int GetConsumeIdById(string strFoodId)
         {
@@ -361,7 +361,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有菜品记录列表
         public static PageData GetSystemFoodList(int iPageSize, int iCurPage)
         {
@@ -378,7 +378,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取待切配列表
         public static PageData GetWaitCutFoodListByUserName(string strUserName, int iPageSize, int iCurPage)
         {
@@ -403,7 +403,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取已出菜列表,并按配菜时间排序
         public static PageData GetFinishedFoodListByUserName(string strUserName, int iPageSize, int iCurPage)
         {
@@ -429,7 +429,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取传菜员列表，获取成功返回success（参数：UserName）
         public static PageData GetSendUserListByUserName(string strUserName, int iPageSize, int iCurPage)
         {
@@ -452,7 +452,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取本店所有待审批的退菜列表
         public static DataTable GetWaitCheckReturnFoodList(string strUserName, string strType)
         {
@@ -507,7 +507,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取所有已点菜列表
         public static DataTable GetOrderedFoodListByUserName(string strUserName, string strOrderState)
         {
@@ -564,7 +564,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据菜品Id获取菜品列表
         public static DataTable GetFoodListById(string strFoodId)
         {
@@ -590,7 +590,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //翻译菜品特殊要求字符串，要求Datatable中必须有SpecialRequirement、SpecialRequirementName俩列
         //public static DataTable TranslateSpecialRequirement(DataTable datatableResult)
         //{
@@ -629,7 +629,7 @@ namespace OnlineApp.BLL
         //}
 
 
-        //add by zy
+        //add by chr
         //获取菜品数据的分组汇总数据，包括名称、数量、标准单价、会员单价
         public static DataTable GetFoodListByConsumeId(int iConsumeId, int iOrderStateId)
         {
@@ -763,7 +763,7 @@ namespace OnlineApp.BLL
             return dtResult;
         }
 
-        //add by zy
+        //add by chr
         //根据Id获取菜品当前制作状态
         public static int GetFoodMakeStateById(int iFoodId)
         {
@@ -778,7 +778,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //根据string类型的Id获取多个菜品当前制作状态
         public static DataTable GetFoodMakeStatesByIds(string strFoodId)
         {
@@ -788,7 +788,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据FoodId获取该菜品对应的特殊要求信息列表
         //public static DataTable GetFoodSpecialRequirementListById(int iFoodId)
         //{
@@ -808,7 +808,7 @@ namespace OnlineApp.BLL
         //    return CommonToolsBLL.GetAllListByParams(parameter2);
         //}
 
-        //add by zy
+        //add by chr
         //根据string类型的Id，检查对应的消费记录中是否还存在状态非“已上菜”或“已退菜”的菜品
         public static Boolean CheckOtherFoodIsServed(string strFoodId, int iConsumeId)
         {
@@ -833,7 +833,7 @@ namespace OnlineApp.BLL
                 return true;
         }
 
-        //add by zy
+        //add by chr
         //点菜
         public static void AddFoodData(int iProductId, int iConsumeId, string strSpecialRequirement, string strOrderTime, int iMakeStateId, int iOrderStateId, int iCheckStateId, int iOrgId, int iCnt)
         {
@@ -884,7 +884,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExcuteSqlWithTransaction(parmList);
         }
 
-        //add by zy
+        //add by chr
         //将菜品状态改为已上菜，并检查菜是否已上齐，若已上齐则修改消费记录状态为“菜上齐”
         public static void ServingFood(string strFoodId, int iFromStateId, int iToStateId)
         {
@@ -930,7 +930,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //更新菜品预定状态，根据源状态Id和目的状态Id更新
         public static void UpdateFoodOrderStateById(string strFoodId, int iFromStateId, int iToStateId)
         {
@@ -952,7 +952,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);   
         }
 
-        //add by zy
+        //add by chr
         //更新菜品制作状态，根据源状态Id和目的状态Id更新
         private static void UpdateFoodMakeStateById(string strFoodId, int iFromStateId, int iToStateId)
         {
@@ -974,7 +974,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据菜品预定状态不同，更新菜品制作状态
         public static string UpdateFoodMakeStateByIdWithFoodOrderState(string strFoodId)
         {
@@ -1022,7 +1022,7 @@ namespace OnlineApp.BLL
             return strResult;
         }
 
-        //add by zy
+        //add by chr
         //更新菜品制作状态，根据源状态Id和目的状态Id更新
         public static void UpdateFoodMakeStateByIdAndMakeStateAndOrderState(string strFoodId)
         {
@@ -1045,7 +1045,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据菜品Id、传菜员用户名更新对应菜品数据
         public static void UpdateFoodMakeStateIdAndSendUserName(string strFoodId, string strSendUserName)
         {
@@ -1069,7 +1069,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据菜品ID，完成菜品的下单，并将消费记录状态改为已点菜
         public static void UpdateFoodOrderStateIdAndConsumeStateId(string strFoodId)
         {
@@ -1108,7 +1108,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据菜品ID，取消菜品的下单，并根据操作类型选择是否将消费记录状态改为已开桌
         public static void UpdateFoodOrderStateIdAndConsumeStateIdByOprType(string strFoodId, string strType)
         {
@@ -1155,7 +1155,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, iCheckPoint);
         }
 
-        //add by zy
+        //add by chr
         //根据多个菜品ID，完成菜品的删除
         public static void DeleteFoodListByIds(string strFoodId)
         {

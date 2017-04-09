@@ -146,7 +146,7 @@ namespace OnlineApp.BLL
 
 
 
-        //add by zy
+        //add by chr
         //根据菜品Id、审核人用户名更新对应菜品数据及菜品退菜数据
         public static void UpdateFoodMakeStateIdAndApproveUserName(string strFoodId, string strApproveTime, string strApproveUser)
         {
@@ -179,7 +179,7 @@ namespace OnlineApp.BLL
         }
 
 
-        //add by zy
+        //add by chr
         //根据Id字符串删除退菜申请
         public static void DeleteFoodReturnDataById(string strFoodId)
         {

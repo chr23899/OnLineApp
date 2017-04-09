@@ -63,7 +63,7 @@ namespace OnlineApp.DAL.SqlServer
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 通用sql查询，不返回结果(使用事务方式处理,支持多脚本同时查询)。
         /// </summary>
         public override void ExcuteSqlWithTransaction(List<Parameter> paramList)
@@ -72,7 +72,7 @@ namespace OnlineApp.DAL.SqlServer
         }
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 通过事务方式执行多个SQL语句，不返回任何对象（其中第一条SQL执行结果与传入参数对比判断，结果为真才继续执行，否则回滚）。
         /// </summary>
         /// <param name="paramList">多个sql对象</param>
@@ -84,7 +84,7 @@ namespace OnlineApp.DAL.SqlServer
 
 
         /// <summary>
-        /// add by zy
+        /// add by chr
         /// 通用sql查询，返回查询结果的第一行第一列对象。
         /// </summary>
         public override object ExcuteSqlReturnSingleObject(Parameter paramList)

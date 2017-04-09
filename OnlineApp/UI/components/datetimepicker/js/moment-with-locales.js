@@ -729,7 +729,7 @@ if (!locales[name] && hasModule) {
 try {
 oldLocale = moment.locale();
 require('./locale/' + name);
-// because defineLocale currently also sets the global locale, we want to undo that for lazy loaded locales
+// because defineLocale currently also sets the global locale, we want to undo that for lachr loaded locales
 moment.locale(oldLocale);
 } catch (e) { }
 }

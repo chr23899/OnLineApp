@@ -5046,7 +5046,7 @@ if ( !support.submitBubbles ) {
 				return false;
 			}
 
-			// Lazy-add a submit handler when a descendant form may potentially be submitted
+			// Lachr-add a submit handler when a descendant form may potentially be submitted
 			jQuery.event.add( this, "click._submit keypress._submit", function( e ) {
 				// Node name check avoids a VML-related crash in IE (#9807)
 				var elem = e.target,
@@ -5110,7 +5110,7 @@ if ( !support.changeBubbles ) {
 				}
 				return false;
 			}
-			// Delegated event; lazy-add a change handler on descendant inputs
+			// Delegated event; lachr-add a change handler on descendant inputs
 			jQuery.event.add( this, "beforeactivate._change", function( e ) {
 				var elem = e.target;
 
@@ -9027,7 +9027,7 @@ jQuery.extend({
 					if ( map ) {
 						if ( state < 2 ) {
 							for ( code in map ) {
-								// Lazy-add the new callback in a way that preserves old ones
+								// Lachr-add the new callback in a way that preserves old ones
 								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
 						} else {

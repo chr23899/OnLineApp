@@ -165,7 +165,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //根据用户名获取所在餐厅的基本信息
         public static DataTable GetRestaurantDataByUserName(string strUserName)
         {
@@ -189,7 +189,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有餐厅的基本信息
         public static PageData GetRestaurantList(int iPageSize, int iCurPage)
         {

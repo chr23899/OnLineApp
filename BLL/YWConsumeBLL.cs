@@ -167,7 +167,7 @@ namespace OnlineApp.BLL
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
 
-        //add by zy
+        //add by chr
         //根据已点菜列表、优惠券列表、及其它参数创建消费单
         public static void CreateConsumeListByParameter(ConsumeJsonObject dataObj)
         {
@@ -355,7 +355,7 @@ namespace OnlineApp.BLL
             }
         }
 
-        //add by zy
+        //add by chr
         //根据Id获取消费记录当前状态
         public static int GetConsumeStateById(int iConsumeId)
         {
@@ -370,7 +370,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //根据桌号、日期、时间段，检查是否存在状态非“已关桌”的消费记录，如果存在，则认为不能开桌
         public static Boolean CheckConsumeDataDuplicate(int iConsumeTableId, string strConsumeTime, int iConsumeTimeBlockId)
         {
@@ -392,7 +392,7 @@ namespace OnlineApp.BLL
                 return false;
         }
 
-        //add by zy
+        //add by chr
         //根据ConsumeId从消费表中获取其所属的组织机构Id
         public static int GetOrgIdByConsumeId(int iConsumeId)
         {
@@ -408,7 +408,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //根据消费记录ID查询账单
         public static DataTable GetConsumeDataById(int iConsumeId)
         {
@@ -439,7 +439,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //获取系统所有消费记录列表
         public static PageData GetSystemConsumeList(int iPageSize, int iCurPage)
         {
@@ -464,7 +464,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取消费记录列表
         public static PageData GetConsumeListByUserName(string strUserName, string strType, int iPageSize, int iCurPage)
         {
@@ -528,7 +528,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名和业务类型获取消费记录列表
         public static PageData GetConsumeListByUserNameAndType(string strUserName, string strType, int iPageSize, int iCurPage)
         {
@@ -601,7 +601,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(iPageSize, iCurPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据传入参数更新消费记录，金额、折扣、状态
         public static int UpdateConsumeInfoById(int iId, double douTotalPrice, double douPriceOff, double douDiscount, double douActualTotalPrice, int iConsumeStateId)
         {
@@ -624,7 +624,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.ExcuteSql(parameter);
         }
 
-        //add by zy
+        //add by chr
         //完成结账，根据传入参数更新消费记录，金额、折扣、状态，并将消费记录中未结账的菜品更新为已结账
         public static void CompleteCheckout(int iId, double douTotalPrice, double douPriceOff, double douDiscount, double douActualTotalPrice, int iConsumeStateId)
         {
@@ -665,7 +665,7 @@ namespace OnlineApp.BLL
             CommonToolsBLL.ExecuteNonQueryWithTransactionByCheckPoint(parmList, 1);
         }
 
-        //add by zy
+        //add by chr
         //根据传入参数更新消费记录状态
         public static int UpdateConsumeStateById(int iId, int iConsumeStateId)
         {

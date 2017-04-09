@@ -221,7 +221,7 @@ namespace OnlineApp.BLL
             }
         }
 
-        //add by zy
+        //add by chr
         //根据当前时间和组织机构Id，获取当前饭店，在当前时间所处的消费时间段Id
         public static int GetConsumeTimeBlockIdByDateTimeNow(string strOrgId)
         {
@@ -243,7 +243,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         //根据组织机构编码和类型编码，获取本饭店的一类自定义编码
         public static DataTable GetCodeListByOrgIdAndTypeId(string strOrgId, string strTypeId)
         {
@@ -260,7 +260,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据类型编码，系统的一类自定义编码
         public static DataTable GetCodeListByTypeId(string strTypeId)
         {
@@ -276,7 +276,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据组织机构编码和类型编码，获取本饭店的一类自定义编码
         public static DataTable GetEstimateMode(string strTypeId)
         {

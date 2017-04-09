@@ -163,7 +163,7 @@ namespace OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
-        //add by zy
+        //add by chr
         //获取系统所有物料信息
         public static PageData GetSystemMaterialList(int pageSize, int curPage, string sOrgId, string sName, string sMaterialTypeId, string sBelongTypeId)
         {
@@ -189,7 +189,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据餐厅组织机构Id获取餐厅的所有物料信息
         public static PageData GetRestaurantMaterialListByOrgId(int pageSize, int curPage, int iOrgId, string sName, string sMaterialTypeId, string sBelongTypeId)
         {
@@ -244,7 +244,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据Id获取物料基本信息
         public static DataTable GetMaterialDataById(int iId)
         {
@@ -267,7 +267,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetAllListByParams(parameter);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取待盘存物料列表
         public static PageData GetWaitInventoryMaterialListByUserName(int pageSize, int curPage, string strUserName)
         {
@@ -337,7 +337,7 @@ namespace OnlineApp.BLL
             return CommonToolsBLL.GetPageListByParams(pageSize, curPage, parameter2);
         }
 
-        //add by zy
+        //add by chr
         //根据用户名获取本仓库内所有剩余物料
         public static DataTable GetRemainderMaterialListByUserName(string strUserName)
         {
@@ -416,7 +416,7 @@ namespace OnlineApp.BLL
             return dtResult;
         }
 
-        //add by zy
+        //add by chr
         public static int GetOrgIdByMaterialId(int iMaterialId)
         {
             Parameter parameter = new Parameter();
@@ -430,7 +430,7 @@ namespace OnlineApp.BLL
             return Convert.ToInt32(CommonToolsBLL.ExcuteSqlReturnSingleObject(parameter));
         }
 
-        //add by zy
+        //add by chr
         public static string GetStdUnitByMaterialId(int iMaterialId)
         {
             Parameter parameter = new Parameter();
