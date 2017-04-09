@@ -146,9 +146,19 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
     }
 
     $scope.confirmDel = function () {
-        $scope.peopleList.splice($scope.delPersonIndex, 1);
-        $scope.delPersonIndex = 0;
-        $('#form-dialog').modal('hide');
+        var strDelete = {
+            strDelete: "" 
+        };
+        strDelete.strDelete = $scope.peopleList[$scope.delPersonIndex].UserName;
+        userService.DeleteUser(strDelete).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.peopleList.splice($scope.delPersonIndex, 1);
+                $scope.delPersonIndex = 0;
+                $('#form-dialog').modal('hide');
+                $scope.$apply();
+            }
+        });
     }
 
     $scope.showEditWnd = function (index) {

@@ -30,7 +30,7 @@ onlineApp.service('userService', function ($http) {
 
     //删除用户
     this.DeleteUser = function (params) {
-        console.log('[SmartTraffic] 删除用户 req={id:' + params + '}');
+        console.log('[SmartTraffic] 删除用户 req={strDelete:' + params + '}');
         return $.post(ContextPath + '/Server/UserManage.ashx?command=DeleteUser', params).then(function (resp) {
             console.log('[SmartTraffic] 更新用户信息 resp=' + JSON.stringify(resp));
             return resp;
