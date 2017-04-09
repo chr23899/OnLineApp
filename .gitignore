@@ -16,3 +16,4 @@ Web.config
 /SFL/bin
 /SFL/obj 
 # 添加忽略的文件 
+OnlineApp.v12.suo
