@@ -43,7 +43,36 @@ namespace OnlineApp.COL
         private string alternate4;
         /// <summary>[变量]备用５</summary>
         private string alternate5;
-
+        /// <summary>[变量]账户余额</summary>
+        private decimal? balance;
+        /// <summary>[变量]有效期</summary>
+        private DateTime? validityDT;
+        /// <summary>[变量]职位</summary>
+        private string position;
+        /// <summary>[变量]公司</summary>
+        private string company;
+        /// <summary>[变量]电话</summary>
+        private string tel;
+        /// <summary>[变量]ＱＱ</summary>
+        private string qQ;
+        /// <summary>[变量]微信</summary>
+        private string weChat;
+        /// <summary>[变量]邮箱</summary>
+        private string email;
+        /// <summary>[变量]主页</summary>
+        private string homePage;
+        /// <summary>[变量]是否完成问卷</summary>
+        private int? isQA;
+        /// <summary>[变量]上级用户</summary>
+        private PTUsers superiorUser;
+        /// <summary>[变量]连续签到天数</summary>
+        private int? signDays;
+        /// <summary>[变量]最后签到日期</summary>
+        private DateTime? signDateTime;
+        /// <summary>[变量]邀请码</summary>
+        private string invCode;
+        /// <summary>[变量]支付宝</summary>
+        private string alipay;
 
         /// <summary>[属性]编号</summary>
         public int? Id
@@ -117,7 +146,96 @@ namespace OnlineApp.COL
         {
             return Nickname;
         }
-
+        /// <summary>[属性]账户余额</summary>
+        public decimal? Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+        /// <summary>[属性]有效期</summary>
+        public DateTime? ValidityDT
+        {
+            get { return validityDT; }
+            set { validityDT = value; }
+        }
+        /// <summary>[属性]职位</summary>
+        public string Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+        /// <summary>[属性]公司</summary>
+        public string Company
+        {
+            get { return company; }
+            set { company = value; }
+        }
+        /// <summary>[属性]电话</summary>
+        public string Tel
+        {
+            get { return tel; }
+            set { tel = value; }
+        }
+        /// <summary>[属性]ＱＱ</summary>
+        public string QQ
+        {
+            get { return qQ; }
+            set { qQ = value; }
+        }
+        /// <summary>[属性]微信</summary>
+        public string WeChat
+        {
+            get { return weChat; }
+            set { weChat = value; }
+        }
+        /// <summary>[属性]邮箱</summary>
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        /// <summary>[属性]主页</summary>
+        public string HomePage
+        {
+            get { return homePage; }
+            set { homePage = value; }
+        }
+        /// <summary>[属性]是否完成问卷</summary>
+        public int? IsQA
+        {
+            get { return isQA; }
+            set { isQA = value; }
+        }
+        /// <summary>[属性]上级用户</summary>
+        public PTUsers SuperiorUser
+        {
+            get { return superiorUser; }
+            set { superiorUser = value; }
+        }
+        /// <summary>[属性]连续签到天数</summary>
+        public int? SignDays
+        {
+            get { return signDays; }
+            set { signDays = value; }
+        }
+        /// <summary>[属性]最后签到日期</summary>
+        public DateTime? SignDateTime
+        {
+            get { return signDateTime; }
+            set { signDateTime = value; }
+        }
+        /// <summary>[属性]邀请码</summary>
+        public string InvCode
+        {
+            get { return invCode; }
+            set { invCode = value; }
+        }
+        /// <summary>[属性]支付宝</summary>
+        public string Alipay
+        {
+            get { return alipay; }
+            set { alipay = value; }
+        }
         #endregion EasyCode所生成的默认代码
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OnlineApp.BLL;
 using OnlineApp.COL;
+using OnlineApp.SFL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,7 +83,162 @@ namespace OnlineApp.Server
         //新增用户接口
         public void AddUser(HttpContext context)
         {
+            string strUserName = context.Request["UserName"];
+            string strPassword = context.Request["Password"];
+            string strNickname = context.Request["Nickname"];
+            string strOrgId = context.Request["OrgId"];
+            string strStateId = context.Request["StateId"];
+            string strAlternate1 = context.Request["Alternate1"];
+            string strCallBack = context.Request["callback"];
 
+            PTUsers pTUser = new PTUsers();
+            pTUser.UserName = strUserName;
+            pTUser.Password = strPassword;
+            pTUser.Nickname = strNickname;
+            pTUser.OrgId = Convert.ToInt32(strOrgId);
+
+            string tempStateId = "1";
+            if (strStateId == "false")
+            {
+                tempStateId = "0";
+            }
+            pTUser.StateId = tempStateId;
+            pTUser.Alternate1 = strAlternate1;
+
+            PTUserLink userLink = new PTUserLink();
+            userLink.UserName = strUserName;
+            userLink.RoleId = CodeDictionary.UserRole["一般用户（初始默认）"];
+            PTUsersBLL.Insert(pTUser);
+            PTUserLinkBLL.Insert(userLink);
+
+            YWUserTips ywUserTips = new YWUserTips();
+            ywUserTips.UserName = strUserName;
+            YWUserTipsBLL.Insert(ywUserTips);
+
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "新用户添加成功");
+        }
+
+        //更新用户
+        public void ModifyUser(HttpContext context)
+        {
+            string strUserName = context.Request["UserName"];
+            string strPassword = context.Request["Password"];
+            string strNickname = context.Request["Nickname"];
+            string strOrgId = context.Request["OrgId"];
+            string strStateId = context.Request["StateId"];
+            string strAlternate1 = context.Request["Alternate1"];
+            string strCallBack = context.Request["callback"];
+
+            PTUsers pTUser = new PTUsers();
+            pTUser.UserName = strUserName;
+            pTUser.Password = strPassword;
+            pTUser.Nickname = strNickname;
+            pTUser.OrgId = Convert.ToInt32(strOrgId);
+
+            string tempStateId = "1";
+            if (strStateId == "false")
+            {
+                tempStateId = "0";
+            }
+            pTUser.StateId = tempStateId;
+            pTUser.Alternate1 = strAlternate1;
+
+            PTUsersBLL.Update(pTUser);
+
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "用户信息更新成功");
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="context"></param>
+        public void DeleteUser(HttpContext context)
+        {
+            string strDelete = context.Request["strDelete"];
+            string strCallBack = context.Request["callback"];
+
+            string[] strList = strDelete.Split(',');
+            foreach (string item in strList)
+            {
+                PTUsersBLL.DeleteUser(item);
+            }
+
+
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选用户删除成功");
+        }
+
+        /// <summary>
+        /// 授权用户角色
+        /// </summary>
+        /// <param name="context"></param>
+        public void AddUserRole(HttpContext context)
+        {
+            string strRoleId = context.Request["RoleId"];
+            string strUserName = context.Request["UserName"];
+            string strCallBack = context.Request["callback"];
+
+            PTUserLink userLink = new PTUserLink();
+            userLink.UserName = strUserName;
+            userLink.RoleId = Convert.ToInt32(strRoleId);
+            PTUserLinkBLL.Insert(userLink);
+
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "授权用户权限成功");
+        }
+
+        /// <summary>
+        /// 授权用户角色
+        /// </summary>
+        /// <param name="context"></param>
+        public void DeleteUserRole(HttpContext context)
+        {
+            string strDelete = context.Request["strDelete"];
+            string strCallBack = context.Request["callback"];
+
+            string[] strList = strDelete.Split(',');
+            foreach (string item in strList)
+            {
+                PTUserLinkBLL.Delete(Convert.ToInt32(item));
+            }
+
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "撤销用户权限成功");
+        }
+
+        /// <summary>
+        /// 检查用户名是否存在
+        /// </summary>
+        /// <param name="context"></param>
+        public void IsExistUserName(HttpContext context)
+        {
+            string strUserName = context.Request["UserName"];
+            string strCallBack = context.Request["callback"];
+
+            if (PTUsersBLL.GetDataByUserName(strUserName) != null)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "该用户名已经存在!");
+            }
+            else
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "fail", "该用户名可以使用!");
+            }
+        }
+
+        /// <summary>
+        /// 检查手机号是否存在
+        /// </summary>
+        /// <param name="context"></param>
+        public void IsExistTel(HttpContext context)
+        {
+            string strTel = context.Request["Tel"];
+            string strCallBack = context.Request["callback"];
+
+            if (PTUsersBLL.GetUserByTel(strTel).Rows.Count > 0)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "该手机号已经存在!");
+            }
+            else
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "fail", "该手机号可以使用!");
+            }
         }
     }
 }
