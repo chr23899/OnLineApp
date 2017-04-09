@@ -1,6 +1,5 @@
-# 忽略Web.config文件
-/Web.config
-# 添加忽略的文件
+# 忽略Web.config文件 
+/Web.config   
 # 忽略BLL文件夹下bin和obj文件夹
 /BLL/bin
 /BLL/obj
@@ -13,6 +12,7 @@
 # 忽略OnlineApp文件夹下bin和obj文件夹
 /OnlineApp/bin
 /OnlineApp/obj
-# 忽略SFL文件夹下bin和obj文件夹
+# 忽略SFL文件夹下bin和obj文件夹 
 /SFL/bin
-/SFL/obj
+/SFL/obj 
+# 添加忽略的文件 
