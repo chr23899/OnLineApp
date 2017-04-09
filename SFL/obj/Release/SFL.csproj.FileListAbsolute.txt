@@ -1,0 +1,7 @@
+E:\StudyHigh\EduApp\OnlineApp\SFL\bin\Release\SFL.dll
+E:\StudyHigh\EduApp\OnlineApp\SFL\bin\Release\SFL.pdb
+E:\StudyHigh\EduApp\OnlineApp\SFL\bin\Release\COL.dll
+E:\StudyHigh\EduApp\OnlineApp\SFL\bin\Release\COL.pdb
+E:\StudyHigh\EduApp\OnlineApp\SFL\obj\Release\SFL.csprojResolveAssemblyReference.cache
+E:\StudyHigh\EduApp\OnlineApp\SFL\obj\Release\SFL.dll
+E:\StudyHigh\EduApp\OnlineApp\SFL\obj\Release\SFL.pdb

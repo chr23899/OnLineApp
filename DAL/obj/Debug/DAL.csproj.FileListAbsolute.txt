@@ -1,0 +1,18 @@
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\DAL.dll
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\DAL.pdb
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\COL.dll
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\SFL.dll
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\SFL.pdb
+F:\项目\理掌柜\code-20160419\03 code\DAL\bin\Debug\COL.pdb
+F:\项目\理掌柜\code-20160419\03 code\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+F:\项目\理掌柜\code-20160419\03 code\DAL\obj\Debug\DAL.dll
+F:\项目\理掌柜\code-20160419\03 code\DAL\obj\Debug\DAL.pdb
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\DAL.dll
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\DAL.pdb
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\COL.dll
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\SFL.dll
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\SFL.pdb
+E:\StudyHigh\EduApp\OnlineApp\DAL\bin\Debug\COL.pdb
+E:\StudyHigh\EduApp\OnlineApp\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\StudyHigh\EduApp\OnlineApp\DAL\obj\Debug\DAL.dll
+E:\StudyHigh\EduApp\OnlineApp\DAL\obj\Debug\DAL.pdb

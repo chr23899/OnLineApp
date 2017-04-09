@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F847A69C-ECBA-40FC-8B7E-D28143743EE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DFG.Platform.BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonToolsBLL.cs" />
+    <Compile Include="PTConfigGroupBLL.cs" />
+    <Compile Include="PTConfigTypeBLL.cs" />
+    <Compile Include="PTConfigValueBLL.cs" />
+    <Compile Include="Export.cs.cs" />
+    <Compile Include="PTFunctionTypeBLL.cs" />
+    <Compile Include="YWCouponsBLL.cs" />
+    <Compile Include="YWDictionaryTypeBLL.cs" />
+    <Compile Include="PTNoticesBLL.cs" />
+    <Compile Include="PTNoticeTypeBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PTAttachmentBLL.cs" />
+    <Compile Include="PTConfigBLL.cs" />
+    <Compile Include="PTFunctionsBLL.cs" />
+    <Compile Include="PTOrgBLL.cs" />
+    <Compile Include="PTRolesBLL.cs" />
+    <Compile Include="PTUsersBLL.cs" />
+    <Compile Include="PTRoleLinkBLL.cs" />
+    <Compile Include="PTUserLinkBLL.cs" />
+    <Compile Include="YWBookBLL.cs" />
+    <Compile Include="YWBuyingBLL.cs" />
+    <Compile Include="YWConsumeBLL.cs" />
+    <Compile Include="YWDictionaryBLL.cs" />
+    <Compile Include="YWFoodBLL.cs" />
+    <Compile Include="YWFoodReturnBLL.cs" />
+    <Compile Include="YWInStoreBLL.cs" />
+    <Compile Include="YWInventoryBLL.cs" />
+    <Compile Include="YWLogBLL.cs" />
+    <Compile Include="YWMaterialBLL.cs" />
+    <Compile Include="YWOutStoreBLL.cs" />
+    <Compile Include="YWPayBackBLL.cs" />
+    <Compile Include="YWPersonBLL.cs" />
+    <Compile Include="YWPrePayBLL.cs" />
+    <Compile Include="YWProductBLL.cs" />
+    <Compile Include="YWProductGroupBLL.cs" />
+    <Compile Include="YWRequirementBLL.cs" />
+    <Compile Include="YWRestaurantBLL.cs" />
+    <Compile Include="YWTableBLL.cs" />
+    <Compile Include="YWUserTipsBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SFL\SFL.csproj">
+      <Project>{56003E34-3594-49FD-9A86-81DAA8EDFCF0}</Project>
+      <Name>SFL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{350C8674-98F4-4CD0-8233-E0DB8E9701EF}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\COL\COL.csproj">
+      <Project>{F8C7A8C8-9A4A-40B8-8AD2-C7346245E31A}</Project>
+      <Name>COL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
