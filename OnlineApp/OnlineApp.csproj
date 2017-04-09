@@ -78,6 +78,7 @@
     <Content Include="Static\img\loading.gif" />
     <Content Include="Static\img\user\admin.png" />
     <Content Include="Static\img\user\leo.png" />
+    <Content Include="Static\img\user\male.png" />
     <Content Include="Static\script\app\onlineApp.js" />
     <Content Include="Static\script\constants.js" />
     <Content Include="Static\script\controller\index\head.js" />

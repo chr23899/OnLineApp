@@ -85,10 +85,32 @@ namespace OnlineApp.Server
         {
             string strUserName = context.Request["UserName"];
             string strPassword = context.Request["Password"];
+            if (strPassword == null)
+            {
+                strPassword = "123456";
+            }
             string strNickname = context.Request["Nickname"];
+            if (strNickname == null)
+            {
+                strNickname = "暂时未使用";
+            }
             string strOrgId = context.Request["OrgId"];
+            if (strOrgId == null)
+            {
+                strOrgId = "1";
+            }
             string strStateId = context.Request["StateId"];
+            if (strStateId == null)
+            {
+                strStateId = "1";
+            }
             string strAlternate1 = context.Request["Alternate1"];
+            string strAlternate2 = context.Request["Alternate2"];
+            string strLevelId = context.Request["LevelId"];
+            string strTel = context.Request["Tel"];
+            string strType = context.Request["Type"];
+            string strLayer = context.Request["Layer"];
+            string strNote = context.Request["Note"];
             string strCallBack = context.Request["callback"];
 
             PTUsers pTUser = new PTUsers();
@@ -96,7 +118,10 @@ namespace OnlineApp.Server
             pTUser.Password = strPassword;
             pTUser.Nickname = strNickname;
             pTUser.OrgId = Convert.ToInt32(strOrgId);
-
+            pTUser.Tel = strTel;
+            pTUser.Type = strType;
+            pTUser.Note = strNote;
+            pTUser.Layer = strLayer;
             string tempStateId = "1";
             if (strStateId == "false")
             {
@@ -104,29 +129,48 @@ namespace OnlineApp.Server
             }
             pTUser.StateId = tempStateId;
             pTUser.Alternate1 = strAlternate1;
+            pTUser.Alternate2 = strAlternate2;
+            pTUser.LevelId = "1";
 
             PTUserLink userLink = new PTUserLink();
             userLink.UserName = strUserName;
-            userLink.RoleId = CodeDictionary.UserRole["一般用户（初始默认）"];
+            userLink.RoleId = CodeDictionary.UserRole["一般初始用户"];
             PTUsersBLL.Insert(pTUser);
             PTUserLinkBLL.Insert(userLink);
-
-            YWUserTips ywUserTips = new YWUserTips();
-            ywUserTips.UserName = strUserName;
-            YWUserTipsBLL.Insert(ywUserTips);
-
+              
             CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "新用户添加成功");
         }
 
         //更新用户
         public void ModifyUser(HttpContext context)
         {
-            string strUserName = context.Request["UserName"];
+            string strUserName = context.Request["UserName"]; 
             string strPassword = context.Request["Password"];
+            if (strPassword == null)
+            {
+                strPassword = "123456";
+            }
             string strNickname = context.Request["Nickname"];
+            if (strNickname == null)
+            {
+                strNickname = "暂时未使用";
+            }
             string strOrgId = context.Request["OrgId"];
+            if (strOrgId == null)
+            {
+                strOrgId = "1";
+            }
             string strStateId = context.Request["StateId"];
+            if (strStateId == null)
+            {
+                strStateId = "1";
+            }
             string strAlternate1 = context.Request["Alternate1"];
+            string strAlternate2 = context.Request["Alternate2"];
+            string strTel = context.Request["Tel"];
+            string strType = context.Request["Type"];
+            string strLayer = context.Request["Layer"];
+            string strNote = context.Request["Note"];
             string strCallBack = context.Request["callback"];
 
             PTUsers pTUser = new PTUsers();
@@ -142,6 +186,11 @@ namespace OnlineApp.Server
             }
             pTUser.StateId = tempStateId;
             pTUser.Alternate1 = strAlternate1;
+            pTUser.Alternate2 = strAlternate2;
+            pTUser.Tel = strTel;
+            pTUser.Type = strType;
+            pTUser.Note = strNote;
+            pTUser.Layer = strLayer;
 
             PTUsersBLL.Update(pTUser);
 

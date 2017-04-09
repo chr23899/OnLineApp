@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.Type != '1' && newperson.Type != '2'">
                         <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="layer in userLayers track by $index">
-                            <input type="radio" id="layerType{{layer.id}}" name="layerType{{layer.id}}" value="{{layer.id}}" ng-model="newperson.layerType"><span class="pmd-checkbox-label">&nbsp;</span>
+                            <input type="radio" id="Layer{{layer.id}}" name="Layer{{layer.id}}" value="{{layer.id}}" ng-model="newperson.Layer"><span class="pmd-checkbox-label">&nbsp;</span>
                             <span> {{layer.name}}</span>
                         </label> 
                     </div>
@@ -65,11 +65,11 @@
                     </div>
                     <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="peopleList[nowindex].Type != '1' && peopleList[nowindex].Type != '2'">
                         <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="layer in userLayers track by $index">
-                            <input type="radio" id="userType{{layerType.id}}" name="userType{{layerType.id}}" value="{{layer.id}}" ng-model="peopleList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                            <input type="radio" id="userType{{Layer.id}}" name="userType{{Layer.id}}" value="{{layer.id}}" ng-model="peopleList[nowindex].Layer" disabled><span class="pmd-checkbox-label">&nbsp;</span>
                             <span> {{layer.name}}</span>
                         </label>
                     </div>
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <div class="form-group pmd-textfield">
                         <label class="control-label">个人说明</label>
                         <textarea required class="form-control" ng-model="peopleList[nowindex].Note" disabled></textarea>
                     </div>

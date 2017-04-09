@@ -71,12 +71,12 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
         UserName: "",
         Tel: "",
         Type: $scope.userRoles[11].id,
-        layerType: $scope.userLayers[1].id,
+        Layer: $scope.userLayers[1].id,
         Note: "",
         content: "2017年3月27号加入",
-        show: true,
+        StateId: true,
         title: "",
-        imageUrl: "UI/themes/images/male.png",
+        Alternate2: "male.png",
     }
      
     $scope.userCtrlType = "add";
@@ -86,12 +86,12 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
             UserName: "",
             Tel: "",
             Type: $scope.userRoles[11].id,
-            layerType: $scope.userLayers[1].id,
+            Layer: $scope.userLayers[1].id,
             Note: "",
             content: "2017年3月27号加入",
-            show: true,
+            StateId: true,
             title: "",
-            imageUrl: "UI/themes/images/male.png",
+            Alternate2: "male.png",
         }
     }
 
@@ -108,13 +108,24 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
 
     $scope.addNewPerson = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
-            $scope.newperson.title = $scope.newperson.layerType + $scope.newperson.Type;
-            $scope.peopleList.push($scope.newperson);
-            $('#form-dialog').modal('hide');
+            userService.AddUser($scope.newperson).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.peopleList.push($scope.newperson);
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            });
         }
         else if ($scope.userCtrlType == 'edit' && $scope.validate) {
-            $scope.peopleList[$scope.editPersonIndex] = $scope.newperson;
-            $('#form-dialog').modal('hide');
+            userService.UpdateUser($scope.newperson).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.peopleList[$scope.editPersonIndex] = $scope.newperson;
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            }); 
         }
     }
 
@@ -147,12 +158,13 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
             UserName: $scope.peopleList[index].UserName,
             Tel: $scope.peopleList[index].Tel,
             Type: +$scope.peopleList[index].Type,
-            layerType: $scope.peopleList[index].layerType,
+            Layer: $scope.peopleList[index].Layer,
             Note: $scope.peopleList[index].Note,
             content: $scope.peopleList[index].content,
             show: $scope.peopleList[index].show,
             title: $scope.peopleList[index].title,
-            imageUrl: $scope.peopleList[index].imageUrl,
+            Alternate2: $scope.peopleList[index].Alternate2,
+            StateId: $scope.peopleList[index].StateId
         }
         /*$scope.newperson = $scope.peopleList[index];*/
         $('#form-dialog').modal('show');

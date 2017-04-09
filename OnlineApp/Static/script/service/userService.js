@@ -20,7 +20,7 @@ onlineApp.service('userService', function ($http) {
     };
 
     //更新用户
-    this.updateCross = function (params) {
+    this.UpdateUser = function (params) {
         console.log('[SmartTraffic] 更新用户信息 req=' + JSON.stringify(params));
         return $.post(ContextPath + '/Server/UserManage.ashx?command=ModifyUser', params).then(function (resp) {
             console.log('[SmartTraffic] 更新用户信息 resp=' + JSON.stringify(resp));

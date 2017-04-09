@@ -73,6 +73,42 @@ namespace OnlineApp.COL
         private string invCode;
         /// <summary>[变量]支付宝</summary>
         private string alipay;
+        /// <summary>[变量]用户等级</summary>
+        private string levelId;
+        /// <summary>[变量]用户类型</summary>
+        private string type;
+        /// <summary>[变量]用户层级</summary>
+        private string layer;
+        /// <summary>[变量]用户备注</summary>
+        private string note;
+
+        /// <summary>[属性]用户等级</summary>
+        public string LevelId
+        {
+            get { return levelId; }
+            set { levelId = value; }
+        }
+
+        /// <summary>[属性]用户类型</summary>
+        public string Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+
+        /// <summary>[属性]用户等级</summary>
+        public string Layer
+        {
+            get { return layer; }
+            set { layer = value; }
+        }
+
+        /// <summary>[属性]备注</summary>
+        public string Note
+        {
+            get { return note; }
+            set { note = value; }
+        }
 
         /// <summary>[属性]编号</summary>
         public int? Id

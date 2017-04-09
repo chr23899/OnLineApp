@@ -32,9 +32,9 @@ namespace OnlineApp.DAL.SqlServer
         public override int Insert(PTUsers pTUsers)
         {
             string sqlText = "INSERT INTO [PT_USER]"
-                           + "([UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5])"
+                           + "([UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[Tel],[LevelId],[Type],[Layer],[Note])"
                            + "VALUES"
-                           + "(@UserName,@Password,@OrgId,@Nickname,@StateId,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5)";
+                           + "(@UserName,@Password,@OrgId,@Nickname,@StateId,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5,@Tel,@LevelId,@Type,@Layer,@Note)";
             SqlParameter[] parameters = 
             {
                 new SqlParameter("@UserName"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.UserName   },
@@ -46,7 +46,12 @@ namespace OnlineApp.DAL.SqlServer
                 new SqlParameter("@Alternate2" , SqlDbType.NText    , 1073741823){ Value = pTUsers.Alternate2 },
                 new SqlParameter("@Alternate3" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate3 },
                 new SqlParameter("@Alternate4" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate4 },
-                new SqlParameter("@Alternate5" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate5 }
+                new SqlParameter("@Alternate5" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate5 },
+                new SqlParameter("@Tel" , SqlDbType.NVarChar , 500){ Value = pTUsers.Tel },
+                new SqlParameter("@LevelId" , SqlDbType.NVarChar , 500){ Value = pTUsers.LevelId },
+                new SqlParameter("@Type" , SqlDbType.NVarChar , 500){ Value = pTUsers.Type },
+                new SqlParameter("@Layer" , SqlDbType.NVarChar , 500){ Value = pTUsers.Layer },
+                new SqlParameter("@Note" , SqlDbType.NVarChar , 500){ Value = pTUsers.Note }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
@@ -60,7 +65,7 @@ namespace OnlineApp.DAL.SqlServer
         {
             string sqlText = "UPDATE [PT_USER] SET "
                            + "[Password]=@Password,[OrgId]=@OrgId,[Nickname]=@Nickname,[StateId]=@StateId,[Alternate1]=@Alternate1,[Alternate2]=@Alternate2,"
-                           + "[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,[Alternate5]=@Alternate5 "
+                           + "[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,[Alternate5]=@Alternate5,[Tel]=@Tel,[Type]=@Type,[Layer]=@Layer,[Note]=@Note "
                            + "WHERE [UserName]=@UserName";
             SqlParameter[] parameters = 
             {
@@ -73,6 +78,10 @@ namespace OnlineApp.DAL.SqlServer
                 new SqlParameter("@Alternate3" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate3 },
                 new SqlParameter("@Alternate4" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate4 },
                 new SqlParameter("@Alternate5" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate5 },
+                new SqlParameter("@Tel" , SqlDbType.NVarChar , 50){ Value = pTUsers.Tel },
+                new SqlParameter("@Type" , SqlDbType.NVarChar , 50){ Value = pTUsers.Type },
+                new SqlParameter("@Layer" , SqlDbType.NVarChar , 50){ Value = pTUsers.Layer },
+                new SqlParameter("@Note" , SqlDbType.NVarChar , 50){ Value = pTUsers.Note },
                 new SqlParameter("@UserName"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.UserName   }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
