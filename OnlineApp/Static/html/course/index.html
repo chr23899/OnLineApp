@@ -30,7 +30,7 @@
                                 <input class="form-control" id="exampleInputPassword2" type="text" ng-model="query.courseName" placeholder="课程名称"><span class="pmd-textfield-focused"></span>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
                                 <input type="checkbox" value="" checked="" ng-model="query.isPrimary"><span class="pmd-checkbox-label">&nbsp;</span>
                                 <span> 小学课程</span>
@@ -40,7 +40,7 @@
                                 <span> 中学课程</span>
                             </label>
                         </div>
-                        <div class="col-sm-2 text-right">
+                        <div class="col-sm-3 text-right">
                             <button data-target="#form-dialog" data-toggle="modal" class="btn btn-info" type="button" ng-click="showAddCourse()">新增</button>
                             <button type="button" class="btn btn-success " ng-click="serachData()">搜索</button>
                         </div>
@@ -58,7 +58,7 @@
                             <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal">
+                            <div class="form-horizontal">
                                 <div class="form-group pmd-textfield ">
                                     <label for="first-name">课程名：</label>
                                     <input type="text" class="form-control" id="name" ng-model="newcourse.courseName">
@@ -81,7 +81,7 @@
                                     <label class="control-label">课程说明</label>
                                     <textarea required class="form-control" ng-model="newcourse.note"></textarea>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <div class="pmd-modal-action">
                             <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewPerson()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
@@ -147,16 +147,16 @@
                     <div class="pmd-card-title">
                         <div class="media-left">
                             <a class="avatar-list-img" href="javascript:void(0);">
-                                <img src="{{course.imageUrl}}" width="40" height="40">
+                                <img ng-src="{{course.imageUrl}}" width="40" height="40">
                             </a>
                         </div>
                         <div class="media-body media-middle">
                             <h3 class="pmd-card-title-text">{{course.courseName}}</h3>
-                            <span class="pmd-card-subtitle-text">主讲老师：{{course.userName}}</span>
+                            <span class="pmd-card-subtitle-text">主讲老师:{{course.userName}}</span>
                         </div>
                     </div>
                     <div class="pmd-card-media">
-                        <img src="{{course.imageUrl}}" width="666" height="300" class="img-responsive">
+                        <img ng-src="{{course.imageUrl}}" width="666" height="300" class="img-responsive">
                     </div>
                     <div class="pmd-card-title">
                         <h2 class="pmd-card-title-text">{{course.courseName}}</h2>
