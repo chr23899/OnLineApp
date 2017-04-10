@@ -45,24 +45,24 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
 
     $scope.serachData = function () {
         for (var i = 0; i < $scope.peopleList.length; i++) {
-            $scope.peopleList[i].show = true;
+            $scope.peopleList[i].StateId = true;
             if ($scope.query.UserName != "" && $scope.peopleList[i].UserName.indexOf($scope.query.UserName) < 0) {
-                $scope.peopleList[i].show = false;
+                $scope.peopleList[i].StateId = false;
             }
             if ($scope.query.Tel != "" && $scope.peopleList[i].Tel.indexOf($scope.query.Tel) < 0) {
-                $scope.peopleList[i].show = false;
+                $scope.peopleList[i].StateId = false;
             }
-            if ($scope.peopleList[i].Type == "student" && $scope.query.isStudent != true) {
-                $scope.peopleList[i].show = false;
+            if ($scope.peopleList[i].Type == "11" && $scope.query.isStudent != true) {
+                $scope.peopleList[i].StateId = false;
             }
-            if ($scope.peopleList[i].Type == "teacher" && $scope.query.isTeacher != true) {
-                $scope.peopleList[i].show = false;
+            if ($scope.peopleList[i].Type == "12" && $scope.query.isParent != true) {
+                $scope.peopleList[i].StateId = false;
             }
-            if ($scope.peopleList[i].Type == "parent" && $scope.query.isParent != true) {
-                $scope.peopleList[i].show = false;
+            if ($scope.peopleList[i].Type == "13" && $scope.query.isTeacher != true) {
+                $scope.peopleList[i].StateId = false;
             }
-            if ($scope.peopleList[i].Type == "manager" && $scope.query.isManager != true) {
-                $scope.peopleList[i].show = false;
+            if (($scope.peopleList[i].Type == "1" || $scope.peopleList[i].Type == "2") && $scope.query.isManager != true) {
+                $scope.peopleList[i].StateId = false;
             }
         }
     }
@@ -170,8 +170,7 @@ onlineApp.controller('peopleManager', function ($scope, userService, $window, pe
             Type: +$scope.peopleList[index].Type,
             Layer: $scope.peopleList[index].Layer,
             Note: $scope.peopleList[index].Note,
-            content: $scope.peopleList[index].content,
-            show: $scope.peopleList[index].show,
+            content: $scope.peopleList[index].content, 
             title: $scope.peopleList[index].title,
             Alternate2: $scope.peopleList[index].Alternate2,
             StateId: $scope.peopleList[index].StateId
