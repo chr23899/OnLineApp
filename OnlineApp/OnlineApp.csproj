@@ -92,6 +92,7 @@
     <Content Include="Static\script\controller\menu\peopleManager.js" />
     <Content Include="Static\script\controller\menu\systemSetting.js" />
     <Content Include="Static\script\controller\menu\testManager.js" />
+    <Content Include="Static\script\factory\index\courseStore.js" />
     <Content Include="Static\script\factory\index\menusStore.js" />
     <Content Include="Static\script\factory\index\noticesStore.js" />
     <Content Include="Static\script\factory\index\peopleStore.js" />
