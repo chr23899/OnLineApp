@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bs-config.js" />
+    <Content Include="Document\sql\createTables.sql" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="Static\css\onLineApp.css" />
