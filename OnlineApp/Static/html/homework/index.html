@@ -29,26 +29,27 @@
                     <div class="row" role="form">
                         <div class="col-sm-3">
                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                <input class="form-control" id="exampleInputEmail2" type="text" placeholder="老师姓名"><span class="pmd-textfield-focused"></span>
+                                <input class="form-control" id="exampleInputEmail2" type="text" placeholder="老师姓名" ng-model="query.userName"><span class="pmd-textfield-focused"></span>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                <input class="form-control" id="exampleInputPassword2" type="text" placeholder="作业标题"><span class="pmd-textfield-focused"></span>
+                                <input class="form-control" id="exampleInputPassword2" type="text" placeholder="作业标题" ng-model="query.homeWorkTask"><span class="pmd-textfield-focused"></span>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                <input type="checkbox" value="" checked=""><span class="pmd-checkbox-label">&nbsp;</span>
+                                <input type="checkbox" value="" checked="" ng-model="query.inClass"><span class="pmd-checkbox-label">&nbsp;</span>
                                 <span> 课堂作业</span>
                             </label>
                             <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                <input type="checkbox" value="" checked=""><span class="pmd-checkbox-label">&nbsp;</span>
+                                <input type="checkbox" value="" checked="" ng-model="query.afterClass"><span class="pmd-checkbox-label">&nbsp;</span>
                                 <span> 课后作业</span>
                             </label>
                         </div>
                         <div class="col-sm-2 text-right">
-                            <button type="button" class="btn btn-success pmd-ripple-effect">搜索</button>
+                            <button data-target="#form-dialog" data-toggle="modal" class="btn btn-info" type="button" ng-click="showAddHomeWork()">新增</button>
+                            <button type="button" class="btn btn-success " ng-click="serachData()">搜索</button>
                         </div>
                     </div>
                 </div>
@@ -58,203 +59,120 @@
         <div class="row masonry" id="card-masonry-homework" style="position: relative; opacity: 1;">
 
 
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
+
+            <div tabindex="-1" class="modal fade" id="form-dialog">
+                <div class="modal-dialog" ng-show="userCtrlType=='add' || userCtrlType=='edit'">
+                    <div class="modal-content">
+                        <div class="modal-header bordered">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group pmd-textfield ">
+                                    <label for="first-name">作业</label>
+                                    <input type="text" class="form-control" id="name" ng-model="newHomeWork.homeWorkTask" disabled>
+                                </div>
+                                <div class="form-group pmd-textfield ">
+                                    <label for="first-name">课程</label>
+                                    <input type="text" class=" form-control" id="phone" ng-model="newHomeWork.courseName"disabled>
+                                </div>
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.type != '管理员'">
+                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+                                        <input id="layerType" type="radio" name="layerType" value="课堂" ng-model="newHomeWork.layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <span> 课堂作业</span>
+                                    </label>
+                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+                                        <input id="layerType2" type="radio" name="layerType2" value="课后" ng-model="newHomeWork.layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <span> 课后作业</span>
+                                    </label>
+                                </div>
+                                <div class="form-group pmd-textfield">
+                                    <label class="control-label">作业说明</label>
+                                    <textarea required class="form-control" ng-model="newHomeWork.content"disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pmd-modal-action">
+                            <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewHomeWork()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
+                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
+                <!-- view new form -->
+                <div class="modal-dialog" ng-show="userCtrlType=='view'">
+                    <div class="modal-content">
+                        <div class="modal-header bordered">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            <h2 class="pmd-card-title-text">{{homeWorkList[nowindex].title}}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group pmd-textfield">
+                                    <label for="first-name">作业</label>
+                                    <input type="text" class="form-control" id="name" value="{{homeWorkList[nowindex].task}}" disabled>
+                                </div>
+                                <div class="form-group pmd-textfield">
+                                    <label for="first-name">课程</label>
+                                    <input type="text" class="form-control" id="phone" ng-model="homeWorkList[nowindex].courseName" disabled>
+                                </div>
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="homeWorkList[nowindex].type != '管理员'">
+                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+                                        <input id="layerType3" type="radio" name="layerType3" value="课堂" ng-model="homeWorkList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <span> 课堂作业</span>
+                                    </label>
+                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+                                        <input id="layerType4" type="radio" name="layerType4" value="课后" ng-model="homeWorkList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <span> 课后作业</span>
+                                    </label>
+                                </div>
+                                <div class="form-group pmd-textfield">
+                                    <label class="control-label">作业说明</label>
+                                    <textarea required class="form-control" ng-model="homeWorkList[nowindex].content" disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pmd-modal-action">
+                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
+                <!-- confirm delete-->
+                <div class="modal-dialog" ng-show="userCtrlType=='delete'" style="margin-top: 204px;">
+                    <div class="modal-content">
+                        <div class="modal-body"> 你确定删除当前对象吗? </div>
+                        <div class="pmd-modal-action text-right">
+                            <button class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button" ng-click="confirmDel()">确定</button>
+                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
+            <!--窗口显示-->
+            <div class="col-md-4 col-sm-6 masonry-brick" ng-if="homeWork.show" ng-repeat="homeWork in homeWorkList track by $index">
+                <h3 class="text-muted">{{homeWork.title}}</h3>
                 <div class="pmd-card pmd-card-default pmd-z-depth">
                     <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
+                        <h2 class="pmd-card-title-text">{{homeWork.task}}</h2>
+                        <span class="pmd-card-subtitle-text">{{homeWork.userName}}</span><br />
+                        <span class="pmd-card-subtitle-text">{{homeWork.courseName}}</span>
                     </div>
                     <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
+                        {{homeWork.content}}
                     </div>
                     <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
+                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showDeatil($index)">查看</button>
+                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button" ng-click="showEditWnd($index)">编辑</button>
+                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="delHomeWork($index)" type="button">删除</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 masonry-brick">
-                <h3 class="text-muted">Title, and Subtitle area</h3>
-                <div class="pmd-card pmd-card-default pmd-z-depth">
-                    <div class="pmd-card-title">
-                        <h2 class="pmd-card-title-text">Title goes here</h2>
-                        <span class="pmd-card-subtitle-text">Secondary text</span>
-                    </div>
-                    <div class="pmd-card-body">
-                        Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
-                    </div>
-                    <div class="pmd-card-actions">
-                        <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">Primary</button>
-                        <button class="btn pmd-btn-flat pmd-ripple-effect btn-default" type="button">Action</button>
-                    </div>
-                </div>
-            </div>
- 
+
+
         </div>
 
-        <a type="button" style="margin-top:15px;" class="btn pmd-ripple-effect btn-success btn-block">加载更多</a>         
+        <a type="button" style="margin-top:15px;" class="btn pmd-ripple-effect btn-success btn-block" ng-click="addMore()">加载更多</a>
     </div>
     <!--typography constructor -->
 

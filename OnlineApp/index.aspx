@@ -15,6 +15,7 @@
     <script src="/Static/script/factory/index/menusStore.js"></script>
     <script src="/Static/script/factory/index/peopleStore.js"></script>
     <script src="/Static/script/factory/index/courseStore.js"></script>
+    <script src="/Static/script/factory/index/homeWorkStore.js"></script>
     <!-- load the service of angularjs-->
     <script src="/Static/script/service/userService.js"></script>
 

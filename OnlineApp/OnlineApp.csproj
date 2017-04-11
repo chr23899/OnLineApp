@@ -92,6 +92,7 @@
     <Content Include="Static\script\controller\menu\peopleManager.js" />
     <Content Include="Static\script\controller\menu\systemSetting.js" />
     <Content Include="Static\script\controller\menu\testManager.js" />
+    <Content Include="Static\script\factory\index\homeWorkStore.js" />
     <Content Include="Static\script\factory\index\courseStore.js" />
     <Content Include="Static\script\factory\index\menusStore.js" />
     <Content Include="Static\script\factory\index\noticesStore.js" />
@@ -2618,6 +2619,7 @@
     <Content Include="UI\themes\images\child-table-collapse.svg" />
     <Content Include="UI\themes\images\child-table-expand.svg" />
     <Content Include="UI\themes\images\course.png" />
+    <Content Include="UI\themes\images\course_teach.jpg" />
     <Content Include="UI\themes\images\favicon.ico" />
     <Content Include="UI\themes\images\grow-up-arrow.png" />
     <Content Include="UI\themes\images\logo-icon.png" />
