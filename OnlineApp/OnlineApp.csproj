@@ -2870,6 +2870,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Document\design\" />
     <Folder Include="UI\components\data-table\extensions\FixedColumns\examples\integration\" />
     <Folder Include="UI\components\floating-action-button\js\" />
     <Folder Include="UI\components\notification\" />
