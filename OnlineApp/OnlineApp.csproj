@@ -2861,6 +2861,7 @@
     <Content Include="UI\node_modules\lodash\LICENSE" />
     <Content Include="UI\node_modules\lodash\package.json" />
     <Content Include="UI\node_modules\lodash\README.md" />
+    <Content Include="Document\design\数据库表设计.xlsx" />
     <None Include="Properties\PublishProfiles\onlineApp.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2870,7 +2871,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Document\design\" />
     <Folder Include="UI\components\data-table\extensions\FixedColumns\examples\integration\" />
     <Folder Include="UI\components\floating-action-button\js\" />
     <Folder Include="UI\components\notification\" />
