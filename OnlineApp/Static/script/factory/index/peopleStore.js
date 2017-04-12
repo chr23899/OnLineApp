@@ -1,4 +1,4 @@
-﻿onlineApp.factory('peopleStore', function () {
+﻿OnlineApp.factory('peopleStore', function () {
     return [{
         imageUrl: "UI/themes/images/profile-1.png",
         userName: "教师:陈开付",

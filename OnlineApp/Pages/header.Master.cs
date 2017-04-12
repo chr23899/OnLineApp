@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OnlineApp.Pages
+namespace Chr.OnlineApp.Pages
 {
     public partial class header : System.Web.UI.MasterPage
     {

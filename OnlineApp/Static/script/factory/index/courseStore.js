@@ -1,4 +1,4 @@
-﻿onlineApp.factory('courseStore', function () {
+﻿OnlineApp.factory('courseStore', function () {
     return [{
 
         imageUrl: "UI/themes/images/course_teach.jpg",

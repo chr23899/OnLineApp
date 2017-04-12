@@ -1,5 +1,5 @@
 ﻿//define menu controller
-onlineApp.controller('courseManager', function ($scope, $window, courseStore) {
+OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
     //显示当前课程列表内容
     $scope.courseList = courseStore;
 

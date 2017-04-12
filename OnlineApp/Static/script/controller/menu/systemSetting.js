@@ -1,4 +1,4 @@
 ﻿//define menu controller
-onlineApp.controller('systemSetting', function ($scope, $window) {
+OnlineApp.controller('systemSetting', function ($scope, $window) {
 
 });

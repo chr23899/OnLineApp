@@ -4,9 +4,9 @@ using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using OnlineApp.COL;
-using OnlineApp.DAL;
-using OnlineApp.SFL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.DAL;
+using Chr.OnlineApp.SFL;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
 //using System.ServiceModel;
@@ -16,7 +16,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace OnlineApp.BLL
+namespace Chr.OnlineApp.BLL
 {
     public class CommonToolsBLL
     {

@@ -1,4 +1,4 @@
-﻿onlineApp.factory('noticesStore', function () {
+﻿OnlineApp.factory('noticesStore', function () {
     return [{
         imageUrl: "UI/themes/images/profile-1.png",
         userName: "陈老师",

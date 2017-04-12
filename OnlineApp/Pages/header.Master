@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="header.master.cs" Inherits="OnlineApp.Pages.header" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="header.master.cs" Inherits="Chr.OnlineApp.Pages.header" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
     <!-- main page theme css-->
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-admin.css">
     <!-- app page theme css-->
-    <link rel="stylesheet" type="text/css" href="../Static/css/onLineApp.css">
+    <link rel="stylesheet" type="text/css" href="../Static/css/OnlineApp.css">
         
     <script src="../UI/node_modules/angular/angular.js"></script>
     <script src="../UI/node_modules/angular-route/angular-route.js"></script>
@@ -37,7 +37,7 @@
     <title>我的E伙伴</title>
 
 </head>
-<body  ng-app="onlineApp">   
+<body ng-app="OnlineApp">   
     <asp:ContentPlaceHolder ID="content" runat="server">
     </asp:ContentPlaceHolder>  
     <!-- Scripts Starts -->

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 
-namespace OnlineApp.COL
+namespace Chr.OnlineApp.COL
 {
     /// <summary>
     /// 对象名称：数据分页实体类（数据实体层）

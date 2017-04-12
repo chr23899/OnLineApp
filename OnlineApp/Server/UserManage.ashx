@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="UserManage.ashx.cs" Class="OnlineApp.Server.UserManage1" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="UserManage.ashx.cs" Class="Chr.OnlineApp.Server.UserManage1" %>

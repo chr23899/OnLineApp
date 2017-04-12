@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Json;
 using System.Web.Script.Serialization;
 using System.Data;
 
-namespace OnlineApp.Public
+namespace Chr.OnlineApp.Public
 {
     /// <summary>  
     /// JSON帮助类。用于将对象转换为Json格式的字符串，或者将Json的字符串转化为对象。  

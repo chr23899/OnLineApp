@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OnlineApp.SFL
+namespace Chr.OnlineApp.SFL
 {
     public static class CodeDictionary
     {

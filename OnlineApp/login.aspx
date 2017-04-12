@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/header.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="OnlineApp.login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/header.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Chr.OnlineApp.login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>登录 - 我的E伙伴</title>

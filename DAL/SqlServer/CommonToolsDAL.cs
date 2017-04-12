@@ -4,10 +4,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using OnlineApp.COL;
-using OnlineApp.SFL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.SFL;
 
-namespace OnlineApp.DAL.SqlServer
+namespace Chr.OnlineApp.DAL.SqlServer
 {
     public class CommonToolsDAL:DAL.Common.CommonToolsDAL
     {

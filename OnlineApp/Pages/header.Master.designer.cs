@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnlineApp.Pages {
+namespace Chr.OnlineApp.Pages {
     
     
     public partial class header {

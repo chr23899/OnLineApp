@@ -8,7 +8,7 @@
     <ProjectGuid>{F8C7A8C8-9A4A-40B8-8AD2-C7346245E31A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DFG.Platform.COL</RootNamespace>
+    <RootNamespace>Chr.OnlineApp.COL</RootNamespace>
     <AssemblyName>COL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -66,6 +66,8 @@
     <Compile Include="YWBuying.cs" />
     <Compile Include="YWConsume.cs" />
     <Compile Include="YWCoupons.cs" />
+    <Compile Include="YWCourse.cs" />
+    <Compile Include="YWCourseJoin.cs" />
     <Compile Include="YWDictionary.cs" />
     <Compile Include="YWDictionaryType.cs" />
     <Compile Include="YWFood.cs" />

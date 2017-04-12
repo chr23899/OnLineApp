@@ -1,5 +1,5 @@
 ﻿//define head controller
-onlineApp.controller('indexHead', function ($scope, $window, noticesStore) {
+OnlineApp.controller('indexHead', function ($scope, $window, noticesStore) {
     $scope.noticeList = noticesStore;
 
     $scope.readMessage = function (sno) {

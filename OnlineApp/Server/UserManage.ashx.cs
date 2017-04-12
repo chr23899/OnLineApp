@@ -1,12 +1,12 @@
-﻿using OnlineApp.BLL;
-using OnlineApp.COL;
-using OnlineApp.SFL;
+﻿using Chr.OnlineApp.BLL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.SFL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineApp.Server
+namespace Chr.OnlineApp.Server
 {
     /// <summary>
     /// Summary description for UserManage1

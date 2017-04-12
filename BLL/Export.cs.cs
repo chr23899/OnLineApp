@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web;
 
-namespace OnlineApp.BLL
+namespace Chr.OnlineApp.BLL
 {
     public class Export
     {

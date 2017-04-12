@@ -1,5 +1,5 @@
 ﻿// define the constant 
-onlineApp.constant("USER_ROLES", {
+OnlineApp.constant("USER_ROLES", {
     "1" : {"id":"1","name":"超级管理员"},
     "2" : {"id":"2","name":"业务管理员"},
     "11" : {"id":"11","name":"学生"},

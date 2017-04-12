@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Web;
-using OnlineApp.BLL;
-using OnlineApp.COL;
+using Chr.OnlineApp.BLL;
+using Chr.OnlineApp.COL;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.Script.Serialization;
 
 
-namespace OnlineApp.Public
+namespace Chr.OnlineApp.Public
 {
     public class UITools
     {

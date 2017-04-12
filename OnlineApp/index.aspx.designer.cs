@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnlineApp {
+namespace Chr.OnlineApp{
     
     
     public partial class index {

@@ -1,4 +1,4 @@
-﻿onlineApp.factory('homeWorkStore', function () {
+﻿OnlineApp.factory('homeWorkStore', function () {
     return [{
         task: "文言文翻译",
         courseName: "高中语文4",

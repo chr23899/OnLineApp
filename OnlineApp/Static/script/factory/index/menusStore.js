@@ -1,4 +1,4 @@
-﻿onlineApp.factory('menusStore', function () {
+﻿OnlineApp.factory('menusStore', function () {
     return {
         nowmenu: "homePage",
         menus: [{

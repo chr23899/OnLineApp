@@ -4,9 +4,9 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
 using System.Data;
-using OnlineApp.COL;
+using Chr.OnlineApp.COL;
 
-namespace OnlineApp.SFL
+namespace Chr.OnlineApp.SFL
 {
     public class SqlHelper
     {

@@ -8,7 +8,7 @@
     <ProjectGuid>{350C8674-98F4-4CD0-8233-E0DB8E9701EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DFG.Platform.DAL</RootNamespace>
+    <RootNamespace>Chr.OnlineApp.DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,6 +49,8 @@
     <Compile Include="Common\PTConfigValueDAL.cs" />
     <Compile Include="Common\PTFunctionTypeDAL.cs" />
     <Compile Include="Common\YWCouponsDAL.cs" />
+    <Compile Include="Common\YWCourseDAL.cs" />
+    <Compile Include="Common\YWCourseJoinDAL.cs" />
     <Compile Include="Common\YWDictionaryTypeDAL.cs" />
     <Compile Include="Common\PTNoticesDAL.cs" />
     <Compile Include="Common\PTNoticeTypeDAL.cs" />
@@ -87,6 +89,8 @@
     <Compile Include="SqlServer\PTConfigValueDAL.cs" />
     <Compile Include="SqlServer\PTFunctionTypeDAL.cs" />
     <Compile Include="SqlServer\YWCouponsDAL.cs" />
+    <Compile Include="SqlServer\YWCourseDAL.cs" />
+    <Compile Include="SqlServer\YWCourseJoinDAL.cs" />
     <Compile Include="SqlServer\YWDictionaryTypeDAL.cs" />
     <Compile Include="SqlServer\PTNoticesDAL.cs" />
     <Compile Include="SqlServer\PTNoticeTypeDAL.cs" />

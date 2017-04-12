@@ -4,10 +4,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using OnlineApp.COL;
-using OnlineApp.SFL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.SFL;
 
-namespace OnlineApp.DAL.Common
+namespace Chr.OnlineApp.DAL.Common
 {
     /// <summary>
     /// 对象名称：配置设置通用数据访问父类（数据访问层）

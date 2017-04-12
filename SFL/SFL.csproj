@@ -8,7 +8,7 @@
     <ProjectGuid>{56003E34-3594-49FD-9A86-81DAA8EDFCF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DFG.Platform.SFL</RootNamespace>
+    <RootNamespace>Chr.OnlineApp.SFL</RootNamespace>
     <AssemblyName>SFL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

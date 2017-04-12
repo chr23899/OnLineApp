@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineApp.SFL
+namespace Chr.OnlineApp.SFL
 {
     public class HtmlSwitch
     {

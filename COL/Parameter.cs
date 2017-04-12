@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace OnlineApp.COL
+namespace Chr.OnlineApp.COL
 {
     /// <summary>
     /// 对象名称：查询参数数据实体类（数据实体层）

@@ -2,11 +2,11 @@
 using System.Text;
 using System.Data;
 using System.Collections.Generic;
-using OnlineApp.COL;
-using OnlineApp.DAL;
-using OnlineApp.SFL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.DAL;
+using Chr.OnlineApp.SFL;
 
-namespace OnlineApp.BLL
+namespace Chr.OnlineApp.BLL
 {
     /// <summary>
     /// 对象名称：功能类型（码表）业务逻辑类（业务逻辑层）

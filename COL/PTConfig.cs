@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
-namespace OnlineApp.COL
+namespace Chr.OnlineApp.COL
 {
     /// <summary>
     /// 对象名称：配置设置数据实体类（数据实体层）

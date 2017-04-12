@@ -2,9 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-using OnlineApp.COL;
+using Chr.OnlineApp.COL;
 
-namespace OnlineApp.Public
+namespace Chr.OnlineApp.Public
 {
     /// <summary>
     /// 对象名称：App主界面功能列表（界面层层）

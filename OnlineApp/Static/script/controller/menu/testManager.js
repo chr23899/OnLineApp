@@ -1,4 +1,4 @@
 ﻿//define menu controller
-onlineApp.controller('testManager', function ($scope, $window) {
+OnlineApp.controller('testManager', function ($scope, $window) {
 
 });

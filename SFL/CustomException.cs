@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineApp.SFL
+namespace Chr.OnlineApp.SFL
 {
     /// <summary>
     /// 对象名称：系统自定义异常类

@@ -1,5 +1,5 @@
 ﻿//define menu controller
-onlineApp.controller('peopleManager', function ($scope, userService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
+OnlineApp.controller('peopleManager', function ($scope, userService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
     //显示当前人员列表内容
     $scope.peopleList;// = peopleStore;
     //是否正在加载页面

@@ -2,12 +2,12 @@
 using System.Text;
 using System.Data;
 using System.Collections.Generic;
-using OnlineApp.COL;
-using OnlineApp.DAL;
-using OnlineApp.SFL;
+using Chr.OnlineApp.COL;
+using Chr.OnlineApp.DAL;
+using Chr.OnlineApp.SFL;
 using System.Data.SqlClient;
 
-namespace OnlineApp.BLL
+namespace Chr.OnlineApp.BLL
 {
     /// <summary>
     /// 对象名称：还款业务逻辑类（业务逻辑层）

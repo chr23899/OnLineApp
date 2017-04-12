@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/header.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="OnlineApp.index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/header.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Chr.OnlineApp.index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>主页 —— 我的E伙伴</title>

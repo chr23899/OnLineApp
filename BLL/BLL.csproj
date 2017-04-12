@@ -8,7 +8,7 @@
     <ProjectGuid>{F847A69C-ECBA-40FC-8B7E-D28143743EE7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DFG.Platform.BLL</RootNamespace>
+    <RootNamespace>Chr.OnlineApp.BLL</RootNamespace>
     <AssemblyName>BLL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,6 +54,8 @@
     <Compile Include="Export.cs.cs" />
     <Compile Include="PTFunctionTypeBLL.cs" />
     <Compile Include="YWCouponsBLL.cs" />
+    <Compile Include="YWCourseBLL.cs" />
+    <Compile Include="YWCourseJoinBLL.cs" />
     <Compile Include="YWDictionaryTypeBLL.cs" />
     <Compile Include="PTNoticesBLL.cs" />
     <Compile Include="PTNoticeTypeBLL.cs" />
