@@ -53,10 +53,8 @@
     <Compile Include="PTConfigValueBLL.cs" />
     <Compile Include="Export.cs.cs" />
     <Compile Include="PTFunctionTypeBLL.cs" />
-    <Compile Include="YWCouponsBLL.cs" />
     <Compile Include="YWCourseBLL.cs" />
     <Compile Include="YWCourseJoinBLL.cs" />
-    <Compile Include="YWDictionaryTypeBLL.cs" />
     <Compile Include="PTNoticesBLL.cs" />
     <Compile Include="PTNoticeTypeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,26 +66,6 @@
     <Compile Include="PTUsersBLL.cs" />
     <Compile Include="PTRoleLinkBLL.cs" />
     <Compile Include="PTUserLinkBLL.cs" />
-    <Compile Include="YWBookBLL.cs" />
-    <Compile Include="YWBuyingBLL.cs" />
-    <Compile Include="YWConsumeBLL.cs" />
-    <Compile Include="YWDictionaryBLL.cs" />
-    <Compile Include="YWFoodBLL.cs" />
-    <Compile Include="YWFoodReturnBLL.cs" />
-    <Compile Include="YWInStoreBLL.cs" />
-    <Compile Include="YWInventoryBLL.cs" />
-    <Compile Include="YWLogBLL.cs" />
-    <Compile Include="YWMaterialBLL.cs" />
-    <Compile Include="YWOutStoreBLL.cs" />
-    <Compile Include="YWPayBackBLL.cs" />
-    <Compile Include="YWPersonBLL.cs" />
-    <Compile Include="YWPrePayBLL.cs" />
-    <Compile Include="YWProductBLL.cs" />
-    <Compile Include="YWProductGroupBLL.cs" />
-    <Compile Include="YWRequirementBLL.cs" />
-    <Compile Include="YWRestaurantBLL.cs" />
-    <Compile Include="YWTableBLL.cs" />
-    <Compile Include="YWUserTipsBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SFL\SFL.csproj">

@@ -265,53 +265,7 @@ namespace Chr.OnlineApp.BLL
             };
             parameter.Parameters = parameters;
             return CommonToolsBLL.GetAllListByParams(parameter);
-        }
-
-        /// <summary>
-        /// add by chr
-        /// 根据用户名获取本单位的所有已启用的用户列表
-        /// </summary>
-        /// <returns></returns>
-        public static DataTable GetUserListByUserName(string strUserName)
-        {
-            int iOrgId = YWPersonBLL.GetUserRestaurantOrgId(strUserName);
-            Parameter parameter = new Parameter();
-            parameter.SqlString = "SELECT [YWPerson].[UserName],[PT_User].[Nickname],[YWPerson].[OrgId],[PT_ORG].[OrgName] "
-                                + "FROM [YWPerson] "
-                                + "LEFT JOIN [PT_ORG] ON [YWPerson].[OrgId]=[PT_ORG].[Id] "
-                                + "LEFT JOIN [PT_User] ON [YWPerson].[UserName]=[PT_User].[UserName] "
-                                + "WHERE [YWPerson].[OrgId]=@OrgId AND [PT_User].[StateId]=1";
-            SqlParameter[] parameters = 
-            {
-                new SqlParameter("@OrgId"        , SqlDbType.Int      , 50 ){ Value = iOrgId}
-            };
-            parameter.Parameters = parameters;
-            return CommonToolsBLL.GetAllListByParams(parameter);
-        }
-
-        /// <summary>
-        /// add by chr
-        /// 根据用户名获取本餐厅可用的餐桌负责人列表
-        /// </summary>
-        /// <returns></returns>
-        public static DataTable GetTableDutyUserList(string strUserName)
-        {
-            int iOrgId = YWPersonBLL.GetUserRestaurantOrgId(strUserName);
-            Parameter parameter = new Parameter();
-            parameter.SqlString = "SELECT [YWPerson].[UserName],[PT_User].[Nickname],[YWPerson].[OrgId],[PT_ORG].[OrgName] "
-                                + "FROM [YWPerson] "
-                                + "LEFT JOIN [PT_ORG] ON [YWPerson].[OrgId]=[PT_ORG].[Id] "
-                                + "LEFT JOIN [PT_User] ON [YWPerson].[UserName]=[PT_User].[UserName] "
-                                + "INNER JOIN [PT_UserLink] ON [YWPerson].[UserName]=[PT_UserLink].[UserName] "
-                                + "WHERE [YWPerson].[OrgId]=@OrgId AND [PT_User].[StateId]=1 AND [PT_UserLink].[RoleId]=@RoleId";
-            SqlParameter[] parameters = 
-            {
-                new SqlParameter("@OrgId"        , SqlDbType.Int      , 50 ){ Value = iOrgId},
-                new SqlParameter("@RoleId"       , SqlDbType.Int      , 50 ){ Value = CodeDictionary.UserRole["一般用户（初始默认）"]}
-            };
-            parameter.Parameters = parameters;
-            return CommonToolsBLL.GetAllListByParams(parameter);
-        }
+        }        
 
         /// <summary>
         /// add by chr

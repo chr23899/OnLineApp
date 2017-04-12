@@ -62,30 +62,8 @@
     <Compile Include="PTConfigType.cs" />
     <Compile Include="PTNotices.cs" />
     <Compile Include="State.cs" />
-    <Compile Include="YWBook.cs" />
-    <Compile Include="YWBuying.cs" />
-    <Compile Include="YWConsume.cs" />
-    <Compile Include="YWCoupons.cs" />
     <Compile Include="YWCourse.cs" />
     <Compile Include="YWCourseJoin.cs" />
-    <Compile Include="YWDictionary.cs" />
-    <Compile Include="YWDictionaryType.cs" />
-    <Compile Include="YWFood.cs" />
-    <Compile Include="YWFoodReturn.cs" />
-    <Compile Include="YWInStore.cs" />
-    <Compile Include="YWInventory.cs" />
-    <Compile Include="YWLog.cs" />
-    <Compile Include="YWMaterial.cs" />
-    <Compile Include="YWOutStore.cs" />
-    <Compile Include="YWPayBack.cs" />
-    <Compile Include="YWPerson.cs" />
-    <Compile Include="YWPrePay.cs" />
-    <Compile Include="YWProduct.cs" />
-    <Compile Include="YWProductGroup.cs" />
-    <Compile Include="YWRequirement.cs" />
-    <Compile Include="YWRestaurant.cs" />
-    <Compile Include="YWTable.cs" />
-    <Compile Include="YWUserTips.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
