@@ -2676,6 +2676,9 @@
     <Compile Include="Public\AppFunctions.cs" />
     <Compile Include="Public\JsonHelper.cs" />
     <Compile Include="Public\UITools.cs" />
+    <Compile Include="Server\CourseManage.ashx.cs">
+      <DependentUpon>CourseManage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Server\UserManage.ashx.cs">
       <DependentUpon>UserManage.ashx</DependentUpon>
     </Compile>
@@ -2864,6 +2867,7 @@
     <Content Include="UI\node_modules\lodash\README.md" />
     <Content Include="Document\design\数据库表设计.xlsx" />
     <None Include="Properties\PublishProfiles\onlineApp.pubxml" />
+    <Content Include="Server\CourseManage.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

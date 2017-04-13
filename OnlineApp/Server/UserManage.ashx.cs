@@ -33,8 +33,8 @@ namespace Chr.OnlineApp.Server
                 for (int i = 0; i < 10; i++)
                 {
                     l_output.Add("str" + i + 1);
-                }
-                string strResult = CommonToolsBLL.ListToJson(l_output);
+                } 
+                string strResult = "not found";
                 CommonToolsBLL.OutputJson(context, "", "the interface is not find inn the system", "fail", strResult);
             }
         }

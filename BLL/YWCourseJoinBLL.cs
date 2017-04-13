@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Chr.OnlineApp.COL;
 using Chr.OnlineApp.DAL;
 using Chr.OnlineApp.SFL;
+using System.Data.SqlClient;
 
 namespace Chr.OnlineApp.BLL
 {
@@ -171,14 +172,66 @@ namespace Chr.OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
+        /// <summary>
+        /// 获取参与课程分页数据
+        /// </summary>
+        /// <param name="pageSize">每页大小</param>
+        /// <param name="curPage">当前页</param>
+        /// <param name="teacherId">教师Id</param>
+        /// <param name="teacherName">教师Name</param>
+        /// <param name="courseId">课程Id</param>
+        /// <param name="courseName">课程Name</param>
+        /// <param name="studentId">学生Id</param>
+        /// <param name="studentName">学生Name</param>
+        /// <returns>返回参与课程分页数据</returns>
+        public static PageData GetPageData(int pageSize, int curPage, string teacherId, string teacherName, string courseId, string courseName, string studentId, string studentName)
+        {
+            //构建查询条件
+            Parameter parameter = new Parameter();
 
+            parameter.SqlString = "SELECT [Id],[courseId],[courseName],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],"
+                                   + "[Alternate3],[Alternate4],[Alternate5] FROM [YW_Course_Join] WHERE 1 = 1 ";
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            if (teacherId != null && teacherId != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[teacherId] = @teacherId ";
+                SqlParameter sqlParameter = new SqlParameter("@teacherId", SqlDbType.NVarChar, 50) { Value = teacherId };
+                paramList.Add(sqlParameter);
+            }
+            if (teacherName != null && teacherName != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[content] LIKE @teacherName ";
+                SqlParameter sqlParameter = new SqlParameter("@teacherName", SqlDbType.NVarChar, 50) { Value = "%" + teacherName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            if (courseId != null && courseId != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[courseId] = @courseId ";
+                SqlParameter sqlParameter = new SqlParameter("@courseId", SqlDbType.NVarChar, 50) { Value = courseId };
+                paramList.Add(sqlParameter);
+            }
+            if (courseName != null && courseName != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[courseName] LIKE @courseName ";
+                SqlParameter sqlParameter = new SqlParameter("@courseName", SqlDbType.NVarChar, 50) { Value = "%" + courseName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            if (studentId != null && studentId != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[studentId] = @studentId ";
+                SqlParameter sqlParameter = new SqlParameter("@studentId", SqlDbType.NVarChar, 50) { Value = studentId };
+                paramList.Add(sqlParameter);
+            }
+            if (studentName != null && studentName != "")
+            {
+                parameter.SqlString += " AND [YW_Course_Join].[studentName] LIKE @studentName ";
+                SqlParameter sqlParameter = new SqlParameter("@studentName", SqlDbType.NVarChar, 50) { Value = "%" + studentName + "%" };
+                paramList.Add(sqlParameter);
+            } 
+            parameter.Parameters = paramList.ToArray();
 
-
-
-
-
-
-
-
+            return BLL.CommonToolsBLL.GetPageListByParamsOutBound(pageSize, curPage, parameter);
+        }
+         
     }
 }
