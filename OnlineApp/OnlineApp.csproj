@@ -98,6 +98,7 @@
     <Content Include="Static\script\factory\index\menusStore.js" />
     <Content Include="Static\script\factory\index\noticesStore.js" />
     <Content Include="Static\script\factory\index\peopleStore.js" />
+    <Content Include="Static\script\service\courseService.js" />
     <Content Include="Static\script\service\userService.js" />
     <Content Include="UI\404.html" />
     <Content Include="UI\about.html" />

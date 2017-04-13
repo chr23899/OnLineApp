@@ -173,7 +173,7 @@ namespace Chr.OnlineApp.Server
             string strNote = context.Request["Note"];
             string strCallBack = context.Request["callback"];
 
-            PTUsers pTUser = new PTUsers();
+            PTUsers pTUser = PTUsersBLL.GetDataByUserName(strUserName);
             pTUser.UserName = strUserName;
             pTUser.Password = strPassword;
             pTUser.Nickname = strNickname;
