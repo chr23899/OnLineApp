@@ -14,7 +14,7 @@ namespace Chr.OnlineApp.DAL.Common
     /// 对象说明：提供“基础对象名称类（业务逻辑层）”对SqlServer,Oracle,OleDb等数据库进行访问的相关方法，以及部分通用方法供其子类进行调用。
     /// 调用说明：本类为抽象类无法进行实例化，通常可以使用“基础对象名称类（业务逻辑层）”中的DataAccess属性来调用本类中所定义数据访问方法。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/12 21:27:52
+    /// 编写日期：2017/4/13 23:47:11
     /// </summary>
     public abstract class YWCourseDAL
     {
@@ -93,6 +93,9 @@ namespace Chr.OnlineApp.DAL.Common
             if (dataReader["courseNum"] != DBNull.Value)
                 yWCourse.CourseNum = Convert.ToInt32(dataReader["courseNum"]);
             // 
+            if (dataReader["pic"] != DBNull.Value)
+                yWCourse.Pic = Convert.ToString(dataReader["pic"]);
+            // 
             if (dataReader["createTime"] != DBNull.Value)
                 yWCourse.CreateTime = Convert.ToDateTime(dataReader["createTime"]);
             // 
@@ -162,6 +165,9 @@ namespace Chr.OnlineApp.DAL.Common
             // 
             if (dataReader["courseNum"] != DBNull.Value)
                 yWCourse.CourseNum = Convert.ToInt32(dataReader["courseNum"]);
+            // 
+            if (dataReader["pic"] != DBNull.Value)
+                yWCourse.Pic = Convert.ToString(dataReader["pic"]);
             // 
             if (dataReader["createTime"] != DBNull.Value)
                 yWCourse.CreateTime = Convert.ToDateTime(dataReader["createTime"]);
@@ -233,6 +239,7 @@ namespace Chr.OnlineApp.DAL.Common
         /// 从数据库中读取并返回所有基础对象名称（YWCourse）List列表。
         /// </summary>
         public abstract List<YWCourse> GetAllList();
+
          
 
 

@@ -51,6 +51,12 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsNull(yWCourseJoin.CourseName))
                 throw new CustomException("“”不能为空，请您确认输入是否正确。");
 
+            if (DataValid.IsNull(yWCourseJoin.PlanId))
+                throw new CustomException("“”不能为空，请您确认输入是否正确。");
+
+            if (DataValid.IsNull(yWCourseJoin.Status))
+                throw new CustomException("“”不能为空，请您确认输入是否正确。");
+
             if (DataValid.IsNull(yWCourseJoin.TeacherName))
                 throw new CustomException("“”不能为空，请您确认输入是否正确。");
 
@@ -162,10 +168,11 @@ namespace Chr.OnlineApp.BLL
         {
             return DataAccess.GetAllList();
         }
+
          
 
-
         #endregion EasyCode所生成的默认代码
+
 
         //﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉
         //  说明：以下区域的代码为设计开发人员所编写，主要为扩展该业务逻辑类的功能，而定义的变量、属性及相关业务逻辑处理方法。  

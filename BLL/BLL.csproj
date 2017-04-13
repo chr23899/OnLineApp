@@ -53,7 +53,10 @@
     <Compile Include="PTConfigValueBLL.cs" />
     <Compile Include="Export.cs.cs" />
     <Compile Include="PTFunctionTypeBLL.cs" />
+    <Compile Include="YWAssignmentBLL.cs" />
+    <Compile Include="YWCommentBLL.cs" />
     <Compile Include="YWCourseBLL.cs" />
+    <Compile Include="YWCourseDataBLL.cs" />
     <Compile Include="YWCourseJoinBLL.cs" />
     <Compile Include="PTNoticesBLL.cs" />
     <Compile Include="PTNoticeTypeBLL.cs" />
@@ -66,6 +69,11 @@
     <Compile Include="PTUsersBLL.cs" />
     <Compile Include="PTRoleLinkBLL.cs" />
     <Compile Include="PTUserLinkBLL.cs" />
+    <Compile Include="YWCoursePlanBLL.cs" />
+    <Compile Include="YWExamAnswerBLL.cs" />
+    <Compile Include="YWExamBLL.cs" />
+    <Compile Include="YWExamQuestionBLL.cs" />
+    <Compile Include="YWExamScoreBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SFL\SFL.csproj">

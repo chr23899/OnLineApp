@@ -96,6 +96,9 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWCourse.Show, 10))
                 throw new CustomException("“”长度不能超过 10 个汉字或字符，请您确认输入是否正确。");
 
+            if (DataValid.IsOutLength(yWCourse.Pic, 50))
+                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+
             if (DataValid.IsOutLength(yWCourse.UpdateUserName, 20))
                 throw new CustomException("“”长度不能超过 20 个汉字或字符，请您确认输入是否正确。");
 
@@ -183,10 +186,9 @@ namespace Chr.OnlineApp.BLL
         {
             return DataAccess.GetAllList();
         }
-
          
-
         #endregion EasyCode所生成的默认代码
+
 
         //﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉
         //  说明：以下区域的代码为设计开发人员所编写，主要为扩展该业务逻辑类的功能，而定义的变量、属性及相关业务逻辑处理方法。  

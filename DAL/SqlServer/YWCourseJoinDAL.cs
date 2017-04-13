@@ -14,7 +14,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
     /// 对象说明：提供“基础对象名称类（业务逻辑层）”针对SQL Server的“增删改查”等各种数据访问方法，继承通用数据访问父类。
     /// 调用说明：通常不需要直接实例化本类，而使用“基础对象名称类（业务逻辑层）”中的DataAccess属性来调用本类所实现的方法。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/12 21:20:54
+    /// 编写日期：2017/4/13 23:50:13
     /// </summary>
     public class YWCourseJoinDAL : DAL.Common.YWCourseJoinDAL
     {
@@ -32,15 +32,17 @@ namespace Chr.OnlineApp.DAL.SqlServer
         public override int Insert(YWCourseJoin yWCourseJoin)
         {
             string sqlText = "INSERT INTO [YW_Course_Join]"
-                           + "([courseId],[courseName],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],[Alternate3],[Alternate4],"
-                           + "[Alternate5])"
+                           + "([courseId],[courseName],[planId],[status],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],"
+                           + "[Alternate3],[Alternate4],[Alternate5])"
                            + "VALUES"
-                           + "(@courseId,@courseName,@teacherName,@teacherId,@studentName,@studentId,@lastTime,@Alternate1,@Alternate2,@Alternate3,@Alternate4,"
-                           + "@Alternate5)";
+                           + "(@courseId,@courseName,@planId,@status,@teacherName,@teacherId,@studentName,@studentId,@lastTime,@Alternate1,@Alternate2,"
+                           + "@Alternate3,@Alternate4,@Alternate5)";
             SqlParameter[] parameters = 
             {
                 new SqlParameter("@courseId"    , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.CourseId    },
                 new SqlParameter("@courseName"  , SqlDbType.NVarChar , 50){ Value = yWCourseJoin.CourseName  },
+                new SqlParameter("@planId"      , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.PlanId      },
+                new SqlParameter("@status"      , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.Status      },
                 new SqlParameter("@teacherName" , SqlDbType.NVarChar , 20){ Value = yWCourseJoin.TeacherName },
                 new SqlParameter("@teacherId"   , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.TeacherId   },
                 new SqlParameter("@studentName" , SqlDbType.NVarChar , 20){ Value = yWCourseJoin.StudentName },
@@ -63,14 +65,16 @@ namespace Chr.OnlineApp.DAL.SqlServer
         public override int Update(YWCourseJoin yWCourseJoin)
         {
             string sqlText = "UPDATE [YW_Course_Join] SET "
-                           + "[courseId]=@courseId,[courseName]=@courseName,[teacherName]=@teacherName,[teacherId]=@teacherId,[studentName]=@studentName,"
-                           + "[studentId]=@studentId,[lastTime]=@lastTime,[Alternate1]=@Alternate1,[Alternate2]=@Alternate2,[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,"
-                           + "[Alternate5]=@Alternate5 "
+                           + "[courseId]=@courseId,[courseName]=@courseName,[planId]=@planId,[status]=@status,[teacherName]=@teacherName,[teacherId]=@teacherId,"
+                           + "[studentName]=@studentName,[studentId]=@studentId,[lastTime]=@lastTime,[Alternate1]=@Alternate1,[Alternate2]=@Alternate2,[Alternate3]=@Alternate3,"
+                           + "[Alternate4]=@Alternate4,[Alternate5]=@Alternate5 "
                            + "WHERE [Id]=@Id";
             SqlParameter[] parameters = 
             {
                 new SqlParameter("@courseId"    , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.CourseId    },
                 new SqlParameter("@courseName"  , SqlDbType.NVarChar , 50){ Value = yWCourseJoin.CourseName  },
+                new SqlParameter("@planId"      , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.PlanId      },
+                new SqlParameter("@status"      , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.Status      },
                 new SqlParameter("@teacherName" , SqlDbType.NVarChar , 20){ Value = yWCourseJoin.TeacherName },
                 new SqlParameter("@teacherId"   , SqlDbType.Int      , 4 ){ Value = yWCourseJoin.TeacherId   },
                 new SqlParameter("@studentName" , SqlDbType.NVarChar , 20){ Value = yWCourseJoin.StudentName },
@@ -111,8 +115,8 @@ namespace Chr.OnlineApp.DAL.SqlServer
         public override YWCourseJoin GetDataById(int id)
         {
             YWCourseJoin yWCourseJoin = null;
-            string sqlText = "SELECT [Id],[courseId],[courseName],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],[Alternate3],"
-                           + "[Alternate4],[Alternate5] "
+            string sqlText = "SELECT [Id],[courseId],[courseName],[planId],[status],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],"
+                           + "[Alternate3],[Alternate4],[Alternate5] "
                            + "FROM [YW_Course_Join] "
                            + "WHERE [Id]=@Id";
             SqlParameter[] parameters = 
@@ -136,8 +140,8 @@ namespace Chr.OnlineApp.DAL.SqlServer
         /// </summary>
         public override List<YWCourseJoin> GetAllList()
         {
-            string sqlText = "SELECT [Id],[courseId],[courseName],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],[Alternate3],"
-                           + "[Alternate4],[Alternate5] "
+            string sqlText = "SELECT [Id],[courseId],[courseName],[planId],[status],[teacherName],[teacherId],[studentName],[studentId],[lastTime],[Alternate1],[Alternate2],"
+                           + "[Alternate3],[Alternate4],[Alternate5] "
                            + "FROM [YW_Course_Join]";
             List<YWCourseJoin> list = new List<YWCourseJoin>();
             SqlDataReader sqlDataReader = SFL.SqlHelper.ExecuteReader(sqlText, null);
@@ -151,6 +155,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
             return list;
         }
 
+         
 
         #endregion EasyCode所生成的默认代码
 

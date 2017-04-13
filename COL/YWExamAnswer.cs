@@ -9,10 +9,10 @@ namespace Chr.OnlineApp.COL
     /// 对象名称：基础对象名称数据实体类（数据实体层）
     /// 对象说明：该类作为数据载体，供业务逻辑层、数据访问层调用。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/13 23:22:52
+    /// 编写日期：2017/4/13 23:21:26
     /// </summary>
     [Serializable]
-    public class YWCourse
+    public class YWExamAnswer
     {
         #region EasyCode所生成的默认代码
         //﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉
@@ -24,35 +24,33 @@ namespace Chr.OnlineApp.COL
         /// <summary>[变量]</summary>
         private int? id;
         /// <summary>[变量]</summary>
-        private string courseName;
+        private int? examId;
         /// <summary>[变量]</summary>
-        private string linkBook;
+        private int? questionId;
         /// <summary>[变量]</summary>
-        private string teacherName;
+        private int? type;
         /// <summary>[变量]</summary>
-        private int? teacherId;
+        private double? score;
         /// <summary>[变量]</summary>
-        private string content;
+        private string chanceAnswer;
         /// <summary>[变量]</summary>
-        private string title;
+        private string objectAnswer;
         /// <summary>[变量]</summary>
-        private string span;
+        private string objectPic;
         /// <summary>[变量]</summary>
-        private string show;
-        /// <summary>[变量]</summary>
-        private int? courseNum;
-        /// <summary>[变量]</summary>
-        private string pic;
+        private int? result;
         /// <summary>[变量]</summary>
         private DateTime? createTime;
         /// <summary>[变量]</summary>
         private DateTime? updateTime;
         /// <summary>[变量]</summary>
+        private string createUserName;
+        /// <summary>[变量]</summary>
+        private int? createUserId;
+        /// <summary>[变量]</summary>
         private string updateUserName;
         /// <summary>[变量]</summary>
         private int? updateUserId;
-        /// <summary>[变量]</summary>
-        private int? status;
         /// <summary>[变量]</summary>
         private string alternate1;
         /// <summary>[变量]</summary>
@@ -72,64 +70,52 @@ namespace Chr.OnlineApp.COL
             set { id = value; }
         }
         /// <summary>[属性]</summary>
-        public string CourseName
+        public int? ExamId
         {
-            get { return courseName; }
-            set { courseName = value; }
+            get { return examId; }
+            set { examId = value; }
         }
         /// <summary>[属性]</summary>
-        public string LinkBook
+        public int? QuestionId
         {
-            get { return linkBook; }
-            set { linkBook = value; }
+            get { return questionId; }
+            set { questionId = value; }
         }
         /// <summary>[属性]</summary>
-        public string TeacherName
+        public int? Type
         {
-            get { return teacherName; }
-            set { teacherName = value; }
+            get { return type; }
+            set { type = value; }
         }
         /// <summary>[属性]</summary>
-        public int? TeacherId
+        public double? Score
         {
-            get { return teacherId; }
-            set { teacherId = value; }
+            get { return score; }
+            set { score = value; }
         }
         /// <summary>[属性]</summary>
-        public string Content
+        public string ChanceAnswer
         {
-            get { return content; }
-            set { content = value; }
+            get { return chanceAnswer; }
+            set { chanceAnswer = value; }
         }
         /// <summary>[属性]</summary>
-        public string Title
+        public string ObjectAnswer
         {
-            get { return title; }
-            set { title = value; }
+            get { return objectAnswer; }
+            set { objectAnswer = value; }
         }
         /// <summary>[属性]</summary>
-        public string Span
+        public string ObjectPic
         {
-            get { return span; }
-            set { span = value; }
+            get { return objectPic; }
+            set { objectPic = value; }
         }
         /// <summary>[属性]</summary>
-        public string Show
+        public int? Result
         {
-            get { return show; }
-            set { show = value; }
-        }
-        /// <summary>[属性]</summary>
-        public int? CourseNum
-        {
-            get { return courseNum; }
-            set { courseNum = value; }
-        }
-        /// <summary>[属性]</summary>
-        public string Pic
-        {
-            get { return pic; }
-            set { pic = value; }
+            get { return result; }
+            set { result = value; }
         }
         /// <summary>[属性]</summary>
         public DateTime? CreateTime
@@ -144,6 +130,18 @@ namespace Chr.OnlineApp.COL
             set { updateTime = value; }
         }
         /// <summary>[属性]</summary>
+        public string CreateUserName
+        {
+            get { return createUserName; }
+            set { createUserName = value; }
+        }
+        /// <summary>[属性]</summary>
+        public int? CreateUserId
+        {
+            get { return createUserId; }
+            set { createUserId = value; }
+        }
+        /// <summary>[属性]</summary>
         public string UpdateUserName
         {
             get { return updateUserName; }
@@ -154,12 +152,6 @@ namespace Chr.OnlineApp.COL
         {
             get { return updateUserId; }
             set { updateUserId = value; }
-        }
-        /// <summary>[属性]</summary>
-        public int? Status
-        {
-            get { return status; }
-            set { status = value; }
         }
         /// <summary>[属性]</summary>
         public string Alternate1

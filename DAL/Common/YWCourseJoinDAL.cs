@@ -14,7 +14,7 @@ namespace Chr.OnlineApp.DAL.Common
     /// 对象说明：提供“基础对象名称类（业务逻辑层）”对SqlServer,Oracle,OleDb等数据库进行访问的相关方法，以及部分通用方法供其子类进行调用。
     /// 调用说明：本类为抽象类无法进行实例化，通常可以使用“基础对象名称类（业务逻辑层）”中的DataAccess属性来调用本类中所定义数据访问方法。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/12 21:20:54
+    /// 编写日期：2017/4/13 23:50:13
     /// </summary>
     public abstract class YWCourseJoinDAL
     {
@@ -72,6 +72,12 @@ namespace Chr.OnlineApp.DAL.Common
             if (dataReader["courseName"] != DBNull.Value)
                 yWCourseJoin.CourseName = Convert.ToString(dataReader["courseName"]);
             // 
+            if (dataReader["planId"] != DBNull.Value)
+                yWCourseJoin.PlanId = Convert.ToInt32(dataReader["planId"]);
+            // 
+            if (dataReader["status"] != DBNull.Value)
+                yWCourseJoin.Status = Convert.ToInt32(dataReader["status"]);
+            // 
             if (dataReader["teacherName"] != DBNull.Value)
                 yWCourseJoin.TeacherName = Convert.ToString(dataReader["teacherName"]);
             // 
@@ -120,6 +126,12 @@ namespace Chr.OnlineApp.DAL.Common
             // 
             if (dataReader["courseName"] != DBNull.Value)
                 yWCourseJoin.CourseName = Convert.ToString(dataReader["courseName"]);
+            // 
+            if (dataReader["planId"] != DBNull.Value)
+                yWCourseJoin.PlanId = Convert.ToInt32(dataReader["planId"]);
+            // 
+            if (dataReader["status"] != DBNull.Value)
+                yWCourseJoin.Status = Convert.ToInt32(dataReader["status"]);
             // 
             if (dataReader["teacherName"] != DBNull.Value)
                 yWCourseJoin.TeacherName = Convert.ToString(dataReader["teacherName"]);
@@ -191,7 +203,6 @@ namespace Chr.OnlineApp.DAL.Common
         /// 从数据库中读取并返回所有基础对象名称（YWCourseJoin）List列表。
         /// </summary>
         public abstract List<YWCourseJoin> GetAllList();
-
          
 
         #endregion EasyCode所生成的默认代码

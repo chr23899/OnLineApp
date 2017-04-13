@@ -62,8 +62,16 @@
     <Compile Include="PTConfigType.cs" />
     <Compile Include="PTNotices.cs" />
     <Compile Include="State.cs" />
+    <Compile Include="YWAssignment.cs" />
+    <Compile Include="YWComment.cs" />
     <Compile Include="YWCourse.cs" />
+    <Compile Include="YWCourseData.cs" />
     <Compile Include="YWCourseJoin.cs" />
+    <Compile Include="YWCoursePlan.cs" />
+    <Compile Include="YWExam.cs" />
+    <Compile Include="YWExamAnswer.cs" />
+    <Compile Include="YWExamQuestion.cs" />
+    <Compile Include="YWExamScore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
