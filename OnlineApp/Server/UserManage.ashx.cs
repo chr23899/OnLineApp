@@ -28,12 +28,7 @@ namespace Chr.OnlineApp.Server
                 }
             }
             else
-            {
-                List<String> l_output = new List<string>();
-                for (int i = 0; i < 10; i++)
-                {
-                    l_output.Add("str" + i + 1);
-                } 
+            { 
                 string strResult = "not found";
                 CommonToolsBLL.OutputJson(context, "", "the interface is not find inn the system", "fail", strResult);
             }

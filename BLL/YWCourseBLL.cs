@@ -205,12 +205,12 @@ namespace Chr.OnlineApp.BLL
         /// <param name="content">描述</param>
         /// <param name="title">标题</param> 
         /// <returns>返回课程分页查询结果集</returns>
-        public static PageData GetPageData(int pageSize, int curPage, string teacherId, string teacherName, string content, string title)
+        public static PageData GetPageData(int pageSize, int curPage, string teacherId, string teacherName, string content, string title, string status)
         {
             //构建查询条件
             Parameter parameter = new Parameter();
 
-            parameter.SqlString = "SELECT [Id],[courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[createTime],[updateTime],"
+            parameter.SqlString = "SELECT [Id],[courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[pic],[createTime],[updateTime],"
                                    + "[updateUserName],[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5] FROM [YW_Course] WHERE 1 = 1 ";
             List<SqlParameter> paramList = new List<SqlParameter>();
             if (teacherId != null && teacherId != "")
@@ -221,7 +221,7 @@ namespace Chr.OnlineApp.BLL
             }
             if (teacherName != null && teacherName != "")
             {
-                parameter.SqlString += " AND [YW_Course].[content] LIKE @teacherName ";
+                parameter.SqlString += " AND [YW_Course].[teacherName] LIKE @teacherName ";
                 SqlParameter sqlParameter = new SqlParameter("@teacherName", SqlDbType.NVarChar, 50) { Value = "%" + teacherName + "%" };
                 paramList.Add(sqlParameter);
             }
@@ -236,7 +236,14 @@ namespace Chr.OnlineApp.BLL
                 parameter.SqlString += " AND [YW_Course].[title] LIKE @title ";
                 SqlParameter sqlParameter = new SqlParameter("@title", SqlDbType.NVarChar, 50) { Value = "%" + title + "%" };
                 paramList.Add(sqlParameter);
-            } 
+            }
+            if (status != null && status != "")
+            {
+                parameter.SqlString += " AND [YW_Course].[status] = @status ";
+                SqlParameter sqlParameter = new SqlParameter("@status", SqlDbType.Int, 4) { Value = status };
+                paramList.Add(sqlParameter);
+            }
+            parameter.SqlString += "  order by [createTime] desc ";
             parameter.Parameters = paramList.ToArray();
 
             return BLL.CommonToolsBLL.GetPageListByParamsOutBound(pageSize, curPage, parameter);

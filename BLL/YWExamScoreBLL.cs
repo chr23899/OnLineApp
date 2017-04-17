@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Chr.OnlineApp.COL;
 using Chr.OnlineApp.DAL;
 using Chr.OnlineApp.SFL;
+using System.Data.SqlClient;
 
 namespace Chr.OnlineApp.BLL
 {
@@ -180,13 +181,74 @@ namespace Chr.OnlineApp.BLL
         //  注意：用户界面层应当只需调用本层便可完成所有操作，本类对关联的数据访问类调用，应当只通过类中的DataAccess属性实现。  
         //﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍
 
+        /// <summary>
+        /// 获取考试分数列表
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="curPage"></param>
+        /// <param name="createUserId"></param>
+        /// <param name="createUserName"></param>
+        /// <param name="studentId"></param>
+        /// <param name="studentName"></param>
+        /// <param name="updateUserId"></param>
+        /// <param name="updateUserName"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public static PageData GetPageData(int pageSize, int curPage, string createUserId, string createUserName, string studentId, string studentName, string updateUserId, string updateUserName, string status)
+        {
+            //构建查询条件
+            Parameter parameter = new Parameter();
 
+            parameter.SqlString = "SELECT [Id],[examId],[score],[studentName],[studentId],[createTime],[updateTime],[createUserName],[createUserId],[updateUserName],[updateUserId],[Alternate1],"
+                                   + " [Alternate2],[Alternate3],[Alternate4],[Alternate5] FROM [YW_Exam_Score] WHERE 1 = 1 ";
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            if (studentId != null && studentId != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[studentId] = @studentId ";
+                SqlParameter sqlParameter = new SqlParameter("@studentId", SqlDbType.NVarChar, 50) { Value = studentId };
+                paramList.Add(sqlParameter);
+            }
+            if (studentName != null && studentName != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[studentName] LIKE @courseName ";
+                SqlParameter sqlParameter = new SqlParameter("@studentName", SqlDbType.NVarChar, 50) { Value = "%" + studentName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            if (status != null && status != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[status] = @status ";
+                SqlParameter sqlParameter = new SqlParameter("@status", SqlDbType.Int, 4) { Value = status };
+                paramList.Add(sqlParameter);
+            }
+            if (createUserId != null && createUserId != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[createUserId] = @createUserId ";
+                SqlParameter sqlParameter = new SqlParameter("@createUserId", SqlDbType.NVarChar, 50) { Value = createUserId };
+                paramList.Add(sqlParameter);
+            }
+            if (createUserName != null && createUserName != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[createUserName] LIKE @createUserName ";
+                SqlParameter sqlParameter = new SqlParameter("@createUserName", SqlDbType.NVarChar, 50) { Value = "%" + createUserName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            if (updateUserId != null && updateUserId != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[updateUserId] = @updateUserId ";
+                SqlParameter sqlParameter = new SqlParameter("@updateUserId", SqlDbType.NVarChar, 50) { Value = updateUserId };
+                paramList.Add(sqlParameter);
+            }
+            if (updateUserName != null && updateUserName != "")
+            {
+                parameter.SqlString += " AND [YW_Exam_Score].[updateUserName] LIKE @updateUserName ";
+                SqlParameter sqlParameter = new SqlParameter("@updateUserName", SqlDbType.NVarChar, 50) { Value = "%" + updateUserName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            parameter.SqlString += "  order by [createTime] desc ";
+            parameter.Parameters = paramList.ToArray();
 
-
-
-
-
-
+            return BLL.CommonToolsBLL.GetPageListByParamsOutBound(pageSize, curPage, parameter);
+        } 
 
 
     }
