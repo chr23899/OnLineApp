@@ -2677,8 +2677,35 @@
     <Compile Include="Public\AppFunctions.cs" />
     <Compile Include="Public\JsonHelper.cs" />
     <Compile Include="Public\UITools.cs" />
+    <Compile Include="Server\AssignmentManage.ashx.cs">
+      <DependentUpon>AssignmentManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\CommentManage.ashx.cs">
+      <DependentUpon>CommentManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\CourseDataManage.ashx.cs">
+      <DependentUpon>CourseDataManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\CourseJoinManage.ashx.cs">
+      <DependentUpon>CourseJoinManage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Server\CourseManage.ashx.cs">
       <DependentUpon>CourseManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\CoursePlanManage.ashx.cs">
+      <DependentUpon>CoursePlanManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\ExamAnswerManage.ashx.cs">
+      <DependentUpon>ExamAnswerManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\ExamManage.ashx.cs">
+      <DependentUpon>ExamManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\ExamQuestionManage.ashx.cs">
+      <DependentUpon>ExamQuestionManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\ExamScore.ashx.cs">
+      <DependentUpon>ExamScore.ashx</DependentUpon>
     </Compile>
     <Compile Include="Server\UserManage.ashx.cs">
       <DependentUpon>UserManage.ashx</DependentUpon>
@@ -2869,6 +2896,15 @@
     <Content Include="Document\design\数据库表设计.xlsx" />
     <None Include="Properties\PublishProfiles\onlineApp.pubxml" />
     <Content Include="Server\CourseManage.ashx" />
+    <Content Include="Server\AssignmentManage.ashx" />
+    <Content Include="Server\CommentManage.ashx" />
+    <Content Include="Server\CourseDataManage.ashx" />
+    <Content Include="Server\CourseJoinManage.ashx" />
+    <Content Include="Server\CoursePlanManage.ashx" />
+    <Content Include="Server\ExamAnswerManage.ashx" />
+    <Content Include="Server\ExamQuestionManage.ashx" />
+    <Content Include="Server\ExamManage.ashx" />
+    <Content Include="Server\ExamScore.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
