@@ -51,9 +51,7 @@ namespace OnlineApp.Server
             string strupdateUserId = context.Request["updateUserId"];
             string strupdateUserName = context.Request["updateUserName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];
-            string strcontent = context.Request["content"];
-            string strtitle = context.Request["title"];
+            string strcourseName = context.Request["courseName"]; 
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
@@ -79,9 +77,7 @@ namespace OnlineApp.Server
             string strcreateUserId = context.Request["createUserId"];
             string strupdateUserName = context.Request["updateUserName"];
             string strupdateUserId = context.Request["updateUserId"];
-            string strcontent = context.Request["content"];
-            string strcreateTime = context.Request["createTime"];
-            string strupdateTime = context.Request["updateTime"];
+            string strcontent = context.Request["content"]; 
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
             string strstatus = context.Request["status"];
@@ -94,16 +90,16 @@ namespace OnlineApp.Server
 
             YWCourseData courseData = new YWCourseData();
             courseData.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
-            courseData.PlanName = strplanName != null ? strcontent : "";
+            courseData.PlanName = strplanName != null ? strplanName : "";
             courseData.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
-            courseData.CourseName = strcourseName != null ? strcontent : "";
-            courseData.CreateUserName = strcreateUserName != null ? strcontent : "";
+            courseData.CourseName = strcourseName != null ? strcourseName : "";
+            courseData.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
             courseData.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            courseData.UpdateUserName = strupdateUserName != null ? strcontent : "";
+            courseData.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
             courseData.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
             courseData.Content = strcontent != null ? strcontent : "";
-            courseData.Title = strtitle != null ? strcontent : "";
-            courseData.Link = strlink != null ? strcontent : ""; 
+            courseData.Title = strtitle != null ? strtitle : "";
+            courseData.Link = strlink != null ? strlink : ""; 
             courseData.CreateTime = DateTime.Now;
             courseData.UpdateTime = DateTime.Now;
             courseData.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
@@ -139,9 +135,7 @@ namespace OnlineApp.Server
             string strupdateUserId = context.Request["updateUserId"];
             string strcontent = context.Request["content"];
             string strsupport = context.Request["support"];
-            string stroppose = context.Request["oppose"];
-            string strcreateTime = context.Request["createTime"];
-            string strupdateTime = context.Request["updateTime"];
+            string stroppose = context.Request["oppose"]; 
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
             string strstatus = context.Request["status"];
@@ -154,16 +148,16 @@ namespace OnlineApp.Server
 
             YWCourseData courseData = YWCourseDataBLL.GetDataById(strId);
             courseData.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : courseData.PlanId;
-            courseData.PlanName = strplanName != null ? strcontent : courseData.PlanName;
+            courseData.PlanName = strplanName != null ? strplanName : courseData.PlanName;
             courseData.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : courseData.CourseId;
-            courseData.CourseName = strcourseName != null ? strcontent : courseData.CourseName;
-            courseData.CreateUserName = strcreateUserName != null ? strcontent : courseData.CreateUserName;
+            courseData.CourseName = strcourseName != null ? strcourseName : courseData.CourseName;
+            courseData.CreateUserName = strcreateUserName != null ? strcreateUserName : courseData.CreateUserName;
             courseData.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : courseData.CreateUserId;
-            courseData.UpdateUserName = strupdateUserName != null ? strcontent : courseData.UpdateUserName;
+            courseData.UpdateUserName = strupdateUserName != null ? strupdateUserName : courseData.UpdateUserName;
             courseData.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : courseData.UpdateUserId;
             courseData.Content = strcontent != null ? strcontent : courseData.Content;
-            courseData.Title = strtitle != null ? strcontent : courseData.Title;
-            courseData.Link = strlink != null ? strcontent : courseData.Link;
+            courseData.Title = strtitle != null ? strtitle : courseData.Title;
+            courseData.Link = strlink != null ? strlink : courseData.Link;
             courseData.UpdateTime = DateTime.Now;
             courseData.Status = strstatus != null ? Convert.ToInt32(strstatus) : courseData.Status;
             courseData.Alternate1 = strAlternate1 != null ? strAlternate1 : courseData.Alternate1;

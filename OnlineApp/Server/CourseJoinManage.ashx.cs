@@ -46,10 +46,10 @@ namespace OnlineApp.Server
         {
             string strPageSize = context.Request["PageSize"];
             string strCurPage = context.Request["CurPage"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
+            string strteacherId = context.Request["teacherId"];
+            string strteacherName = context.Request["teacherName"];
+            string strstudentId = context.Request["studentId"];
+            string strstudentName = context.Request["studentName"];
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
             string strcontent = context.Request["content"];
@@ -59,7 +59,7 @@ namespace OnlineApp.Server
 
             try
             {
-                string strResult = CommonToolsBLL.PageDataToJson(YWCourseJoinBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
+                string strResult = CommonToolsBLL.PageDataToJson(YWCourseJoinBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strteacherId, strteacherName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
                 CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
             }
             catch (Exception e)
@@ -69,21 +69,15 @@ namespace OnlineApp.Server
         }
 
         //新增上课情况接口 
-        /*public void AddCourseJoin(HttpContext context)
+        public void AddCourseJoin(HttpContext context)
         {
-            string strplanId = context.Request["planId"];
-            string strplanName = context.Request["planName"];
+            string strplanId = context.Request["planId"]; 
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
-            string strcontent = context.Request["content"];
-            string strcreateTime = context.Request["createTime"];
-            string strupdateTime = context.Request["updateTime"];
-            string strtitle = context.Request["title"];
-            string strlink = context.Request["link"];
+            string strteacherName = context.Request["teacherName"];
+            string strteacherId = context.Request["teacherId"];
+            string strstudentName = context.Request["studentName"];
+            string strstudentId = context.Request["studentId"]; 
             string strstatus = context.Request["status"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
@@ -93,19 +87,14 @@ namespace OnlineApp.Server
             string strCallBack = context.Request["callback"];
 
             YWCourseJoin courseJoin = new YWCourseJoin();
-            courseJoin.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
-            courseJoin.PlanName = strplanName != null ? strcontent : "";
+            courseJoin.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0; 
             courseJoin.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
-            courseJoin.CourseName = strcourseName != null ? strcontent : "";
-            courseJoin.CreateUserName = strcreateUserName != null ? strcontent : "";
-            courseJoin.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            courseJoin.UpdateUserName = strupdateUserName != null ? strcontent : "";
-            courseJoin.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
-            courseJoin.Content = strcontent != null ? strcontent : "";
-            courseJoin.Title = strtitle != null ? strcontent : "";
-            courseJoin.Link = strlink != null ? strcontent : "";
-            courseJoin.CreateTime = DateTime.Now;
-            courseJoin.UpdateTime = DateTime.Now;
+            courseJoin.CourseName = strcourseName != null ? strcourseName : "";
+            courseJoin.TeacherName = strteacherName != null ? strteacherName : "无";
+            courseJoin.TeacherId = strteacherId != null ? Convert.ToInt32(strteacherId) : 0;
+            courseJoin.StudentName = strstudentName != null ? strstudentName : "";
+            courseJoin.StudentId = strstudentId != null ? Convert.ToInt32(strstudentId) : 0;
+            courseJoin.LastTime = DateTime.Now;
             courseJoin.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
             courseJoin.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
             courseJoin.Alternate2 = strAlternate2 != null ? strAlternate2 : "";
@@ -130,20 +119,12 @@ namespace OnlineApp.Server
         {
             string strId = context.Request["id"];
             string strplanId = context.Request["planId"];
-            string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
-            string strcontent = context.Request["content"];
-            string strsupport = context.Request["support"];
-            string stroppose = context.Request["oppose"];
-            string strcreateTime = context.Request["createTime"];
-            string strupdateTime = context.Request["updateTime"];
-            string strtitle = context.Request["title"];
-            string strlink = context.Request["link"];
+            string strteacherName = context.Request["teacherName"];
+            string strteacherId = context.Request["teacherId"];
+            string strstudentName = context.Request["studentName"];
+            string strstudentId = context.Request["studentId"];
             string strstatus = context.Request["status"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
@@ -153,18 +134,14 @@ namespace OnlineApp.Server
             string strCallBack = context.Request["callback"];
 
             YWCourseJoin courseJoin = YWCourseJoinBLL.GetDataById(strId);
-            courseJoin.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : courseJoin.PlanId;
-            courseJoin.PlanName = strplanName != null ? strcontent : courseJoin.PlanName;
+            courseJoin.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : courseJoin.PlanId; 
             courseJoin.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : courseJoin.CourseId;
-            courseJoin.CourseName = strcourseName != null ? strcontent : courseJoin.CourseName;
-            courseJoin.CreateUserName = strcreateUserName != null ? strcontent : courseJoin.CreateUserName;
-            courseJoin.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : courseJoin.CreateUserId;
-            courseJoin.UpdateUserName = strupdateUserName != null ? strcontent : courseJoin.UpdateUserName;
-            courseJoin.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : courseJoin.UpdateUserId;
-            courseJoin.Content = strcontent != null ? strcontent : courseJoin.Content;
-            courseJoin.Title = strtitle != null ? strcontent : courseJoin.Title;
-            courseJoin.Link = strlink != null ? strcontent : courseJoin.Link;
-            courseJoin.UpdateTime = DateTime.Now;
+            courseJoin.CourseName = strcourseName != null ? strcourseName : courseJoin.CourseName;
+            courseJoin.TeacherName = strteacherName != null ? strteacherName : courseJoin.TeacherName;
+            courseJoin.TeacherId = strteacherId != null ? Convert.ToInt32(strteacherId) : courseJoin.TeacherId;
+            courseJoin.StudentName = strstudentName != null ? strstudentName : courseJoin.StudentName;
+            courseJoin.StudentId = strstudentId != null ? Convert.ToInt32(strstudentId) : courseJoin.StudentId; 
+            courseJoin.LastTime = DateTime.Now;
             courseJoin.Status = strstatus != null ? Convert.ToInt32(strstatus) : courseJoin.Status;
             courseJoin.Alternate1 = strAlternate1 != null ? strAlternate1 : courseJoin.Alternate1;
             courseJoin.Alternate2 = strAlternate2 != null ? strAlternate2 : courseJoin.Alternate2;
@@ -204,6 +181,6 @@ namespace OnlineApp.Server
             {
                 CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选上课情况删除失败" + e.ToString());
             }
-        }*/
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace OnlineApp.Server
             }
         }
 
-        //获取用户列表分页数据
+        //获取课程列表分页数据
         public void GetCoursePageData(HttpContext context)
         {
             string strPageSize = context.Request["PageSize"];

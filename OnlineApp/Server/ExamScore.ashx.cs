@@ -1,4 +1,5 @@
 ﻿using Chr.OnlineApp.BLL;
+using Chr.OnlineApp.COL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,147 @@ namespace OnlineApp.Server
             get
             {
                 return false;
+            }
+        }
+
+        //获取考试分数列表分页数据
+        public void GetCoursePageData(HttpContext context)
+        {
+            string strPageSize = context.Request["PageSize"];
+            string strCurPage = context.Request["CurPage"];
+            string strcreateUserId = context.Request["createUserId"];
+            string strcreateUserName = context.Request["createUserName"];
+            string strupdateUserId = context.Request["updateUserId"];
+            string strupdateUserName = context.Request["updateUserName"];
+            string strcourseId = context.Request["courseId"];
+            string strcourseName = context.Request["courseName"];
+            string strstatus = context.Request["status"];
+            string strCallBack = context.Request["callback"];
+
+            try
+            {
+                string strResult = CommonToolsBLL.PageDataToJson(YWExamScoreBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
+                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
+            }
+            catch (Exception e)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
+            }
+        }
+
+        //新增考试分数接口 
+        public void AddExamScore(HttpContext context)
+        {
+            string strexamId = context.Request["examId"];
+            string strscore = context.Request["score"];
+            string strstudentId = context.Request["studentId"];
+            string strstudentName = context.Request["studentName"];
+            string strcreateUserName = context.Request["createUserName"];
+            string strcreateUserId = context.Request["createUserId"];
+            string strupdateUserName = context.Request["updateUserName"];
+            string strupdateUserId = context.Request["updateUserId"]; 
+            string strAlternate1 = context.Request["Alternate1"];
+            string strAlternate2 = context.Request["Alternate2"];
+            string strAlternate3 = context.Request["Alternate3"];
+            string strAlternate4 = context.Request["Alternate4"];
+            string strAlternate5 = context.Request["Alternate5"];
+            string strCallBack = context.Request["callback"];
+
+            YWExamScore examScore = new YWExamScore();
+            examScore.ExamId = strexamId != null ? Convert.ToInt32(strexamId) : 0;
+            examScore.Score = strscore != null ? Convert.ToInt32(strscore) : 0;
+            examScore.StudentId = strstudentId != null ? Convert.ToInt32(strstudentId) : 0;
+            examScore.StudentName = strstudentName != null ? strstudentName : "";
+            examScore.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
+            examScore.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
+            examScore.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
+            examScore.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0; 
+            examScore.CreateTime = DateTime.Now;
+            examScore.UpdateTime = DateTime.Now; 
+            examScore.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
+            examScore.Alternate2 = strAlternate2 != null ? strAlternate2 : "";
+            examScore.Alternate3 = strAlternate3 != null ? strAlternate3 : "";
+            examScore.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
+            examScore.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
+
+            try
+            {
+                YWExamScoreBLL.Insert(examScore);
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试分数添加成功");
+
+            }
+            catch (Exception e)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试分数添加失败" + e.ToString());
+            }
+        }
+
+        //更新考试分数接口 
+        public void ModifyExamScore(HttpContext context)
+        {
+            string strId = context.Request["id"];
+            string strexamId = context.Request["examId"];
+            string strscore = context.Request["score"];
+            string strstudentId = context.Request["studentId"];
+            string strstudentName = context.Request["studentName"];
+            string strcreateUserName = context.Request["createUserName"];
+            string strcreateUserId = context.Request["createUserId"];
+            string strupdateUserName = context.Request["updateUserName"];
+            string strupdateUserId = context.Request["updateUserId"];
+            string strAlternate1 = context.Request["Alternate1"];
+            string strAlternate2 = context.Request["Alternate2"];
+            string strAlternate3 = context.Request["Alternate3"];
+            string strAlternate4 = context.Request["Alternate4"];
+            string strAlternate5 = context.Request["Alternate5"];
+            string strCallBack = context.Request["callback"];
+
+            YWExamScore examScore = YWExamScoreBLL.GetDataById(strId);
+            examScore.ExamId = strexamId != null ? Convert.ToInt32(strexamId) : examScore.ExamId;
+            examScore.Score = strscore != null ? Convert.ToInt32(strscore) : examScore.Score;
+            examScore.StudentId = strstudentId != null ? Convert.ToInt32(strstudentId) : examScore.StudentId;
+            examScore.StudentName = strstudentName != null ? strstudentName : examScore.StudentName;
+            examScore.CreateUserName = strcreateUserName != null ? strcreateUserName : examScore.CreateUserName;
+            examScore.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : examScore.CreateUserId;
+            examScore.UpdateUserName = strupdateUserName != null ? strupdateUserName : examScore.UpdateUserName;
+            examScore.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : examScore.UpdateUserId;
+            examScore.UpdateTime = DateTime.Now;
+            examScore.Alternate1 = strAlternate1 != null ? strAlternate1 : examScore.Alternate1;
+            examScore.Alternate2 = strAlternate2 != null ? strAlternate2 : examScore.Alternate2;
+            examScore.Alternate3 = strAlternate3 != null ? strAlternate3 : examScore.Alternate3;
+            examScore.Alternate4 = strAlternate4 != null ? strAlternate4 : examScore.Alternate4;
+            examScore.Alternate5 = strAlternate5 != null ? strAlternate5 : examScore.Alternate5;
+
+            try
+            {
+                YWExamScoreBLL.Update(examScore);
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试分数更新成功");
+
+            }
+            catch (Exception e)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试分数更新失败" + e.ToString());
+            }
+        }
+
+        //删除指定的考试分数
+        public void DeleteExamScore(HttpContext context)
+        {
+            string strDelete = context.Request["strDelete"];
+            string strCallBack = context.Request["callback"];
+
+            string[] strList = strDelete.Split(',');
+
+            try
+            {
+                foreach (string item in strList)
+                {
+                    YWExamScoreBLL.Delete(Convert.ToInt32(item));
+                }
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选考试分数删除成功");
+            }
+            catch (Exception e)
+            {
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选考试分数删除失败" + e.ToString());
             }
         }
     }

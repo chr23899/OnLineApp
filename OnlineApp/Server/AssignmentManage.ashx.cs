@@ -121,7 +121,7 @@ namespace OnlineApp.Server
             }
             catch (Exception e)
             {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程添加失败" + e.ToString());
+                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "作业添加失败" + e.ToString());
             } 
         }
 
@@ -152,16 +152,16 @@ namespace OnlineApp.Server
 
             YWAssignment assignment = YWAssignmentBLL.GetDataById(strId);
             assignment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : assignment.PlanId;
-            assignment.PlanName = strplanName != null ? strcontent : assignment.PlanName;
+            assignment.PlanName = strplanName != null ? strplanName : assignment.PlanName;
             assignment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : assignment.CourseId;
-            assignment.CourseName = strcourseName != null ? strcontent : assignment.CourseName;
-            assignment.CreateUserName = strcreateUserName != null ? strcontent : assignment.CreateUserName;
+            assignment.CourseName = strcourseName != null ? strcourseName : assignment.CourseName;
+            assignment.CreateUserName = strcreateUserName != null ? strcreateUserName : assignment.CreateUserName;
             assignment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : assignment.CreateUserId;
-            assignment.UpdateUserName = strupdateUserName != null ? strcontent : assignment.UpdateUserName;
+            assignment.UpdateUserName = strupdateUserName != null ? strupdateUserName : assignment.UpdateUserName;
             assignment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : assignment.UpdateUserId;
-            assignment.Title = strtitle != null ? strcontent : assignment.Title;
+            assignment.Title = strtitle != null ? strtitle : assignment.Title;
             assignment.Content = strcontent != null ? strcontent : assignment.Content;
-            assignment.Link = strlink != null ? strcontent : assignment.Link; 
+            assignment.Link = strlink != null ? strlink : assignment.Link; 
             assignment.UpdateTime = DateTime.Now;
             assignment.Status = strstatus != null ? Convert.ToInt32(strstatus) : assignment.Status;
             assignment.Alternate1 = strAlternate1 != null ? strAlternate1 : assignment.Alternate1;

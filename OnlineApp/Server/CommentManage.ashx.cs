@@ -93,12 +93,12 @@ namespace OnlineApp.Server
 
             YWComment comment = new YWComment();
             comment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
-            comment.PlanName = strplanName != null ? strcontent : "";
+            comment.PlanName = strplanName != null ? strplanName : "";
             comment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
-            comment.CourseName = strcourseName != null ? strcontent : "";
-            comment.CreateUserName = strcreateUserName != null ? strcontent : "";
+            comment.CourseName = strcourseName != null ? strcourseName : "";
+            comment.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
             comment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            comment.UpdateUserName = strupdateUserName != null ? strcontent : "";
+            comment.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
             comment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
             comment.Content = strcontent != null ? strcontent : "";
             comment.Support = 0; //初始支持数为 0 
@@ -151,12 +151,12 @@ namespace OnlineApp.Server
 
             YWComment comment = YWCommentBLL.GetDataById(strId);
             comment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : comment.PlanId;
-            comment.PlanName = strplanName != null ? strcontent : comment.PlanName;
+            comment.PlanName = strplanName != null ? strplanName : comment.PlanName;
             comment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : comment.CourseId;
-            comment.CourseName = strcourseName != null ? strcontent : comment.CourseName;
-            comment.CreateUserName = strcreateUserName != null ? strcontent : comment.CreateUserName;
+            comment.CourseName = strcourseName != null ? strcourseName : comment.CourseName;
+            comment.CreateUserName = strcreateUserName != null ? strcreateUserName : comment.CreateUserName;
             comment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : comment.CreateUserId;
-            comment.UpdateUserName = strupdateUserName != null ? strcontent : comment.UpdateUserName;
+            comment.UpdateUserName = strupdateUserName != null ? strupdateUserName : comment.UpdateUserName;
             comment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : comment.UpdateUserId;
             comment.Content = strcontent != null ? strcontent : comment.Content;
             comment.Support = strsupport != null ? Convert.ToInt32(strsupport) : comment.Support;
