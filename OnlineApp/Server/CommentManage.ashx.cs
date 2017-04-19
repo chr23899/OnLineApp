@@ -43,7 +43,7 @@ namespace OnlineApp.Server
 
 
         //获取评论列表分页数据
-        public void GetCoursePageData(HttpContext context)
+        public void GetCommentPageData(HttpContext context)
         {
             string strPageSize = context.Request["PageSize"];
             string strCurPage = context.Request["CurPage"];

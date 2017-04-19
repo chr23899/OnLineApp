@@ -42,7 +42,7 @@ namespace OnlineApp.Server
         }
 
         //获取考试问题卷列表分页数据
-        public void GetCoursePageData(HttpContext context)
+        public void GetExamQuestionPageData(HttpContext context)
         {
             string strPageSize = context.Request["PageSize"];
             string strCurPage = context.Request["CurPage"];

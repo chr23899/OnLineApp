@@ -10,7 +10,7 @@ namespace OnlineApp.Server
     /// <summary>
     /// Summary description for CoursePlanPlanManage
     /// </summary>
-    public class CoursePlanPlanManage : IHttpHandler
+    public class CoursePlanManage : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)

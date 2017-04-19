@@ -42,7 +42,7 @@ namespace OnlineApp.Server
         }
 
         //获取上课情况列表分页数据
-        public void GetCoursePageData(HttpContext context)
+        public void GetCourseJoinPageData(HttpContext context)
         {
             string strPageSize = context.Request["PageSize"];
             string strCurPage = context.Request["CurPage"];
