@@ -99,6 +99,8 @@
     <Content Include="Static\script\factory\index\noticesStore.js" />
     <Content Include="Static\script\factory\index\peopleStore.js" />
     <Content Include="Static\script\service\courseService.js" />
+    <Content Include="Static\script\service\homeWorkService.js" />
+    <Content Include="Static\script\service\toolService.js" />
     <Content Include="Static\script\service\userService.js" />
     <Content Include="UI\404.html" />
     <Content Include="UI\about.html" />
@@ -2707,6 +2709,9 @@
     <Compile Include="Server\ExamScore.ashx.cs">
       <DependentUpon>ExamScore.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Server\UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Server\UserManage.ashx.cs">
       <DependentUpon>UserManage.ashx</DependentUpon>
     </Compile>
@@ -2905,6 +2910,7 @@
     <Content Include="Server\ExamQuestionManage.ashx" />
     <Content Include="Server\ExamManage.ashx" />
     <Content Include="Server\ExamScore.ashx" />
+    <Content Include="Server\UploadHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

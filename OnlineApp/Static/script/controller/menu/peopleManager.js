@@ -106,6 +106,11 @@ OnlineApp.controller('peopleManager', function ($scope, userService, $window, pe
 
     $scope.editPersonIndex = 0;
 
+    //改变图片时候触发
+    $scope.showImg = function (file) {
+        console.log("imgUrl" + $scope.newperson);
+    }
+
     $scope.addNewPerson = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
             userService.AddUser($scope.newperson).then(function (data) {
