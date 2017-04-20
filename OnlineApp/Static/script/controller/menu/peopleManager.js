@@ -1,5 +1,5 @@
 ﻿//define menu controller
-OnlineApp.controller('peopleManager', function ($scope, userService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
+OnlineApp.controller('peopleManager', function ($scope, userService,toolService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
     //显示当前人员列表内容
     $scope.peopleList;// = peopleStore;
     //是否正在加载页面
@@ -10,6 +10,8 @@ OnlineApp.controller('peopleManager', function ($scope, userService, $window, pe
     $scope.userLayers = USER_LAYERS;
 
     $('#form-dialog').modal('show');
+    $scope.btn_upload = "浏览图片";
+
 
     $scope.query = {
         UserName: "",
@@ -91,7 +93,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService, $window, pe
             content: "2017年3月27号加入",
             StateId: true,
             title: "",
-            Alternate2: "male.png",
+            Alternate2: "",
         }
     }
 
@@ -101,14 +103,33 @@ OnlineApp.controller('peopleManager', function ($scope, userService, $window, pe
         $scope.validate =
         $scope.newperson.UserName &&
         $scope.newperson.Tel &&
-        $scope.newperson.Note;
+        $scope.newperson.Note &&
+        $scope.btn_upload == "浏览图片";
     }, true);
 
     $scope.editPersonIndex = 0;
 
     //改变图片时候触发
     $scope.showImg = function (file) {
-        console.log("imgUrl" + $scope.newperson);
+        if (file.length == 0)
+            return;
+        //console.log("imgUrl" + $scope.newperson);
+        $scope.btn_upload = "图片上传中...";
+        var nowInput = $("#ImgUpload");
+        var nowfile = {
+            file: file[0],
+            picName: 'test',
+            type: 'user'
+        }
+        toolService.uploadFile(nowfile).then(function (data) { 
+            //data = JSON.parse(data);
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_upload = "浏览图片";
+                $scope.newperson.Alternate2 = data.data;
+            }
+        })
+
     }
 
     $scope.addNewPerson = function () {

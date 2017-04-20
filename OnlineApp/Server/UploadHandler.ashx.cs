@@ -1,6 +1,8 @@
 ﻿using Chr.OnlineApp.BLL;
+using Chr.OnlineApp.COL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +13,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class UploadHandler : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -48,21 +51,51 @@ namespace OnlineApp.Server
         public void UploadImg(HttpContext context)
         {
             HttpFileCollection files = context.Request.Files;
-            HttpPostedFile file = files[0];
+            //HttpPostedFile file = files[0];
+            var nowfile = context.Request["file"];
             var strtype = context.Request["type"];
             var picName = context.Request["picName"];
-            string fname = context.Server.MapPath("\\Static\\img\\" + strtype + "\\" + picName + "_" + file.FileName);
+            HttpPostedFile file = files[0];
+            if (Directory.Exists(context.Server.MapPath("\\Static\\img\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\")) == false)
+            {
+                Directory.CreateDirectory(context.Server.MapPath("\\Static\\img\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\"));
+            } 
+            string fname = context.Server.MapPath("\\Static\\img\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\" + picName + "_" + file.FileName);
             string strCallBack = context.Request["callback"];
+            file.SaveAs(fname);
+            context.Response.ContentType = "text/plain";
+            context.Response.Write("\\Static\\img\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\" + picName + "_" + file.FileName);
+            context.Response.End(); 
+        }
 
-            try
+        /// <summary>
+        /// add by chr
+        /// 公共方法: 上传多个文件
+        /// </summary>
+        /// <param name="context"></param>
+        public void UploadFile(HttpContext context)
+        {
+            HttpFileCollection files = context.Request.Files;
+            //HttpPostedFile file = files[0];
+            var nowfile = context.Request["file"];
+            var strtype = context.Request["type"];
+            var picName = context.Request["picName"];
+            var strOut = "";
+            if (Directory.Exists(context.Server.MapPath("\\Static\\file\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\")) == false)
             {
+                Directory.CreateDirectory(context.Server.MapPath("\\Static\\file\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\"));
+            } 
+            for (int i = 0; i < files.Count; i++)
+            {
+                HttpPostedFile file = files[i];
+                var userName = context.Request["name"]; string fname = context.Server.MapPath("\\Static\\file\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\" + picName + "_" + file.FileName);
+                strOut += "\\Static\\file\\" + strtype + "\\" + pTUsers.Type + "\\" + pTUsers.UserName + "\\" + picName + "_" + file.FileName + ";";
                 file.SaveAs(fname); 
-                CommonToolsBLL.OutputJson(context, strCallBack, fname, "success", "图片上传成功");
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "图片上传失败" + e.ToString());
-            }
+            string strCallBack = context.Request["callback"]; 
+            context.Response.ContentType = "text/plain";
+            context.Response.Write(strOut);
+            context.Response.End(); 
         }
     }
 }

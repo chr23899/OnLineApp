@@ -26,15 +26,17 @@ namespace Chr.OnlineApp.DAL.SqlServer
 
 
         /// <summary>
-        /// 将基本用户信息（PTUsers）数据，采用INSERT操作插入到数据库中，并返回受影响的行数。
+        /// 将基础对象名称（PTUsers）数据，采用INSERT操作插入到数据库中，并返回受影响的行数。
         /// </summary>
-        /// <param name="pTUsers">基本用户信息（PTUsers）实例对象</param>
+        /// <param name="pTUsers">基础对象名称（PTUsers）实例对象</param>
         public override int Insert(PTUsers pTUsers)
         {
             string sqlText = "INSERT INTO [PT_USER]"
-                           + "([UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[Tel],[LevelId],[Type],[Layer],[Note])"
+                           + "([UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[LevelId],[Balance],"
+                           + "[ValidityDT],[Position],[Company],[Tel],[QQ],[WeChat],[Email],[HomePage],[Type],[Layer],[Note])"
                            + "VALUES"
-                           + "(@UserName,@Password,@OrgId,@Nickname,@StateId,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5,@Tel,@LevelId,@Type,@Layer,@Note)";
+                           + "(@UserName,@Password,@OrgId,@Nickname,@StateId,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5,@LevelId,@Balance,"
+                           + "@ValidityDT,@Position,@Company,@Tel,@QQ,@WeChat,@Email,@HomePage,@Type,@Layer,@Note)";
             SqlParameter[] parameters = 
             {
                 new SqlParameter("@UserName"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.UserName   },
@@ -43,29 +45,38 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@Nickname"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Nickname   },
                 new SqlParameter("@StateId"    , SqlDbType.NVarChar , 50 ){ Value = pTUsers.StateId    },
                 new SqlParameter("@Alternate1" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate1 },
-                new SqlParameter("@Alternate2" , SqlDbType.NText    , 1073741823){ Value = pTUsers.Alternate2 },
+                new SqlParameter("@Alternate2" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate2 },
                 new SqlParameter("@Alternate3" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate3 },
                 new SqlParameter("@Alternate4" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate4 },
                 new SqlParameter("@Alternate5" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate5 },
-                new SqlParameter("@Tel" , SqlDbType.NVarChar , 500){ Value = pTUsers.Tel },
-                new SqlParameter("@LevelId" , SqlDbType.NVarChar , 500){ Value = pTUsers.LevelId },
-                new SqlParameter("@Type" , SqlDbType.NVarChar , 500){ Value = pTUsers.Type },
-                new SqlParameter("@Layer" , SqlDbType.NVarChar , 500){ Value = pTUsers.Layer },
-                new SqlParameter("@Note" , SqlDbType.NVarChar , 500){ Value = pTUsers.Note }
+                new SqlParameter("@LevelId"    , SqlDbType.Int      , 4  ){ Value = pTUsers.LevelId    },
+                new SqlParameter("@Balance"    , SqlDbType.Int      , 4  ){ Value = pTUsers.Balance    },
+                new SqlParameter("@ValidityDT" , SqlDbType.DateTime , 8  ){ Value = pTUsers.ValidityDT },
+                new SqlParameter("@Position"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Position   },
+                new SqlParameter("@Company"    , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Company    },
+                new SqlParameter("@Tel"        , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Tel        },
+                new SqlParameter("@QQ"         , SqlDbType.NVarChar , 50 ){ Value = pTUsers.QQ         },
+                new SqlParameter("@WeChat"     , SqlDbType.NVarChar , 50 ){ Value = pTUsers.WeChat     },
+                new SqlParameter("@Email"      , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Email      },
+                new SqlParameter("@HomePage"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.HomePage   },
+                new SqlParameter("@Type"       , SqlDbType.NVarChar , 10 ){ Value = pTUsers.Type       },
+                new SqlParameter("@Layer"      , SqlDbType.NVarChar , 10 ){ Value = pTUsers.Layer      },
+                new SqlParameter("@Note"       , SqlDbType.NVarChar , 500){ Value = pTUsers.Note       }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
 
 
         /// <summary>
-        /// 将基本用户信息（PTUsers）数据，根据主键“用户名（UserName）”采用UPDATE操作更新到数据库中，并返回受影响的行数。
+        /// 将基础对象名称（PTUsers）数据，根据主键“（UserName）”采用UPDATE操作更新到数据库中，并返回受影响的行数。
         /// </summary>
-        /// <param name="pTUsers">基本用户信息（PTUsers）实例对象</param>
+        /// <param name="pTUsers">基础对象名称（PTUsers）实例对象</param>
         public override int Update(PTUsers pTUsers)
         {
             string sqlText = "UPDATE [PT_USER] SET "
                            + "[Password]=@Password,[OrgId]=@OrgId,[Nickname]=@Nickname,[StateId]=@StateId,[Alternate1]=@Alternate1,[Alternate2]=@Alternate2,"
-                           + "[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,[Alternate5]=@Alternate5,[Tel]=@Tel,[Type]=@Type,[Layer]=@Layer,[Note]=@Note "
+                           + "[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,[Alternate5]=@Alternate5,[LevelId]=@LevelId,[Balance]=@Balance,[ValidityDT]=@ValidityDT,"
+                           + "[Position]=@Position,[Company]=@Company,[Tel]=@Tel,[QQ]=@QQ,[WeChat]=@WeChat,[Email]=@Email,[HomePage]=@HomePage,[Type]=@Type,[Layer]=@Layer,[Note]=@Note "
                            + "WHERE [UserName]=@UserName";
             SqlParameter[] parameters = 
             {
@@ -74,14 +85,23 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@Nickname"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Nickname   },
                 new SqlParameter("@StateId"    , SqlDbType.NVarChar , 50 ){ Value = pTUsers.StateId    },
                 new SqlParameter("@Alternate1" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate1 },
-                new SqlParameter("@Alternate2" , SqlDbType.NText    , 1073741823){ Value = pTUsers.Alternate2 },
+                new SqlParameter("@Alternate2" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate2 },
                 new SqlParameter("@Alternate3" , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Alternate3 },
                 new SqlParameter("@Alternate4" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate4 },
                 new SqlParameter("@Alternate5" , SqlDbType.NVarChar , 500){ Value = pTUsers.Alternate5 },
-                new SqlParameter("@Tel" , SqlDbType.NVarChar , 50){ Value = pTUsers.Tel },
-                new SqlParameter("@Type" , SqlDbType.NVarChar , 50){ Value = pTUsers.Type },
-                new SqlParameter("@Layer" , SqlDbType.NVarChar , 50){ Value = pTUsers.Layer },
-                new SqlParameter("@Note" , SqlDbType.NVarChar , 50){ Value = pTUsers.Note },
+                new SqlParameter("@LevelId"    , SqlDbType.Int      , 4  ){ Value = pTUsers.LevelId    },
+                new SqlParameter("@Balance"    , SqlDbType.Int      , 4  ){ Value = pTUsers.Balance    },
+                new SqlParameter("@ValidityDT" , SqlDbType.DateTime , 8  ){ Value = pTUsers.ValidityDT },
+                new SqlParameter("@Position"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Position   },
+                new SqlParameter("@Company"    , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Company    },
+                new SqlParameter("@Tel"        , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Tel        },
+                new SqlParameter("@QQ"         , SqlDbType.NVarChar , 50 ){ Value = pTUsers.QQ         },
+                new SqlParameter("@WeChat"     , SqlDbType.NVarChar , 50 ){ Value = pTUsers.WeChat     },
+                new SqlParameter("@Email"      , SqlDbType.NVarChar , 50 ){ Value = pTUsers.Email      },
+                new SqlParameter("@HomePage"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.HomePage   },
+                new SqlParameter("@Type"       , SqlDbType.NVarChar , 10 ){ Value = pTUsers.Type       },
+                new SqlParameter("@Layer"      , SqlDbType.NVarChar , 10 ){ Value = pTUsers.Layer      },
+                new SqlParameter("@Note"       , SqlDbType.NVarChar , 500){ Value = pTUsers.Note       },
                 new SqlParameter("@UserName"   , SqlDbType.NVarChar , 50 ){ Value = pTUsers.UserName   }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
@@ -89,9 +109,9 @@ namespace Chr.OnlineApp.DAL.SqlServer
 
 
         /// <summary>
-        /// 根据基本用户信息（PTUsers）的主键“用户名（UserName）”采用DELETE操作从数据库中删除相关记录，并返回受影响的行数。
+        /// 根据基础对象名称（PTUsers）的主键“（UserName）”采用DELETE操作从数据库中删除相关记录，并返回受影响的行数。
         /// </summary>
-        /// <param name="userName">基本用户信息（PTUsers）的主键“用户名（UserName）”</param>
+        /// <param name="userName">基础对象名称（PTUsers）的主键“（UserName）”</param>
         public override int Delete(string userName)
         {
             string sqlText = "DELETE FROM [PT_USER] "
@@ -105,14 +125,15 @@ namespace Chr.OnlineApp.DAL.SqlServer
 
 
         /// <summary>
-        /// 根据基本用户信息（PTUsers）的主键“用户名（UserName）”从数据库中获取基本用户信息（PTUsers）的实例。
-        /// 成功从数据库中取得记录返回新基本用户信息（PTUsers）的实例“，没有取到记录返回null值。
+        /// 根据基础对象名称（PTUsers）的主键“（UserName）”从数据库中获取基础对象名称（PTUsers）的实例。
+        /// 成功从数据库中取得记录返回新基础对象名称（PTUsers）的实例“，没有取到记录返回null值。
         /// </summary>
-        /// <param name="userName">基本用户信息（PTUsers）的主键“用户名（UserName）”</param>
+        /// <param name="userName">基础对象名称（PTUsers）的主键“（UserName）”</param>
         public override PTUsers GetDataByUserName(string userName)
         {
             PTUsers pTUsers = null;
-            string sqlText = "SELECT [Id],[UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5] "
+            string sqlText = "SELECT [Id],[UserName],[Password],[OrgId],[Nickname],[StateId],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[LevelId],[Balance],"
+                           + "[ValidityDT],[Position],[Company],[Tel],[QQ],[WeChat],[Email],[HomePage],[Type],[Layer],[Note] "
                            + "FROM [PT_USER] "
                            + "WHERE [UserName]=@UserName";
             SqlParameter[] parameters = 
@@ -124,11 +145,12 @@ namespace Chr.OnlineApp.DAL.SqlServer
             if (sqlDataReader.Read())
             {
                 pTUsers = new PTUsers();
-                ReadPTUsersAllData(sqlDataReader,pTUsers);
+                ReadPTUsersAllData(sqlDataReader, pTUsers);
             }
             sqlDataReader.Close();
             return pTUsers;
         }
+
 
 
         

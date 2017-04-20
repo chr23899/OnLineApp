@@ -1,7 +1,7 @@
 ﻿/**
     add by chr 20170325
 */
-var OnlineApp= angular.module('OnlineApp', ['ngRoute', 'ngMessages']);
+var OnlineApp = angular.module('OnlineApp', ['ngRoute', 'ngMessages', 'ngFileUpload']);
 OnlineApp.config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
         templateUrl: ContextPath + '/index.aspx'

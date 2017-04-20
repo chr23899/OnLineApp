@@ -31,6 +31,10 @@
     <script src="../UI/node_modules/lodash/lodash.js"></script>
     <script src="../UI/node_modules/angular-sanitize/angular-sanitize.js"></script>
     <script src="../UI/node_modules/angular-messages/angular-messages.js"></script>
+    <script src="../UI/node_modules/ng-file/ng-file-upload.min.js"></script>
+    <script src="../UI/node_modules/ng-file/ng-file-upload-all.min.js"></script>
+    <script src="../UI/node_modules/ng-file/ng-file-upload-shim.min.js"></script>
+    <script src="../UI/node_modules/ng-file/FileAPI.min.js"></script>
     
     <asp:ContentPlaceHolder ID="head" runat="server"> 
     </asp:ContentPlaceHolder> 

@@ -30,8 +30,8 @@ namespace Chr.OnlineApp.DAL.Common
 
 
         /// <summary>
-        /// 获取“基本用户信息（PTUsersDAL）数据访问类”的实例，该属性通过判断应用程序配置文件中数据库类型“DataBaseType”的值，
-        /// 创建一个用于对指定类型数据库进行访问的“基本用户信息（PTUsersDAL）数据访问类”（SqlServer/Oracle/OleDb）”单件实例。
+        /// 获取“基础对象名称（PTUsersDAL）数据访问类”的实例，该属性通过判断应用程序配置文件中数据库类型“DataBaseType”的值，
+        /// 创建一个用于对指定类型数据库进行访问的“基础对象名称（PTUsersDAL）数据访问类”（SqlServer/Oracle/OleDb）”单件实例。
         /// </summary>
         public static PTUsersDAL Instance
         {
@@ -59,43 +59,166 @@ namespace Chr.OnlineApp.DAL.Common
         /// 从DataReader中读取数据，并为PTUsers对象的所有属性赋值。该方法主要由该类的子类调用。
         /// </summary>
         /// <param name="sqlDataReader">IDataReader</param>
-        /// <param name="pTUsers">基本用户信息（PTUsers）实例对象</param>
+        /// <param name="pTUsers">基础对象名称（PTUsers）实例对象</param>
         protected void ReadPTUsersAllData(IDataReader dataReader, PTUsers pTUsers)
         {
-            // 编号
+            // 
             if (dataReader["Id"] != DBNull.Value)
                 pTUsers.Id = Convert.ToInt32(dataReader["Id"]);
-            // 用户名
+            // 
             if (dataReader["UserName"] != DBNull.Value)
                 pTUsers.UserName = Convert.ToString(dataReader["UserName"]);
-            // 密码
+            // 
             if (dataReader["Password"] != DBNull.Value)
                 pTUsers.Password = Convert.ToString(dataReader["Password"]);
-            // 机构编号
+            // 
             if (dataReader["OrgId"] != DBNull.Value)
                 pTUsers.OrgId = Convert.ToInt32(dataReader["OrgId"]);
-            // 昵称
+            // 
             if (dataReader["Nickname"] != DBNull.Value)
                 pTUsers.Nickname = Convert.ToString(dataReader["Nickname"]);
-            // 状态
+            // 
             if (dataReader["StateId"] != DBNull.Value)
                 pTUsers.StateId = Convert.ToString(dataReader["StateId"]);
-            // 备用１
+            // 
             if (dataReader["Alternate1"] != DBNull.Value)
                 pTUsers.Alternate1 = Convert.ToString(dataReader["Alternate1"]);
-            // 备用２
+            // 
             if (dataReader["Alternate2"] != DBNull.Value)
                 pTUsers.Alternate2 = Convert.ToString(dataReader["Alternate2"]);
-            // 备用３
+            // 
             if (dataReader["Alternate3"] != DBNull.Value)
                 pTUsers.Alternate3 = Convert.ToString(dataReader["Alternate3"]);
-            // 备用４
+            // 
             if (dataReader["Alternate4"] != DBNull.Value)
                 pTUsers.Alternate4 = Convert.ToString(dataReader["Alternate4"]);
-            // 备用５
+            // 
             if (dataReader["Alternate5"] != DBNull.Value)
                 pTUsers.Alternate5 = Convert.ToString(dataReader["Alternate5"]);
+            // 
+            if (dataReader["LevelId"] != DBNull.Value)
+                pTUsers.LevelId = Convert.ToString(dataReader["LevelId"]);
+            // 
+            if (dataReader["Balance"] != DBNull.Value)
+                pTUsers.Balance = Convert.ToInt32(dataReader["Balance"]);
+            // 
+            if (dataReader["ValidityDT"] != DBNull.Value)
+                pTUsers.ValidityDT = Convert.ToDateTime(dataReader["ValidityDT"]);
+            // 
+            if (dataReader["Position"] != DBNull.Value)
+                pTUsers.Position = Convert.ToString(dataReader["Position"]);
+            // 
+            if (dataReader["Company"] != DBNull.Value)
+                pTUsers.Company = Convert.ToString(dataReader["Company"]);
+            // 
+            if (dataReader["Tel"] != DBNull.Value)
+                pTUsers.Tel = Convert.ToString(dataReader["Tel"]);
+            // 
+            if (dataReader["QQ"] != DBNull.Value)
+                pTUsers.QQ = Convert.ToString(dataReader["QQ"]);
+            // 
+            if (dataReader["WeChat"] != DBNull.Value)
+                pTUsers.WeChat = Convert.ToString(dataReader["WeChat"]);
+            // 
+            if (dataReader["Email"] != DBNull.Value)
+                pTUsers.Email = Convert.ToString(dataReader["Email"]);
+            // 
+            if (dataReader["HomePage"] != DBNull.Value)
+                pTUsers.HomePage = Convert.ToString(dataReader["HomePage"]);
+            // 
+            if (dataReader["Type"] != DBNull.Value)
+                pTUsers.Type = Convert.ToString(dataReader["Type"]);
+            // 
+            if (dataReader["Layer"] != DBNull.Value)
+                pTUsers.Layer = Convert.ToString(dataReader["Layer"]);
+            // 
+            if (dataReader["Note"] != DBNull.Value)
+                pTUsers.Note = Convert.ToString(dataReader["Note"]);
         }
+
+
+        /// <summary>
+        /// 从DataReader中读取数据，并为PTUsers对象需要进行显示的属性赋值。该方法主要由该类的子类调用。
+        /// </summary>
+        /// <param name="sqlDataReader">IDataReader</param>
+        /// <param name="pTUsers">基础对象名称（PTUsers）实例对象</param>
+        protected void ReadPTUsersPageData(IDataReader dataReader, PTUsers pTUsers)
+        {
+            // 
+            if (dataReader["Id"] != DBNull.Value)
+                pTUsers.Id = Convert.ToInt32(dataReader["Id"]);
+            // 
+            if (dataReader["UserName"] != DBNull.Value)
+                pTUsers.UserName = Convert.ToString(dataReader["UserName"]);
+            // 
+            if (dataReader["Password"] != DBNull.Value)
+                pTUsers.Password = Convert.ToString(dataReader["Password"]);
+            // 
+            if (dataReader["OrgId"] != DBNull.Value)
+                pTUsers.OrgId = Convert.ToInt32(dataReader["OrgId"]);
+            // 
+            if (dataReader["Nickname"] != DBNull.Value)
+                pTUsers.Nickname = Convert.ToString(dataReader["Nickname"]);
+            // 
+            if (dataReader["StateId"] != DBNull.Value)
+                pTUsers.StateId = Convert.ToString(dataReader["StateId"]);
+            // 
+            if (dataReader["Alternate1"] != DBNull.Value)
+                pTUsers.Alternate1 = Convert.ToString(dataReader["Alternate1"]);
+            // 
+            if (dataReader["Alternate2"] != DBNull.Value)
+                pTUsers.Alternate2 = Convert.ToString(dataReader["Alternate2"]);
+            // 
+            if (dataReader["Alternate3"] != DBNull.Value)
+                pTUsers.Alternate3 = Convert.ToString(dataReader["Alternate3"]);
+            // 
+            if (dataReader["Alternate4"] != DBNull.Value)
+                pTUsers.Alternate4 = Convert.ToString(dataReader["Alternate4"]);
+            // 
+            if (dataReader["Alternate5"] != DBNull.Value)
+                pTUsers.Alternate5 = Convert.ToString(dataReader["Alternate5"]);
+            // 
+            if (dataReader["LevelId"] != DBNull.Value)
+                pTUsers.LevelId = Convert.ToString(dataReader["LevelId"]);
+            // 
+            if (dataReader["Balance"] != DBNull.Value)
+                pTUsers.Balance = Convert.ToInt32(dataReader["Balance"]);
+            // 
+            if (dataReader["ValidityDT"] != DBNull.Value)
+                pTUsers.ValidityDT = Convert.ToDateTime(dataReader["ValidityDT"]);
+            // 
+            if (dataReader["Position"] != DBNull.Value)
+                pTUsers.Position = Convert.ToString(dataReader["Position"]);
+            // 
+            if (dataReader["Company"] != DBNull.Value)
+                pTUsers.Company = Convert.ToString(dataReader["Company"]);
+            // 
+            if (dataReader["Tel"] != DBNull.Value)
+                pTUsers.Tel = Convert.ToString(dataReader["Tel"]);
+            // 
+            if (dataReader["QQ"] != DBNull.Value)
+                pTUsers.QQ = Convert.ToString(dataReader["QQ"]);
+            // 
+            if (dataReader["WeChat"] != DBNull.Value)
+                pTUsers.WeChat = Convert.ToString(dataReader["WeChat"]);
+            // 
+            if (dataReader["Email"] != DBNull.Value)
+                pTUsers.Email = Convert.ToString(dataReader["Email"]);
+            // 
+            if (dataReader["HomePage"] != DBNull.Value)
+                pTUsers.HomePage = Convert.ToString(dataReader["HomePage"]);
+            // 
+            if (dataReader["Type"] != DBNull.Value)
+                pTUsers.Type = Convert.ToString(dataReader["Type"]);
+            // 
+            if (dataReader["Layer"] != DBNull.Value)
+                pTUsers.Layer = Convert.ToString(dataReader["Layer"]);
+            // 
+            if (dataReader["Note"] != DBNull.Value)
+                pTUsers.Note = Convert.ToString(dataReader["Note"]);
+        }
+
+
 
 
         //﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉

@@ -2606,6 +2606,10 @@
     <Content Include="UI\node_modules\lodash\_updateWrapDetails.js" />
     <Content Include="UI\node_modules\lodash\_WeakMap.js" />
     <Content Include="UI\node_modules\lodash\_wrapperClone.js" />
+    <Content Include="UI\node_modules\ng-file\FileAPI.min.js" />
+    <Content Include="UI\node_modules\ng-file\ng-file-upload-all.min.js" />
+    <Content Include="UI\node_modules\ng-file\ng-file-upload-shim.min.js" />
+    <Content Include="UI\node_modules\ng-file\ng-file-upload.min.js" />
     <Content Include="UI\notifications.html" />
     <Content Include="UI\popover.html" />
     <Content Include="UI\profile.html" />
@@ -2919,6 +2923,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Static\file\" />
     <Folder Include="UI\components\data-table\extensions\FixedColumns\examples\integration\" />
     <Folder Include="UI\components\floating-action-button\js\" />
     <Folder Include="UI\components\notification\" />

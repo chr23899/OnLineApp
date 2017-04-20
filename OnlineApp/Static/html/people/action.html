@@ -18,21 +18,24 @@
                     </div>
                     <div class="form-group pmd-textfield">
                         <label for="first-name">头像地址</label>
-                        <!--<input type="text" class="form-control" id="Tel" ng-model="newperson.Tel"> --> 
-                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" type="button" onclick="$('#ImgUpload').click();"> 浏览图片</button>
-                        <input type="file" id="ImgUpload" onchange="angular.element(this).scope().showImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
+                        <!--<input type="text" class="form-control" id="Tel" ng-model="newperson.Tel"> -->
+                        <div class="row text-center" ng-show="newperson.Alternate2">
+                            <img ng-src="{{newperson.Alternate2}}" width="40%" height="120" style="margin:10px;">
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload').click();"> {{btn_upload}}</button>
+                        <input type="file" id="ImgUpload" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
                     </div>
                     <div class="form-group pmd-textfield pmd-textfield-floating-label">
                         <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="role in userRoles track by $index">
                             <input type="radio" id="userType{{role.id}}" name="userType{{role.id}}" value="{{role.id}}" ng-model="newperson.Type"><span class="pmd-checkbox-label">&nbsp;</span>
                             <span> {{role.name}}</span>
-                        </label> 
+                        </label>
                     </div>
                     <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.Type != '1' && newperson.Type != '2'">
                         <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="layer in userLayers track by $index">
                             <input type="radio" id="Layer{{layer.id}}" name="Layer{{layer.id}}" value="{{layer.id}}" ng-model="newperson.Layer"><span class="pmd-checkbox-label">&nbsp;</span>
                             <span> {{layer.name}}</span>
-                        </label> 
+                        </label>
                     </div>
                     <div class="form-group pmd-textfield">
                         <label class="control-label">个人说明</label>
