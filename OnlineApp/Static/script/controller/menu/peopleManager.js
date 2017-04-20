@@ -38,6 +38,12 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
         });
     }
 
+    //对input为file的控件包含的文件进行清空处理
+    function clearSelect() {
+        var obj = document.getElementById('ImgUpload');
+        obj.outerHTML = obj.outerHTML;
+    }
+
     $scope.addMore = function () {
         for (var i = 0; i < 6 && i< peopleStore.length; i++) {
             var people = _.clone(peopleStore[i]);
@@ -83,6 +89,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
      
     $scope.userCtrlType = "add";
     $scope.showAddPerson = function () {
+        clearSelect();
         $scope.userCtrlType = 'add';
         $scope.pic_error = false;
         $scope.newperson = {
@@ -195,6 +202,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     }
 
     $scope.showEditWnd = function (index) {
+        clearSelect();
         $scope.userCtrlType = 'edit';
         $scope.editPersonIndex = index;
         $scope.newperson = {
