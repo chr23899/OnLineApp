@@ -11,7 +11,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
 
     $('#form-dialog').modal('show');
     $scope.btn_upload = "浏览图片";
-
+    $scope.pic_error = false;
 
     $scope.query = {
         UserName: "",
@@ -84,6 +84,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     $scope.userCtrlType = "add";
     $scope.showAddPerson = function () {
         $scope.userCtrlType = 'add';
+        $scope.pic_error = false;
         $scope.newperson = {
             UserName: "",
             Tel: "",
@@ -104,6 +105,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
         $scope.newperson.UserName &&
         $scope.newperson.Tel &&
         $scope.newperson.Note &&
+        $scope.newperson.Alternate2 &&
         $scope.btn_upload == "浏览图片";
     }, true);
 
@@ -113,6 +115,11 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     $scope.showImg = function (file) {
         if (file.length == 0)
             return;
+        if (file[0].size / 1024 > 200) {
+            $scope.pic_error = true;
+            $scope.$apply();
+            return;
+        }
         //console.log("imgUrl" + $scope.newperson);
         $scope.btn_upload = "图片上传中...";
         var nowInput = $("#ImgUpload");
@@ -127,9 +134,9 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
                 console.log(data.data);
                 $scope.btn_upload = "浏览图片";
                 $scope.newperson.Alternate2 = data.data;
+                $scope.pic_error = false;
             }
         })
-
     }
 
     $scope.addNewPerson = function () {

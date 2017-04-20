@@ -24,6 +24,9 @@
                         <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload').click();"> {{btn_upload}}</button>
                         <input type="file" id="ImgUpload" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
                     </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
+                        图片大小要介于<a href="javascript:void(0);" class="alert-link">0K~300K</a>, 请重新选择!
+                    </div>
                     <div class="form-group pmd-textfield pmd-textfield-floating-label">
                         <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="role in userRoles track by $index">
                             <input type="radio" id="userType{{role.id}}" name="userType{{role.id}}" value="{{role.id}}" ng-model="newperson.Type"><span class="pmd-checkbox-label">&nbsp;</span>
@@ -67,7 +70,7 @@
                     </div>
                     <div class="form-group pmd-textfield">
                         <label for="first-name">头像地址</label> 
-                        <div class="row text-center" ng-show="newperson.Alternate2">
+                        <div class="row text-center" ng-show="peopleList[nowindex].Alternate2">
                             <img ng-src="{{peopleList[nowindex].Alternate2}}" width="40%" height="120" style="margin:10px;">
                         </div>
                     </div>
