@@ -71,28 +71,29 @@
                             <div class="form-horizontal">
                                 <div class="form-group pmd-textfield ">
                                     <label for="first-name">作业</label>
-                                    <input type="text" class="form-control" id="name" ng-model="newHomeWork.homeWorkTask" disabled>
+                                    <input type="text" class="form-control" id="name" ng-model="newHomeWork.homeWorkTask">
                                 </div>
                                 <div class="form-group pmd-textfield ">
                                     <label for="first-name">课程</label>
-                                    <input type="text" class=" form-control" id="phone" ng-model="newHomeWork.courseName"disabled>
+                                    <input type="text" class=" form-control" id="phone" ng-model="newHomeWork.courseName">
                                 </div>
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.type != '管理员'">
                                     <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="layerType" type="radio" name="layerType" value="课堂" ng-model="newHomeWork.layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <input id="layerType" type="radio" name="layerType" value="课堂" ng-model="newHomeWork.layerType" ><span class="pmd-checkbox-label">&nbsp;</span>
                                         <span> 课堂作业</span>
                                     </label>
                                     <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="layerType2" type="radio" name="layerType2" value="课后" ng-model="newHomeWork.layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <input id="layerType2" type="radio" name="layerType2" value="课后" ng-model="newHomeWork.layerType" ><span class="pmd-checkbox-label">&nbsp;</span>
                                         <span> 课后作业</span>
                                     </label>
                                 </div>
                                 <div class="form-group pmd-textfield">
                                     <label class="control-label">作业说明</label>
-                                    <textarea required class="form-control" ng-model="newHomeWork.content"disabled></textarea>
+                                    <textarea required class="form-control" ng-model="newHomeWork.content"></textarea>
                                 </div>
                             </div>
                         </div>
+                      
                         <div class="pmd-modal-action">
                             <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewHomeWork()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
                             <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
@@ -110,25 +111,25 @@
                             <div class="form-horizontal">
                                 <div class="form-group pmd-textfield">
                                     <label for="first-name">作业</label>
-                                    <input type="text" class="form-control" id="name" value="{{homeWorkList[nowindex].task}}" disabled>
+                                    <input type="text" class="form-control" id="name" value="{{homeWorkList[nowindex].task}}" >
                                 </div>
                                 <div class="form-group pmd-textfield">
                                     <label for="first-name">课程</label>
-                                    <input type="text" class="form-control" id="phone" ng-model="homeWorkList[nowindex].courseName" disabled>
+                                    <input type="text" class="form-control" id="phone" ng-model="homeWorkList[nowindex].courseName" >
                                 </div>
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="homeWorkList[nowindex].type != '管理员'">
                                     <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="layerType3" type="radio" name="layerType3" value="课堂" ng-model="homeWorkList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <input id="layerType3" type="radio" name="layerType3" value="课堂" ng-model="homeWorkList[nowindex].layerType" ><span class="pmd-checkbox-label">&nbsp;</span>
                                         <span> 课堂作业</span>
                                     </label>
                                     <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="layerType4" type="radio" name="layerType4" value="课后" ng-model="homeWorkList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
+                                        <input id="layerType4" type="radio" name="layerType4" value="课后" ng-model="homeWorkList[nowindex].layerType" ><span class="pmd-checkbox-label">&nbsp;</span>
                                         <span> 课后作业</span>
                                     </label>
                                 </div>
                                 <div class="form-group pmd-textfield">
                                     <label class="control-label">作业说明</label>
-                                    <textarea required class="form-control" ng-model="homeWorkList[nowindex].content" disabled></textarea>
+                                    <textarea required class="form-control" ng-model="homeWorkList[nowindex].content" ></textarea>
                                 </div>
                             </div>
                         </div>

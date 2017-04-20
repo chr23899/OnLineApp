@@ -1,13 +1,26 @@
 ﻿//define menu controller
-OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkStore) {
+OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $window, homeWorkStore) {
     //显示当前作业列表内容
     $scope.homeWorkList = homeWorkStore;
+    $('#form-dialog').modal('show');
 
     $scope.query = {
         userName: "",
         homeWorkTask: "",
         inClass: true,
         afterClass: true
+    }
+    initList();
+    function initList() {
+        homeWorkService.GetAssignmentPageData($scope.query).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.homeWorkList = data.result.PageList;
+                $scope.$apply();
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+            }
+        });
     }
     $scope.addMore = function () {
         for (var i = 0; i < 3 && i < homeWorkStore.length; i++) {
