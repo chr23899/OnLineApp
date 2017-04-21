@@ -89,6 +89,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
      
     $scope.userCtrlType = "add";
     $scope.showAddPerson = function () {
+        $scope.pic_error = false;
         clearSelect();
         $scope.userCtrlType = 'add';
         $scope.pic_error = false;
@@ -202,6 +203,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     }
 
     $scope.showEditWnd = function (index) {
+        $scope.pic_error = false;
         clearSelect();
         $scope.userCtrlType = 'edit';
         $scope.editPersonIndex = index;
