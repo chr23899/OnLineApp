@@ -19,6 +19,7 @@
     <!-- load the service of angularjs-->
     <script src="/Static/script/service/userService.js"></script>
     <script src="/Static/script/service/toolService.js"></script>
+    <script src="/Static/script/service/homeWorkService.js"></script>
 
     <!-- load the angularjs javascript-->
     <script src="/Static/script/controller/index/head.js"></script>

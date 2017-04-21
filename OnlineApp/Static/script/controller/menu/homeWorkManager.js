@@ -10,6 +10,7 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
         inClass: true,
         afterClass: true
     }
+    
     initList();
     function initList() {
         homeWorkService.GetAssignmentPageData($scope.query).then(function (data) {
@@ -22,12 +23,15 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
             }
         });
     }
+
     $scope.addMore = function () {
         for (var i = 0; i < 3 && i < homeWorkStore.length; i++) {
             var homeWork = _.clone(homeWorkStore[i]);
             $scope.homeWorkList.push(homeWork);
         }
     }
+
+   
 
     $scope.serachData = function () {
         for (var i = 0; i < $scope.homeWorkList.length; i++) {
