@@ -14,6 +14,11 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
     initList();
     function initList() {
         homeWorkService.GetAssignmentPageData($scope.query).then(function (data) {
+            if (data == "") {
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+                return;
+            }
             data = JSON.parse(data);
             if (data.type == "success") {
                 $scope.homeWorkList = data.result.PageList;
@@ -83,8 +88,8 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
     $scope.$watch("newHomeWork", function () {
         $scope.validate =
         $scope.newHomeWork.homeWorkTask &&
-        $scope.newHomeWork.userName &&
-        $scope.newHomeWork.note;
+        $scope.newHomeWork.courseName &&
+        $scope.newHomeWork.content;
     }, true);
 
     $scope.editHomeWorkIndex = 0;
