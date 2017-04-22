@@ -186,18 +186,12 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
+            foreach (string item in strList)
             {
-                foreach (string item in strList)
-                {
-                    YWCourseDataBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程资料删除成功");
+                YWCourseDataBLL.Delete(Convert.ToInt32(item));
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选课程资料删除失败" + e.ToString());
-            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程资料删除成功");
+
         }
     }
 }

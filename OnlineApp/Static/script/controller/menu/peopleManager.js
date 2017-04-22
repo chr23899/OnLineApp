@@ -85,7 +85,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
         content: "2017年3月27号加入",
         StateId: true,
         title: "",
-        Alternate2: "male.png",
+        Alternate2: "",
     }
      
     $scope.userCtrlType = "add";
@@ -126,7 +126,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     $scope.showImg = function (file) {
         if (file.length == 0)
             return;
-        if (file[0].size / 1024 > 200) {
+        if (file[0].size / 1024 > 300) {
             $scope.pic_error = true;
             $scope.$apply();
             return;

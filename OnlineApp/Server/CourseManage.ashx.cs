@@ -68,6 +68,7 @@ namespace OnlineApp.Server
             string strtitle = context.Request["title"];
             string strspan = context.Request["span"];
             string strshow = context.Request["show"];
+            string strpic = context.Request["pic"];
             string strcourseNum = "0";  //初始时改课程上课人数为0  
             string strstatus = context.Request["status"];
             string strAlternate1 = context.Request["Alternate1"];
@@ -86,6 +87,7 @@ namespace OnlineApp.Server
             course.Title = strtitle != null ? strtitle : "";
             course.Span = strspan != null ? strspan : "";
             course.Show = strshow != null ? strshow : "";
+            course.Pic = strpic != null ? strpic : "";
             course.CourseNum = strcourseNum != null ? Convert.ToInt32(strcourseNum) : 0;
             course.CreateTime = DateTime.Now;
             course.UpdateTime = DateTime.Now;
@@ -105,14 +107,15 @@ namespace OnlineApp.Server
         //编辑课程信息
         public void ModifyCourse(HttpContext context)
         {
-            string strId= context.Request["id"];
+            string strId = context.Request["id"];
             string strcourseName = context.Request["courseName"];
             string strlinkBook = context.Request["linkBook"]; 
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strspan = context.Request["span"];
             string strshow = context.Request["show"];
-            string strcourseNum = "0";  //初始时改课程上课人数为0  
+            string strpic = context.Request["pic"];
+            string strcourseNum = "0";                    //初始时改课程上课人数为0  
             string strstatus = context.Request["status"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
@@ -128,6 +131,7 @@ namespace OnlineApp.Server
             course.Title = strtitle != null ? strtitle : course.Title;
             course.Span = strspan != null ? strspan : course.Span;
             course.Show = strshow != null ? strshow : course.Show;
+            course.Pic = strpic != null ? strpic : "";
             course.CourseNum = strcourseNum != null ? Convert.ToInt32(strcourseNum) : course.CourseNum;
             course.UpdateTime = DateTime.Now;
             course.UpdateUserName = pTUsers.Nickname;
@@ -138,15 +142,8 @@ namespace OnlineApp.Server
             course.Alternate3 = strAlternate3 != null ? strAlternate3 : course.Alternate3;
             course.Alternate4 = strAlternate4 != null ? strAlternate4 : course.Alternate4;
             course.Alternate5 = strAlternate5 != null ? strAlternate5 : course.Alternate5;
-            try
-            {
-                YWCourseBLL.Update(course);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程更新成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程更新失败" + e.ToString());
-            }
+            YWCourseBLL.Update(course);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程更新成功"); 
         }
 
         //删除指定的课程信息
@@ -157,18 +154,11 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
-            {                
-                foreach (string item in strList)
-                {
-                    YWCourseBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程删除成功");
-            }
-            catch (Exception e)
+            foreach (string item in strList)
             {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选课程删除失败" + e.ToString());
+                YWCourseBLL.Delete(Convert.ToInt32(item));
             }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程删除成功");
         }
     }
 }
