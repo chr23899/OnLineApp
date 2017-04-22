@@ -1,4 +1,4 @@
-﻿//define menu controller
+﻿//define menu controller 作业管理
 OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $window, homeWorkStore) {
     //显示当前作业列表内容
     $scope.homeWorkList = homeWorkStore;

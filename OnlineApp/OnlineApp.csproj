@@ -68,6 +68,7 @@
     <Content Include="Static\html\comon\footer.html" />
     <Content Include="Static\html\comon\head.html" />
     <Content Include="Static\html\comon\sidebar.html" />
+    <Content Include="Static\html\course\action.html" />
     <Content Include="Static\html\course\index.html" />
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
@@ -89,6 +90,7 @@
     <Content Include="Static\script\controller\menu\comment.js" />
     <Content Include="Static\script\controller\menu\courseManager.js" />
     <Content Include="Static\script\controller\menu\dataManager.js" />
+    <Content Include="Static\script\controller\menu\homePageManager.js" />
     <Content Include="Static\script\controller\menu\homeWorkManager.js" />
     <Content Include="Static\script\controller\menu\peopleManager.js" />
     <Content Include="Static\script\controller\menu\systemSetting.js" />

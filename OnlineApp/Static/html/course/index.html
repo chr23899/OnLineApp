@@ -50,95 +50,7 @@
         </div>
 
         <div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;">
-            <div tabindex="-1" class="modal fade" id="form-dialog">
-                <div class="modal-dialog" ng-show="userCtrlType=='add' || userCtrlType=='edit'">
-                    <div class="modal-content">
-                        <div class="modal-header bordered">
-                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-horizontal">
-                                <div class="form-group pmd-textfield ">
-                                    <label for="first-name">课程名：</label>
-                                    <input type="text" class="form-control" id="name" ng-model="newcourse.courseName">
-                                </div>
-                                <div class="form-group pmd-textfield ">
-                                    <label for="first-name">主讲老师</label>
-                                    <input type="text" class=" form-control" id="phone" ng-model="newcourse.userName">
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="newperson.type != '管理员'">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="weiwanwan1" type="radio" name="weiwanwan1" value="中学" ng-model="newcourse.layerType"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 中学课程</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input id="weiwanwan2" type="radio" name="weiwanwan2" value="小学" ng-model="newcourse.layerType"><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 小学课程</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label">课程说明</label>
-                                    <textarea required class="form-control" ng-model="newcourse.note"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pmd-modal-action">
-                            <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewPerson()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- view new form -->
-                <div class="modal-dialog" ng-show="userCtrlType=='view'">
-                    <div class="modal-content">
-                        <div class="modal-header bordered">
-                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h2 class="pmd-card-title-text">{{courseList[nowindex].title}}</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-horizontal">
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">课程名</label>
-                                    <input type="text" class="form-control" id="name" value="{{courseList[nowindex].courseName}}" disabled>
-                                </div>
-                                <div class="form-group pmd-textfield">
-                                    <label for="first-name">主讲教师</label>
-                                    <input type="text" class="form-control" id="phone" ng-model="courseList[nowindex].userName" disabled>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label" ng-show="courseList[nowindex].type != '管理员'">
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType" value="中学" ng-model="courseList[nowindex].layerType" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 中学课程</span>
-                                    </label>
-                                    <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
-                                        <input type="radio" name="layerType1" value="小学" ng-model="courseList[nowindex].layerType1" disabled><span class="pmd-checkbox-label">&nbsp;</span>
-                                        <span> 小学课程</span>
-                                    </label>
-                                </div>
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label">课程说明</label>
-                                    <textarea required class="form-control" ng-model="courseList[nowindex].note" disabled></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pmd-modal-action">
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- confirm delete-->
-                <div class="modal-dialog" ng-show="userCtrlType=='delete'" style="margin-top: 204px;">
-                    <div class="modal-content">
-                        <div class="modal-body"> 你确定删除当前对象吗? </div>
-                        <div class="pmd-modal-action text-right">
-                            <button class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button" ng-click="confirmDel()">确定</button>
-                            <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button">取消</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!--#include file="action.html" -->
 
             <!--窗口显示-->
             <div class="col-md-4 col-sm-6 masonry-brick" ng-if="course.show" ng-repeat="course in courseList track by $index">
@@ -147,16 +59,16 @@
                     <div class="pmd-card-title">
                         <div class="media-left">
                             <a class="avatar-list-img" href="javascript:void(0);">
-                                <img ng-src="{{course.imageUrl}}" width="40" height="40">
+                                <img ng-src="{{course.userPic}}" width="40" height="40">
                             </a>
                         </div>
                         <div class="media-body media-middle">
                             <h3 class="pmd-card-title-text">{{course.courseName}}</h3>
-                            <span class="pmd-card-subtitle-text">主讲老师:{{course.userName}}</span>
+                            <span class="pmd-card-subtitle-text">主讲老师:{{course.teacherName}}</span>
                         </div>
                     </div>
                     <div class="pmd-card-media">
-                        <img ng-src="{{course.imageUrl}}" width="666" height="300" class="img-responsive">
+                        <img ng-src="{{course.imageUrl}}" width="666" height="200" class="img-responsive" style="height:200px;">
                     </div>
                     <div class="pmd-card-title">
                         <h2 class="pmd-card-title-text">{{course.courseName}}</h2>

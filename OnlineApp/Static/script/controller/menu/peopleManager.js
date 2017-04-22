@@ -1,4 +1,4 @@
-﻿//define menu controller
+﻿//define menu controller 人员管理
 OnlineApp.controller('peopleManager', function ($scope, userService,toolService, $window, peopleStore, USER_ROLES, USER_LAYERS) {
     //显示当前人员列表内容
     $scope.peopleList;// = peopleStore;
@@ -77,6 +77,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
 
     $scope.newperson = {
         UserName: "",
+        Nickname: "",
         Tel: "",
         Type: $scope.userRoles[11].id,
         Layer: $scope.userLayers[1].id,
@@ -95,6 +96,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
         $scope.pic_error = false;
         $scope.newperson = {
             UserName: "",
+            Nickname: "",
             Tel: "",
             Type: $scope.userRoles[11].id,
             Layer: $scope.userLayers[1].id,
@@ -111,6 +113,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
     $scope.$watch("newperson", function () {
         $scope.validate =
         $scope.newperson.UserName &&
+        $scope.newperson.Nickname &&
         $scope.newperson.Tel &&
         $scope.newperson.Note &&
         $scope.newperson.Alternate2 &&
@@ -209,6 +212,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
         $scope.editPersonIndex = index;
         $scope.newperson = {
             UserName: $scope.peopleList[index].UserName,
+            Nickname: $scope.peopleList[index].Nickname,
             Tel: $scope.peopleList[index].Tel,
             Type: +$scope.peopleList[index].Type,
             Layer: $scope.peopleList[index].Layer,

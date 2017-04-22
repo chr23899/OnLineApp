@@ -1,14 +1,44 @@
-﻿//define menu controller
-OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
+﻿//define menu controller 课程管理
+OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS) {
     //显示当前课程列表内容
     $scope.courseList = courseStore;
+    //是否正在加载页面
+    $scope.loadingForm = true;
+    //用来保存用户所在层级(小学、中学)
+    $scope.userLayers = USER_LAYERS;
+
+
+    $('#form-dialog').modal('show');
+    $scope.btn_upload = "浏览图片";
+    $scope.pic_error = false;
 
     $scope.query = {
         userName: "",
         courseName: "",
         isPrimary: true,
-        isMiddle: true
+        isMiddle: true,
+        PageSize: 10,
+        CurPage: 1
     }
+
+    initList();
+    function initList() {
+        courseService.GetCoursePageData($scope.query).then(function (data) {
+            if (data == "") {
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+                return;
+            }
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.courseList = data.result.PageList;
+                $scope.$apply();
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+            }
+        });
+    }
+
     $scope.addMore = function () {
         for (var i = 0; i < 3 && i < courseStore.length; i++) {
             var course = _.clone(courseStore[i]);
@@ -40,10 +70,10 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
         userName: "",
         layerType: "中学",
         note: "",
-        content: "2017年3月27号加入",
+        content: "",
         show: true,
         title: "",
-        imageUrl: "UI/themes/images/course_mathG1.jpg",
+        imageUrl: "UI/themes/images/course_teach.jpg",
     }
 
     $scope.userCtrlType = "add";
@@ -54,10 +84,10 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
             userName: "",
             layerType: "中学",
             note: "",
-            content: "2017年3月27号加入",
+            content: "",
             show: true,
             title: "",
-            imageUrl: "UI/themes/images/course_mathG1.jpg",
+            imageUrl: "UI/themes/images/course_teach.jpg",
         }
     }
 
@@ -74,14 +104,25 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
 
     $scope.addNewCourse = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
-            $scope.newcourse.title = $scope.newcourse.layerType;
-            $scope.courseList.push($scope.newcourse);
-            $('#form-dialog').modal('hide');
+            courseService.AddCourse($scope.newcourse).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.courseList.push($scope.newcourse);
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            });
         }
         else if ($scope.userCtrlType == 'edit' && $scope.validate) {
-            $scope.courseList[$scope.editCourseIndex] = $scope.newcourse;
-            $('#form-dialog').modal('hide');
-        }
+            courseService.UpdateCourse($scope.newcourse).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.courseList[$scope.editPersonIndex] = $scope.newcourse;
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            });
+        } 
     }
 
     $scope.nowindex = 0;
