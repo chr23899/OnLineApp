@@ -96,14 +96,35 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
 
     $scope.addNewHomeWork = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
-            $scope.newHomeWork.title = $scope.newHomeWork.layerType;
-            $scope.homeWorkList.push($scope.newHomeWork);
-            $('#form-dialog').modal('hide');
+            homeWorkService.AddAssignment($scope.newHomeWork).then(function (data) {
+                if (data == "") {
+                    $('#form-dialog').modal('hide');
+                    $scope.loadingForm = false;
+                    return;
+                }
+
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.homeWorkList.push($scope.newHomeWork);
+                    $scope.newHomeWork.title = $scope.newHomeWork.layerType;
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            });
+           
         }
         else if ($scope.userCtrlType == 'edit' && $scope.validate) {
-            $scope.homeWorkList[$scope.editHomeWorkIndex] = $scope.newHomeWork;
-            $('#form-dialog').modal('hide');
+            userService.UpdateAssignment($scope.newHomeWork).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $scope.homeWorkList[$scope.editHomeWorkIndex] = $scope.newHomeWork;
+                    $('#form-dialog').modal('hide');
+                    $scope.$apply();
+                }
+            });
         }
+     
+      
     }
 
     $scope.nowindex = 0;
@@ -122,11 +143,25 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
         $('#form-dialog').modal('show');
     }
 
+   
+    //可能有问题
     $scope.confirmDel = function () {
-        $scope.homeWorkList.splice($scope.delHomeWorkIndex, 1);
-        $scope.delHomeWorkIndex = 0;
-        $('#form-dialog').modal('hide');
+        var strDelete = {
+            strDelete: ""
+        };
+        strDelete.strDelete = $scope.homeWorkList[$scope.delHomeWorkIndex].task;
+        homeWorkService.DeleteAssignment(strDelete).then(function (data) {
+          
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.homeWorkService.splice($scope.delHomeWorkIndex, 1);
+                $scope.delHomeWorkIndex = 0;
+                $('#form-dialog').modal('hide');
+                $scope.$apply();
+            }
+        });
     }
+   
 
     $scope.showEditWnd = function (index) {
         $scope.userCtrlType = 'edit';

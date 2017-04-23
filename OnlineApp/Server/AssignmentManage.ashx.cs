@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class AssignmentManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -74,11 +75,7 @@ namespace OnlineApp.Server
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
+            string strcourseName = context.Request["courseName"];  
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
@@ -94,14 +91,14 @@ namespace OnlineApp.Server
 
             YWAssignment assignment = new YWAssignment();
             assignment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
-            assignment.PlanName = strplanName != null ? strcontent : "";
+            assignment.PlanName = strplanName != null ? strcontent : "zanwujihua";
             assignment.CourseId = strcourseId  != null ? Convert.ToInt32(strcourseId) : 0;
-            assignment.CourseName = strcourseName != null ? strcontent : "";
-            assignment.CreateUserName = strcreateUserName != null ? strcontent : "";
-            assignment.CreateUserId = strcreateUserId  != null ? Convert.ToInt32(strcreateUserId) : 0;
-            assignment.UpdateUserName = strupdateUserName != null ? strcontent : "";
-            assignment.UpdateUserId = strupdateUserId  != null ? Convert.ToInt32(strupdateUserId) : 0;
-            assignment.Title = strtitle != null ? strcontent : "";
+            assignment.CourseName = strcourseName != null ? strcontent : "zanwukechen";
+            assignment.CreateUserName = pTUsers.Nickname;
+            assignment.CreateUserId = pTUsers.Id;
+            assignment.UpdateUserName = pTUsers.Nickname;
+            assignment.UpdateUserId = pTUsers.Id;
+            assignment.Title = strtitle != null ? strcontent : "zanwubiaoti";
             assignment.Content = strcontent != null ? strcontent : "";
             assignment.Link = strlink != null ? strcontent : "";
             assignment.CreateTime = DateTime.Now;
@@ -113,16 +110,8 @@ namespace OnlineApp.Server
             assignment.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             assignment.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
 
-            try
-            {
-                YWAssignmentBLL.Insert(assignment);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "作业添加成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "作业添加失败" + e.ToString());
-            } 
+            YWAssignmentBLL.Insert(assignment);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "作业添加成功");
         }
 
          //更新作业接口 
@@ -132,11 +121,7 @@ namespace OnlineApp.Server
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
+            string strcourseName = context.Request["courseName"];  
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
@@ -155,10 +140,8 @@ namespace OnlineApp.Server
             assignment.PlanName = strplanName != null ? strplanName : assignment.PlanName;
             assignment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : assignment.CourseId;
             assignment.CourseName = strcourseName != null ? strcourseName : assignment.CourseName;
-            assignment.CreateUserName = strcreateUserName != null ? strcreateUserName : assignment.CreateUserName;
-            assignment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : assignment.CreateUserId;
-            assignment.UpdateUserName = strupdateUserName != null ? strupdateUserName : assignment.UpdateUserName;
-            assignment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : assignment.UpdateUserId;
+            assignment.UpdateUserName = pTUsers.Nickname;
+            assignment.UpdateUserId = pTUsers.Id;
             assignment.Title = strtitle != null ? strtitle : assignment.Title;
             assignment.Content = strcontent != null ? strcontent : assignment.Content;
             assignment.Link = strlink != null ? strlink : assignment.Link; 
@@ -189,12 +172,12 @@ namespace OnlineApp.Server
             string strCallBack = context.Request["callback"];
 
             string[] strList = strDelete.Split(',');
-
+            
             try
             {
                 foreach (string item in strList)
                 {
-                   YWAssignmentBLL.Delete(Convert.ToInt32(item));
+                    YWAssignmentBLL.Delete(Convert.ToInt32(item));
                 }
                 CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选作业删除成功");
             }
