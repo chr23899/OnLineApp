@@ -33,10 +33,10 @@ namespace Chr.OnlineApp.DAL.SqlServer
         {
             string sqlText = "INSERT INTO [YW_Course]"
                            + "([courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[pic],[createTime],[updateTime],[updateUserName],"
-                           + "[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5])"
+                           + "[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[support],[oppose],[share])"
                            + "VALUES"
                            + "(@courseName,@linkBook,@teacherName,@teacherId,@content,@title,@span,@show,@courseNum,@pic,@createTime,@updateTime,@updateUserName,"
-                           + "@updateUserId,@status,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5)";
+                           + "@updateUserId,@status,@Alternate1,@Alternate2,@Alternate3,@Alternate4,@Alternate5,@support,@oppose,@share)";
             SqlParameter[] parameters = 
             {
                 new SqlParameter("@courseName"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.CourseName     },
@@ -48,7 +48,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@span"           , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Span           },
                 new SqlParameter("@show"           , SqlDbType.NVarChar , 10 ){ Value = yWCourse.Show           },
                 new SqlParameter("@courseNum"      , SqlDbType.Int      , 4  ){ Value = yWCourse.CourseNum      },
-                new SqlParameter("@pic"            , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Pic            },
+                new SqlParameter("@pic"            , SqlDbType.NVarChar , 500){ Value = yWCourse.Pic            },
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWCourse.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWCourse.UpdateTime     },
                 new SqlParameter("@updateUserName" , SqlDbType.NVarChar , 20 ){ Value = yWCourse.UpdateUserName },
@@ -58,7 +58,10 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@Alternate2"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate2     },
                 new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate3     },
                 new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate4     },
-                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate5     }
+                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate5     },
+                new SqlParameter("@support"        , SqlDbType.Int      , 4  ){ Value = yWCourse.Support        },
+                new SqlParameter("@oppose"         , SqlDbType.Int      , 4  ){ Value = yWCourse.Oppose         },
+                new SqlParameter("@share"          , SqlDbType.Int      , 4  ){ Value = yWCourse.Share          }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
@@ -74,7 +77,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                            + "[courseName]=@courseName,[linkBook]=@linkBook,[teacherName]=@teacherName,[teacherId]=@teacherId,[content]=@content,[title]=@title,"
                            + "[span]=@span,[show]=@show,[courseNum]=@courseNum,[pic]=@pic,[createTime]=@createTime,[updateTime]=@updateTime,[updateUserName]=@updateUserName,"
                            + "[updateUserId]=@updateUserId,[status]=@status,[Alternate1]=@Alternate1,[Alternate2]=@Alternate2,[Alternate3]=@Alternate3,[Alternate4]=@Alternate4,"
-                           + "[Alternate5]=@Alternate5 "
+                           + "[Alternate5]=@Alternate5,[support]=@support,[oppose]=@oppose,[share]=@share "
                            + "WHERE [Id]=@Id";
             SqlParameter[] parameters = 
             {
@@ -87,7 +90,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@span"           , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Span           },
                 new SqlParameter("@show"           , SqlDbType.NVarChar , 10 ){ Value = yWCourse.Show           },
                 new SqlParameter("@courseNum"      , SqlDbType.Int      , 4  ){ Value = yWCourse.CourseNum      },
-                new SqlParameter("@pic"            , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Pic            },
+                new SqlParameter("@pic"            , SqlDbType.NVarChar , 500){ Value = yWCourse.Pic            },
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWCourse.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWCourse.UpdateTime     },
                 new SqlParameter("@updateUserName" , SqlDbType.NVarChar , 20 ){ Value = yWCourse.UpdateUserName },
@@ -98,6 +101,9 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate3     },
                 new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate4     },
                 new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 50 ){ Value = yWCourse.Alternate5     },
+                new SqlParameter("@support"        , SqlDbType.Int      , 4  ){ Value = yWCourse.Support        },
+                new SqlParameter("@oppose"         , SqlDbType.Int      , 4  ){ Value = yWCourse.Oppose         },
+                new SqlParameter("@share"          , SqlDbType.Int      , 4  ){ Value = yWCourse.Share          },
                 new SqlParameter("@Id"             , SqlDbType.Int      , 4  ){ Value = yWCourse.Id             }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
@@ -129,7 +135,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
         {
             YWCourse yWCourse = null;
             string sqlText = "SELECT [Id],[courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[pic],[createTime],[updateTime],"
-                           + "[updateUserName],[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5] "
+                           + "[updateUserName],[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[support],[oppose],[share] "
                            + "FROM [YW_Course] "
                            + "WHERE [Id]=@Id";
             SqlParameter[] parameters = 
@@ -148,13 +154,14 @@ namespace Chr.OnlineApp.DAL.SqlServer
         }
 
 
+
         /// <summary>
         /// 从数据库中读取并返回所有基础对象名称（YWCourse）List列表。
         /// </summary>
         public override List<YWCourse> GetAllList()
         {
             string sqlText = "SELECT [Id],[courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[pic],[createTime],[updateTime],"
-                           + "[updateUserName],[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5] "
+                           + "[updateUserName],[updateUserId],[status],[Alternate1],[Alternate2],[Alternate3],[Alternate4],[Alternate5],[support],[oppose],[share] "
                            + "FROM [YW_Course]";
             List<YWCourse> list = new List<YWCourse>();
             SqlDataReader sqlDataReader = SFL.SqlHelper.ExecuteReader(sqlText, null);
@@ -167,7 +174,6 @@ namespace Chr.OnlineApp.DAL.SqlServer
             sqlDataReader.Close();
             return list;
         }
-
          
 
         #endregion EasyCode所生成的默认代码

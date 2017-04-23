@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class CourseDataManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -51,19 +52,12 @@ namespace OnlineApp.Server
             string strupdateUserId = context.Request["updateUserId"];
             string strupdateUserName = context.Request["updateUserName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"]; 
+            string strcourseName = context.Request["courseName"];
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
-            try
-            {
-                string strResult = CommonToolsBLL.PageDataToJson(YWCourseDataBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+            string strResult = CommonToolsBLL.PageDataToJson(YWCourseDataBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增课程资料接口 
@@ -72,12 +66,8 @@ namespace OnlineApp.Server
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
-            string strcontent = context.Request["content"]; 
+            string strcourseName = context.Request["courseName"]; 
+            string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
             string strstatus = context.Request["status"];
@@ -93,13 +83,13 @@ namespace OnlineApp.Server
             courseData.PlanName = strplanName != null ? strplanName : "";
             courseData.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
             courseData.CourseName = strcourseName != null ? strcourseName : "";
-            courseData.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
-            courseData.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            courseData.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
-            courseData.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
+            courseData.CreateUserName = pTUsers.Nickname;
+            courseData.CreateUserId = pTUsers.Id;
+            courseData.UpdateUserName = pTUsers.Nickname;
+            courseData.UpdateUserId = pTUsers.Id;
             courseData.Content = strcontent != null ? strcontent : "";
             courseData.Title = strtitle != null ? strtitle : "";
-            courseData.Link = strlink != null ? strlink : ""; 
+            courseData.Link = strlink != null ? strlink : "";
             courseData.CreateTime = DateTime.Now;
             courseData.UpdateTime = DateTime.Now;
             courseData.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
@@ -109,16 +99,9 @@ namespace OnlineApp.Server
             courseData.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             courseData.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
 
-            try
-            {
-                YWCourseDataBLL.Insert(courseData);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程资料添加成功");
+            YWCourseDataBLL.Insert(courseData);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程资料添加成功");
 
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程添加失败" + e.ToString());
-            }
         }
 
         //更新课程资料接口 
@@ -128,14 +111,10 @@ namespace OnlineApp.Server
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
+            string strcourseName = context.Request["courseName"]; 
             string strcontent = context.Request["content"];
             string strsupport = context.Request["support"];
-            string stroppose = context.Request["oppose"]; 
+            string stroppose = context.Request["oppose"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
             string strstatus = context.Request["status"];
@@ -150,11 +129,9 @@ namespace OnlineApp.Server
             courseData.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : courseData.PlanId;
             courseData.PlanName = strplanName != null ? strplanName : courseData.PlanName;
             courseData.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : courseData.CourseId;
-            courseData.CourseName = strcourseName != null ? strcourseName : courseData.CourseName;
-            courseData.CreateUserName = strcreateUserName != null ? strcreateUserName : courseData.CreateUserName;
-            courseData.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : courseData.CreateUserId;
-            courseData.UpdateUserName = strupdateUserName != null ? strupdateUserName : courseData.UpdateUserName;
-            courseData.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : courseData.UpdateUserId;
+            courseData.CourseName = strcourseName != null ? strcourseName : courseData.CourseName; 
+            courseData.UpdateUserName = pTUsers.Nickname;
+            courseData.UpdateUserId = pTUsers.Id;
             courseData.Content = strcontent != null ? strcontent : courseData.Content;
             courseData.Title = strtitle != null ? strtitle : courseData.Title;
             courseData.Link = strlink != null ? strlink : courseData.Link;
@@ -166,16 +143,9 @@ namespace OnlineApp.Server
             courseData.Alternate4 = strAlternate4 != null ? strAlternate4 : courseData.Alternate4;
             courseData.Alternate5 = strAlternate5 != null ? strAlternate5 : courseData.Alternate5;
 
-            try
-            {
-                YWCourseDataBLL.Update(courseData);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程资料更新成功");
+            YWCourseDataBLL.Update(courseData);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程资料更新成功");
 
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程资料更新失败" + e.ToString());
-            }
         }
 
         //删除指定的课程资料

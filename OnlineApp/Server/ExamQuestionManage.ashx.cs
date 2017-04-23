@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class ExamQuestionManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -55,15 +56,9 @@ namespace OnlineApp.Server
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
-            try
-            {
-                string strResult = CommonToolsBLL.PageDataToJson(YWExamQuestionBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+
+            string strResult = CommonToolsBLL.PageDataToJson(YWExamQuestionBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增考试问题卷接口 
@@ -81,7 +76,7 @@ namespace OnlineApp.Server
             string strcontent = context.Request["content"];
             string strchanceAnswer = context.Request["chanceAnswer"];
             string strobjectAnswer = context.Request["objectAnswer"];
-            string strobjectPic = context.Request["objectPic"]; 
+            string strobjectPic = context.Request["objectPic"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
             string strAlternate3 = context.Request["Alternate3"];
@@ -102,7 +97,7 @@ namespace OnlineApp.Server
             examQuestion.Chance5 = strchance5 != null ? strchance5 : "";
             examQuestion.Content = strcontent != null ? strcontent : "";
             examQuestion.ObjectAnswer = strobjectAnswer != null ? strobjectAnswer : "";
-            examQuestion.ObjectPic = strobjectPic != null ? strobjectPic : ""; 
+            examQuestion.ObjectPic = strobjectPic != null ? strobjectPic : "";
             examQuestion.CreateTime = DateTime.Now;
             examQuestion.UpdateTime = DateTime.Now;
             examQuestion.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
@@ -111,16 +106,9 @@ namespace OnlineApp.Server
             examQuestion.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             examQuestion.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
 
-            try
-            {
-                YWExamQuestionBLL.Insert(examQuestion);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试问题卷添加成功");
 
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试问题卷添加失败" + e.ToString());
-            }
+            YWExamQuestionBLL.Insert(examQuestion);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试问题卷添加成功");
         }
 
         //更新考试问题卷接口 
@@ -160,7 +148,7 @@ namespace OnlineApp.Server
             examQuestion.Chance5 = strchance5 != null ? strchance5 : examQuestion.Chance5;
             examQuestion.Content = strcontent != null ? strcontent : examQuestion.Content;
             examQuestion.ObjectAnswer = strobjectAnswer != null ? strobjectAnswer : examQuestion.ObjectAnswer;
-            examQuestion.ObjectPic = strobjectPic != null ? strobjectPic : examQuestion.ObjectPic; 
+            examQuestion.ObjectPic = strobjectPic != null ? strobjectPic : examQuestion.ObjectPic;
             examQuestion.UpdateTime = DateTime.Now;
             examQuestion.Alternate1 = strAlternate1 != null ? strAlternate1 : examQuestion.Alternate1;
             examQuestion.Alternate2 = strAlternate2 != null ? strAlternate2 : examQuestion.Alternate2;
@@ -168,16 +156,8 @@ namespace OnlineApp.Server
             examQuestion.Alternate4 = strAlternate4 != null ? strAlternate4 : examQuestion.Alternate4;
             examQuestion.Alternate5 = strAlternate5 != null ? strAlternate5 : examQuestion.Alternate5;
 
-            try
-            {
-                YWExamQuestionBLL.Update(examQuestion);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试问题卷更新成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试问题卷更新失败" + e.ToString());
-            }
+            YWExamQuestionBLL.Update(examQuestion);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试问题卷更新成功");
         }
 
         //删除指定的考试问题卷
@@ -188,18 +168,11 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
+            foreach (string item in strList)
             {
-                foreach (string item in strList)
-                {
-                    YWExamQuestionBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选考试问题卷删除成功");
+                YWExamQuestionBLL.Delete(Convert.ToInt32(item));
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选考试问题卷删除失败" + e.ToString());
-            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选考试问题卷删除成功");
         }
     }
 }

@@ -19,6 +19,24 @@ OnlineApp.service('courseService', function ($http) {
         });
     };
 
+    //添加课程支持数
+    this.AddCourseSupport = function (params) {
+        console.log('[Chr.OnlineApp] 添加课程支持数 req={id:' + params + '}');
+        return $.post(ContextPath + '/Server/CourseManage.ashx?command=AddCourseSupport', params).then(function (resp) {
+            console.log('[Chr.OnlineApp] 添加课程支持数 resp=' + JSON.stringify(resp));
+            return resp;
+        });
+    }
+
+    //添加课程反对数
+    this.AddCourseOppose = function (params) {
+        console.log('[Chr.OnlineApp] 添加课程反对数 req={id:' + params + '}');
+        return $.post(ContextPath + '/Server/CourseManage.ashx?command=AddCourseOppose', params).then(function (resp) {
+            console.log('[Chr.OnlineApp] 添加课程反对数 resp=' + JSON.stringify(resp));
+            return resp;
+        });
+    }
+
     //更新课程
     this.UpdateCourse = function (params) {
         console.log('[Chr.OnlineApp] 更新课程信息 req=' + JSON.stringify(params));

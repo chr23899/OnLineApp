@@ -12,6 +12,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     $scope.btn_upload = "浏览图片";
     $scope.pic_error = false;
 
+    //设置查询条件
     $scope.query = {
         teacherName: "",
         courseName: "",
@@ -21,8 +22,10 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         CurPage: 1
     }
 
+    //更新列表信息
     initList();
     function initList() {
+        $('#form-dialog').modal('show');
         $scope.loadingForm = true;
         courseService.GetCoursePageData($scope.query).then(function (data) {
             if (data == "") {
@@ -40,6 +43,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         });
     }
 
+    //加载更多
     $scope.addMore = function () {
         for (var i = 0; i < 3 && i < courseStore.length; i++) {
             var course = _.clone(courseStore[i]);
@@ -52,19 +56,13 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         initList();
     }
 
-    $scope.newcourse = {
-        courseName: "",
-        userName: "",
-        layerType: "中学",
-        note: "",
-        content: "",
-        show: true,
-        title: "",
-        pic: "",
-        linkBook: "",
+    //新课程对象
+    $scope.newcourse = { 
     }
 
     $scope.userCtrlType = "add";
+
+    //弹出新增课程窗口
     $scope.showAddCourse = function () {
         $scope.userCtrlType = 'add';
         $scope.pic_error = false;
@@ -119,8 +117,10 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         $scope.newcourse.title;
     }, true);
 
+    //当前编辑的对象
     $scope.editCourseIndex = 0;
 
+    //添加新课程
     $scope.addNewCourse = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
             courseService.AddCourse($scope.newcourse).then(function (data) {
@@ -146,22 +146,27 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         } 
     }
 
+    //当前选中项
     $scope.nowindex = 0;
 
+    //查看当前点击的项目
     $scope.showDeatil = function (index) {
         $scope.userCtrlType = 'view';
         $scope.nowindex = index;
         $('#form-dialog').modal('show');
     }
 
+    //当前删除项
     $scope.delCourseIndex = 0;
 
+    //删除当前要删除项
     $scope.delCourse = function (index) {
         $scope.userCtrlType = 'delete';
         $scope.delCourseIndex = index;
         $('#form-dialog').modal('show');
     }
 
+    //执行删除操作
     $scope.confirmDel = function () { 
         var strDelete = {
             strDelete: ""
@@ -178,6 +183,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         });
     }
 
+    //弹出编辑课程窗口
     $scope.showEditWnd = function (index) {
         $scope.userCtrlType = 'edit';
         $scope.editCourseIndex = index;
@@ -195,6 +201,42 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         }
         /*$scope.newcourse = $scope.courseList[index];*/
         $('#form-dialog').modal('show');
+    }
+
+    //支持选中课程
+    $scope.AddCourseSupport = function (index) {
+        var addItem = {
+            id: ""
+        };
+        addItem.id = $scope.courseList[index].Id;
+        courseService.AddCourseSupport(addItem).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                initList();
+            }
+        });
+    }
+
+    //反对选中课程
+    $scope.AddCourseOppose = function (index) {
+        var addItem = {
+            id: ""
+        };
+        addItem.id = $scope.courseList[index].Id;
+        courseService.AddCourseOppose(addItem).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                initList();
+            }
+        });
+    }
+
+    //当前计划的课程
+    $scope.planIndex = 0;
+    $scope.showPlan = function (index) {
+        $scope.userCtrlType = 'plancourse';
+        $scope.planIndex = index;
+
     }
 });
 

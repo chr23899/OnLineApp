@@ -94,6 +94,9 @@ namespace OnlineApp.Server
             course.UpdateUserName = pTUsers.Nickname;
             course.UpdateUserId = pTUsers.Id;
             course.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
+            course.Support = 0;
+            course.Oppose = 0;
+            course.Share = 0;
             course.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
             course.Alternate2 = strAlternate2 != null ? strAlternate2 : "";
             course.Alternate3 = strAlternate3 != null ? strAlternate3 : "";
@@ -102,6 +105,30 @@ namespace OnlineApp.Server
 
             YWCourseBLL.Insert(course);
             CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程添加成功"); 
+        }
+
+        //添加课程支持数
+        public void AddCourseSupport(HttpContext context)
+        {
+            string strId = context.Request["id"];
+            string strCallBack = context.Request["callback"];
+
+            YWCourse course = YWCourseBLL.GetDataById(strId);
+            course.Support = course.Support + 1;
+            YWCourseBLL.Update(course);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "添加课程支持成功"); 
+        }
+
+        //添加课程反对数
+        public void AddCourseOppose(HttpContext context)
+        {
+            string strId = context.Request["id"];
+            string strCallBack = context.Request["callback"];
+
+            YWCourse course = YWCourseBLL.GetDataById(strId);
+            course.Oppose = course.Oppose + 1;
+            YWCourseBLL.Update(course);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "添加课程反对成功");
         }
 
         //编辑课程信息

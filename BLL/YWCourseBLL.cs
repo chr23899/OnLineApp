@@ -96,8 +96,8 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWCourse.Show, 10))
                 throw new CustomException("“”长度不能超过 10 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWCourse.Pic, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWCourse.Pic, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWCourse.UpdateUserName, 20))
                 throw new CustomException("“”长度不能超过 20 个汉字或字符，请您确认输入是否正确。");
@@ -119,6 +119,8 @@ namespace Chr.OnlineApp.BLL
 
             #endregion
         }
+
+
 
 
         /// <summary>
@@ -211,7 +213,7 @@ namespace Chr.OnlineApp.BLL
             Parameter parameter = new Parameter();
 
             parameter.SqlString = "SELECT ta.[Id],[courseName],[linkBook],[teacherName],[teacherId],[content],[title],[span],[show],[courseNum],[pic],[createTime],[updateTime],"
-                                   + "[updateUserName],[updateUserId],[status],ta.[Alternate1],ta.[Alternate2],ta.[Alternate3],ta.[Alternate4],ta.[Alternate5], tb.[Alternate2]  "
+                                   + "[updateUserName],[updateUserId],[status],ta.[Alternate1],ta.[Alternate2],ta.[Alternate3],ta.[Alternate4],ta.[Alternate5],ta.[support],ta.[oppose],ta.[share], tb.[Alternate2]  "
                                    + "[userPic] FROM [YW_Course] ta LEFT JOIN [PT_USER] tb ON [tb].[Id] = [ta].[teacherId] WHERE 1 = 1  ";
             List<SqlParameter> paramList = new List<SqlParameter>();
             if (teacherId != null && teacherId != "")

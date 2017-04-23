@@ -57,16 +57,8 @@ namespace OnlineApp.Server
             string strtitle = context.Request["title"];
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
-
-            try
-            {
-                string strResult = CommonToolsBLL.PageDataToJson(YWAssignmentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage),strcreateUserId,strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+            string strResult = CommonToolsBLL.PageDataToJson(YWAssignmentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增作业接口 
@@ -75,7 +67,7 @@ namespace OnlineApp.Server
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];  
+            string strcourseName = context.Request["courseName"];
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
@@ -92,7 +84,7 @@ namespace OnlineApp.Server
             YWAssignment assignment = new YWAssignment();
             assignment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
             assignment.PlanName = strplanName != null ? strcontent : "zanwujihua";
-            assignment.CourseId = strcourseId  != null ? Convert.ToInt32(strcourseId) : 0;
+            assignment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
             assignment.CourseName = strcourseName != null ? strcontent : "zanwukechen";
             assignment.CreateUserName = pTUsers.Nickname;
             assignment.CreateUserId = pTUsers.Id;
@@ -114,14 +106,14 @@ namespace OnlineApp.Server
             CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "作业添加成功");
         }
 
-         //更新作业接口 
+        //更新作业接口 
         public void ModifyAssignment(HttpContext context)
         {
             string strId = context.Request["id"];
             string strplanId = context.Request["planId"];
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"];  
+            string strcourseName = context.Request["courseName"];
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strlink = context.Request["link"];
@@ -144,7 +136,7 @@ namespace OnlineApp.Server
             assignment.UpdateUserId = pTUsers.Id;
             assignment.Title = strtitle != null ? strtitle : assignment.Title;
             assignment.Content = strcontent != null ? strcontent : assignment.Content;
-            assignment.Link = strlink != null ? strlink : assignment.Link; 
+            assignment.Link = strlink != null ? strlink : assignment.Link;
             assignment.UpdateTime = DateTime.Now;
             assignment.Status = strstatus != null ? Convert.ToInt32(strstatus) : assignment.Status;
             assignment.Alternate1 = strAlternate1 != null ? strAlternate1 : assignment.Alternate1;
@@ -153,16 +145,8 @@ namespace OnlineApp.Server
             assignment.Alternate4 = strAlternate4 != null ? strAlternate4 : assignment.Alternate4;
             assignment.Alternate5 = strAlternate5 != null ? strAlternate5 : assignment.Alternate5;
 
-            try
-            {
-                YWAssignmentBLL.Update(assignment);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "作业更新成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "作业更新失败" + e.ToString());
-            } 
+            YWAssignmentBLL.Update(assignment);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "作业更新成功");
         }
 
         //删除指定的作业
@@ -172,13 +156,13 @@ namespace OnlineApp.Server
             string strCallBack = context.Request["callback"];
 
             string[] strList = strDelete.Split(',');
-            
+
             foreach (string item in strList)
-                {
-                    YWAssignmentBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选作业删除成功");
-           
+            {
+                YWAssignmentBLL.Delete(Convert.ToInt32(item));
+            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选作业删除成功");
+
         }
     }
 }

@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class ExamAnswerManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -51,19 +52,12 @@ namespace OnlineApp.Server
             string strupdateUserId = context.Request["updateUserId"];
             string strupdateUserName = context.Request["updateUserName"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["courseName"]; 
+            string strcourseName = context.Request["courseName"];
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
-            try
-            {
-                string strResult = CommonToolsBLL.PageDataToJson(YWExamAnswerBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+            string strResult = CommonToolsBLL.PageDataToJson(YWExamAnswerBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strupdateUserId, strupdateUserName, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增考试答题卷接口 
@@ -77,10 +71,6 @@ namespace OnlineApp.Server
             string strobjectAnswer = context.Request["objectAnswer"];
             string strobjectPic = context.Request["objectPic"];
             string strresult = context.Request["result"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"]; 
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
             string strAlternate3 = context.Request["Alternate3"];
@@ -97,28 +87,20 @@ namespace OnlineApp.Server
             examAnswer.ObjectAnswer = strobjectAnswer != null ? strobjectAnswer : "";
             examAnswer.ObjectPic = strobjectPic != null ? strobjectPic : "";
             examAnswer.Result = strresult != null ? Convert.ToInt32(strresult) : 0;
-            examAnswer.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
-            examAnswer.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            examAnswer.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
-            examAnswer.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
+            examAnswer.CreateUserName = pTUsers.Nickname;
+            examAnswer.CreateUserId = pTUsers.Id;
+            examAnswer.UpdateUserName = pTUsers.Nickname;
+            examAnswer.UpdateUserId = pTUsers.Id;
             examAnswer.CreateTime = DateTime.Now;
-            examAnswer.UpdateTime = DateTime.Now; 
+            examAnswer.UpdateTime = DateTime.Now;
             examAnswer.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
             examAnswer.Alternate2 = strAlternate2 != null ? strAlternate2 : "";
             examAnswer.Alternate3 = strAlternate3 != null ? strAlternate3 : "";
             examAnswer.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             examAnswer.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
 
-            try
-            {
-                YWExamAnswerBLL.Insert(examAnswer);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试答题卷添加成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试答题卷添加失败" + e.ToString());
-            }
+            YWExamAnswerBLL.Insert(examAnswer);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试答题卷添加成功");
         }
 
         //更新考试答题卷接口 
@@ -133,10 +115,6 @@ namespace OnlineApp.Server
             string strobjectAnswer = context.Request["objectAnswer"];
             string strobjectPic = context.Request["objectPic"];
             string strresult = context.Request["result"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
             string strAlternate3 = context.Request["Alternate3"];
@@ -153,27 +131,17 @@ namespace OnlineApp.Server
             examAnswer.ObjectAnswer = strobjectAnswer != null ? strobjectAnswer : examAnswer.ObjectAnswer;
             examAnswer.ObjectPic = strobjectPic != null ? strobjectPic : examAnswer.ObjectPic;
             examAnswer.Result = strresult != null ? Convert.ToInt32(strresult) : 0;
-            examAnswer.CreateUserName = strcreateUserName != null ? strcreateUserName : examAnswer.CreateUserName;
-            examAnswer.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : examAnswer.CreateUserId;
-            examAnswer.UpdateUserName = strupdateUserName != null ? strupdateUserName : examAnswer.UpdateUserName;
-            examAnswer.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : examAnswer.UpdateUserId; 
-            examAnswer.UpdateTime = DateTime.Now; 
+            examAnswer.UpdateUserName = pTUsers.Nickname;
+            examAnswer.UpdateUserId = pTUsers.Id;
+            examAnswer.UpdateTime = DateTime.Now;
             examAnswer.Alternate1 = strAlternate1 != null ? strAlternate1 : examAnswer.Alternate1;
             examAnswer.Alternate2 = strAlternate2 != null ? strAlternate2 : examAnswer.Alternate2;
             examAnswer.Alternate3 = strAlternate3 != null ? strAlternate3 : examAnswer.Alternate3;
             examAnswer.Alternate4 = strAlternate4 != null ? strAlternate4 : examAnswer.Alternate4;
             examAnswer.Alternate5 = strAlternate5 != null ? strAlternate5 : examAnswer.Alternate5;
 
-            try
-            {
-                YWExamAnswerBLL.Update(examAnswer);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试答题卷更新成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "考试答题卷更新失败" + e.ToString());
-            }
+            YWExamAnswerBLL.Update(examAnswer);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "考试答题卷更新成功");
         }
 
         //删除指定的考试答题卷
@@ -184,18 +152,12 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
+
+            foreach (string item in strList)
             {
-                foreach (string item in strList)
-                {
-                    YWExamAnswerBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选考试答题卷删除成功");
+                YWExamAnswerBLL.Delete(Convert.ToInt32(item));
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选考试答题卷删除失败" + e.ToString());
-            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选考试答题卷删除成功");
         }
     }
 }

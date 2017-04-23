@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class CoursePlanManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -55,16 +56,9 @@ namespace OnlineApp.Server
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
-            try
-            {
-                //其中只有 courseId 、 courseName 、status 为搜索条件
-                string strResult = CommonToolsBLL.PageDataToJson(YWCoursePlanBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strteacherId, strteacherName, strcourseId, strcourseName, strcontent, strtitle, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+            //其中只有 courseId 、 courseName 、status 为搜索条件
+            string strResult = CommonToolsBLL.PageDataToJson(YWCoursePlanBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strteacherId, strteacherName, strcourseId, strcourseName, strcontent, strtitle, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增课程计划接口
@@ -81,7 +75,7 @@ namespace OnlineApp.Server
             string strtest = context.Request["test"];
             string strplanTime = context.Request["planTime"];
             string strstartTime = context.Request["startTime"];
-            string strfinishTime = context.Request["finishTime"]; 
+            string strfinishTime = context.Request["finishTime"];
             string strstatus = context.Request["status"];
             string strAlternate1 = context.Request["Alternate1"];
             string strAlternate2 = context.Request["Alternate2"];
@@ -104,22 +98,15 @@ namespace OnlineApp.Server
             coursePlan.StartTime = strstartTime != null ? Convert.ToDateTime(strstartTime) : DateTime.Now;
             coursePlan.FinishTime = strfinishTime != null ? Convert.ToDateTime(strfinishTime) : DateTime.Now;
             coursePlan.CreateTime = DateTime.Now;
-            coursePlan.UpdateTime = DateTime.Now; 
+            coursePlan.UpdateTime = DateTime.Now;
             coursePlan.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
             coursePlan.Alternate1 = strAlternate1 != null ? strAlternate1 : "";
             coursePlan.Alternate2 = strAlternate2 != null ? strAlternate2 : "";
             coursePlan.Alternate3 = strAlternate3 != null ? strAlternate3 : "";
             coursePlan.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             coursePlan.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
-            try
-            {
-                YWCoursePlanBLL.Insert(coursePlan);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程计划添加成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程计划添加失败" + e.ToString());
-            }
+            YWCoursePlanBLL.Insert(coursePlan);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程计划添加成功");
         }
 
         //编辑课程计划信息
@@ -158,7 +145,7 @@ namespace OnlineApp.Server
             coursePlan.Test = strtest != null ? strtest : coursePlan.Test;
             coursePlan.PlanTime = strplanTime != null ? Convert.ToDateTime(strplanTime) : coursePlan.PlanTime;
             coursePlan.StartTime = strstartTime != null ? Convert.ToDateTime(strstartTime) : coursePlan.StartTime;
-            coursePlan.FinishTime = strfinishTime != null ? Convert.ToDateTime(strfinishTime) : coursePlan.FinishTime; 
+            coursePlan.FinishTime = strfinishTime != null ? Convert.ToDateTime(strfinishTime) : coursePlan.FinishTime;
             coursePlan.UpdateTime = DateTime.Now;
             coursePlan.Status = strstatus != null ? Convert.ToInt32(strstatus) : coursePlan.Status;
             coursePlan.Alternate1 = strAlternate1 != null ? strAlternate1 : coursePlan.Alternate1;
@@ -166,15 +153,8 @@ namespace OnlineApp.Server
             coursePlan.Alternate3 = strAlternate3 != null ? strAlternate3 : coursePlan.Alternate3;
             coursePlan.Alternate4 = strAlternate4 != null ? strAlternate4 : coursePlan.Alternate4;
             coursePlan.Alternate5 = strAlternate5 != null ? strAlternate5 : coursePlan.Alternate5;
-            try
-            {
-                YWCoursePlanBLL.Update(coursePlan);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程计划更新成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程计划更新失败" + e.ToString());
-            }
+            YWCoursePlanBLL.Update(coursePlan);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "课程计划更新成功");
         }
 
         //删除指定的课程计划信息
@@ -185,18 +165,11 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
+            foreach (string item in strList)
             {
-                foreach (string item in strList)
-                {
-                    YWCoursePlanBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程计划删除成功");
+                YWCoursePlanBLL.Delete(Convert.ToInt32(item));
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选课程计划删除失败" + e.ToString());
-            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选课程计划删除成功");
         }
     }
 }

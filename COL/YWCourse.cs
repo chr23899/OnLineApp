@@ -9,7 +9,7 @@ namespace Chr.OnlineApp.COL
     /// 对象名称：基础对象名称数据实体类（数据实体层）
     /// 对象说明：该类作为数据载体，供业务逻辑层、数据访问层调用。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/13 23:22:52
+    /// 编写日期：2017/4/23 11:28:24
     /// </summary>
     [Serializable]
     public class YWCourse
@@ -63,6 +63,12 @@ namespace Chr.OnlineApp.COL
         private string alternate4;
         /// <summary>[变量]</summary>
         private string alternate5;
+        /// <summary>[变量]</summary>
+        private int? support;
+        /// <summary>[变量]</summary>
+        private int? oppose;
+        /// <summary>[变量]</summary>
+        private int? share;
 
 
         /// <summary>[属性]</summary>
@@ -190,6 +196,24 @@ namespace Chr.OnlineApp.COL
         {
             get { return alternate5; }
             set { alternate5 = value; }
+        }
+        /// <summary>[属性]</summary>
+        public int? Support
+        {
+            get { return support; }
+            set { support = value; }
+        }
+        /// <summary>[属性]</summary>
+        public int? Oppose
+        {
+            get { return oppose; }
+            set { oppose = value; }
+        }
+        /// <summary>[属性]</summary>
+        public int? Share
+        {
+            get { return share; }
+            set { share = value; }
         }
 
         #endregion EasyCode所生成的默认代码

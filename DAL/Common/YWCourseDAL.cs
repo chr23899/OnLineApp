@@ -125,6 +125,15 @@ namespace Chr.OnlineApp.DAL.Common
             // 
             if (dataReader["Alternate5"] != DBNull.Value)
                 yWCourse.Alternate5 = Convert.ToString(dataReader["Alternate5"]);
+            // 
+            if (dataReader["support"] != DBNull.Value)
+                yWCourse.Support = Convert.ToInt32(dataReader["support"]);
+            // 
+            if (dataReader["oppose"] != DBNull.Value)
+                yWCourse.Oppose = Convert.ToInt32(dataReader["oppose"]);
+            // 
+            if (dataReader["share"] != DBNull.Value)
+                yWCourse.Share = Convert.ToInt32(dataReader["share"]);
         }
 
 
@@ -198,7 +207,19 @@ namespace Chr.OnlineApp.DAL.Common
             // 
             if (dataReader["Alternate5"] != DBNull.Value)
                 yWCourse.Alternate5 = Convert.ToString(dataReader["Alternate5"]);
+            // 
+            if (dataReader["support"] != DBNull.Value)
+                yWCourse.Support = Convert.ToInt32(dataReader["support"]);
+            // 
+            if (dataReader["oppose"] != DBNull.Value)
+                yWCourse.Oppose = Convert.ToInt32(dataReader["oppose"]);
+            // 
+            if (dataReader["share"] != DBNull.Value)
+                yWCourse.Share = Convert.ToInt32(dataReader["share"]);
         }
+
+
+
 
 
         //﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉

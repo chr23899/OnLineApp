@@ -1,1 +1,16 @@
-﻿
+﻿#content_courseManager .container-fluid .title-span{
+    margin: 15px 0px 5px 0px;
+}
+#content_courseManager .container-fluid .title-span button{
+    border-color: transparent; 
+    font-size:12px;
+    border-radius:10px; 
+    margin-right:2px;
+}
+ 
+.pmd-user-info .media-left img{    
+    border-radius:50%; 
+}
+.masonry .btn-loadmore{
+    margin: 20px 15px 5px 15px;
+}

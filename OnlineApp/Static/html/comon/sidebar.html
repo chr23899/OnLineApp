@@ -6,9 +6,9 @@
         <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
             <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
                 <div class="media-left">
-                    <img src="UI/themes/images/logo-icon.png" width="40" height="40" alt="New User">
+                    <img ng-src="{{nowUserPic}}" width="40" height="40" alt="New User">
                 </div>
-                <div class="media-body media-middle">超级管理员</div>
+                <div class="media-body media-middle">{{nowUserName}}</div>
                 <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
             </a>
             <ul class="dropdown-menu">
@@ -21,14 +21,7 @@
             <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" ng-class="menu.control == menuList.nowmenu ? 'active':''" data-sidebar="true">
                 <i class="material-icons media-left pmd-sm">{{menu.icon}}</i>
                 <span class="media-body" ng-click="showMenu(menu.control)">{{menu.name}}</span>
-            </a>
-            <!--<div class="pmd-dropdown-menu-container" ng-if="menu.submenus.length > 0">
-                <ul class="dropdown-menu">
-                    <li ng-repeat="smenu in menu.submenus">
-                        <a >{{smenu.name}}</a>
-                    </li>
-                </ul>
-            </div>-->
+            </a> 
         </li>
 
     </ul>

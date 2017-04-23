@@ -10,7 +10,9 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
         userName: "",
         homeWorkTask: "",
         inClass: true,
-        afterClass: true
+        afterClass: true,
+        PageSize: 10,
+        CurPage: 1
     }
     
     initList();
@@ -154,11 +156,10 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             strDelete: ""
         };
         strDelete.strDelete = $scope.homeWorkList[$scope.delHomeWorkIndex].Id;
-        homeWorkService.DeleteAssignment(strDelete).then(function (data) {
-          
+        homeWorkService.DeleteAssignment(strDelete).then(function (data) {          
             data = JSON.parse(data);
             if (data.type == "success") {
-                $scope.homeWorkService.splice($scope.delHomeWorkIndex, 1);
+                $scope.homeWorkList.splice($scope.delHomeWorkIndex, 1);
                 $scope.delHomeWorkIndex = 0;
                 $('#form-dialog').modal('hide');
                 $scope.$apply();

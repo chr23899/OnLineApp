@@ -68,6 +68,7 @@
         var ContextPath = "<%=nowPath%>";
         var nowUserNickName = "<%=pTUsers.Nickname%>";
         var nowUserLayer = "<%=pTUsers.Layer%>";
+        var nowUserPict = "<%=pTUsers.Alternate2.Replace("\\","\\\\")%>";
     </script>
     <script>
         $(document).ready(function () {

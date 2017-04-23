@@ -12,6 +12,7 @@ namespace OnlineApp.Server
     /// </summary>
     public class CommentManage : IHttpHandler
     {
+        private PTUsers pTUsers = Chr.OnlineApp.Public.UITools.GetCurrentUserInfo(); // 从数据库中获取关联对象信息，以备进行修改操作。
 
         public void ProcessRequest(HttpContext context)
         {
@@ -58,15 +59,8 @@ namespace OnlineApp.Server
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
 
-            try
-            {
-                string strResult = CommonToolsBLL.PageDataToJson(YWCommentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
-                CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "获取数据失败" + e.ToString());
-            }
+            string strResult = CommonToolsBLL.PageDataToJson(YWCommentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
+            CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 
         //新增评论接口 
@@ -76,11 +70,7 @@ namespace OnlineApp.Server
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
-            string strcontent = context.Request["content"]; 
+            string strcontent = context.Request["content"];
             string strcreateTime = context.Request["createTime"];
             string strupdateTime = context.Request["updateTime"];
             string strstatus = context.Request["status"];
@@ -96,10 +86,10 @@ namespace OnlineApp.Server
             comment.PlanName = strplanName != null ? strplanName : "";
             comment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
             comment.CourseName = strcourseName != null ? strcourseName : "";
-            comment.CreateUserName = strcreateUserName != null ? strcreateUserName : "";
-            comment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : 0;
-            comment.UpdateUserName = strupdateUserName != null ? strupdateUserName : "";
-            comment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : 0;
+            comment.CreateUserName = pTUsers.Nickname;
+            comment.CreateUserId = pTUsers.Id;
+            comment.UpdateUserName = pTUsers.Nickname;
+            comment.UpdateUserId = pTUsers.Id;
             comment.Content = strcontent != null ? strcontent : "";
             comment.Support = 0; //初始支持数为 0 
             comment.Oppose = 0;  //初始反对数为 0
@@ -112,16 +102,8 @@ namespace OnlineApp.Server
             comment.Alternate4 = strAlternate4 != null ? strAlternate4 : "";
             comment.Alternate5 = strAlternate5 != null ? strAlternate5 : "";
 
-            try
-            {
-                YWCommentBLL.Insert(comment);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "评论添加成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "课程添加失败" + e.ToString());
-            }
+            YWCommentBLL.Insert(comment);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "评论添加成功");
         }
 
         //更新评论接口 
@@ -132,10 +114,6 @@ namespace OnlineApp.Server
             string strplanName = context.Request["planName"];
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
-            string strcreateUserName = context.Request["createUserName"];
-            string strcreateUserId = context.Request["createUserId"];
-            string strupdateUserName = context.Request["updateUserName"];
-            string strupdateUserId = context.Request["updateUserId"];
             string strcontent = context.Request["content"];
             string strsupport = context.Request["support"];
             string stroppose = context.Request["oppose"];
@@ -154,10 +132,8 @@ namespace OnlineApp.Server
             comment.PlanName = strplanName != null ? strplanName : comment.PlanName;
             comment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : comment.CourseId;
             comment.CourseName = strcourseName != null ? strcourseName : comment.CourseName;
-            comment.CreateUserName = strcreateUserName != null ? strcreateUserName : comment.CreateUserName;
-            comment.CreateUserId = strcreateUserId != null ? Convert.ToInt32(strcreateUserId) : comment.CreateUserId;
-            comment.UpdateUserName = strupdateUserName != null ? strupdateUserName : comment.UpdateUserName;
-            comment.UpdateUserId = strupdateUserId != null ? Convert.ToInt32(strupdateUserId) : comment.UpdateUserId;
+            comment.UpdateUserName = pTUsers.Nickname;
+            comment.UpdateUserId = pTUsers.Id;
             comment.Content = strcontent != null ? strcontent : comment.Content;
             comment.Support = strsupport != null ? Convert.ToInt32(strsupport) : comment.Support;
             comment.Oppose = stroppose != null ? Convert.ToInt32(stroppose) : comment.Oppose;
@@ -169,16 +145,8 @@ namespace OnlineApp.Server
             comment.Alternate4 = strAlternate4 != null ? strAlternate4 : comment.Alternate4;
             comment.Alternate5 = strAlternate5 != null ? strAlternate5 : comment.Alternate5;
 
-            try
-            {
-                YWCommentBLL.Update(comment);
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "评论更新成功");
-
-            }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "评论更新失败" + e.ToString());
-            }
+            YWCommentBLL.Update(comment);
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "评论更新成功");
         }
 
         //删除指定的评论
@@ -189,18 +157,11 @@ namespace OnlineApp.Server
 
             string[] strList = strDelete.Split(',');
 
-            try
+            foreach (string item in strList)
             {
-                foreach (string item in strList)
-                {
-                    YWCommentBLL.Delete(Convert.ToInt32(item));
-                }
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选评论删除成功");
+                YWCommentBLL.Delete(Convert.ToInt32(item));
             }
-            catch (Exception e)
-            {
-                CommonToolsBLL.OutputJson(context, strCallBack, "{}", "failed", "所选评论删除失败" + e.ToString());
-            }
+            CommonToolsBLL.OutputJson(context, strCallBack, "{}", "success", "所选评论删除成功");
         }
     }
 }
