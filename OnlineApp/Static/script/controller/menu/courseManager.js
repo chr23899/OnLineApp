@@ -1,14 +1,45 @@
-﻿//define menu controller
-OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
+﻿//define menu controller 课程管理
+OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS, toolService) {
     //显示当前课程列表内容
     $scope.courseList = courseStore;
+    //是否正在加载页面
+    $scope.loadingForm = true;
+    //用来保存用户所在层级(小学、中学)
+    $scope.userLayers = USER_LAYERS;
+
+
+    $('#form-dialog').modal('show');
+    $scope.btn_upload = "浏览图片";
+    $scope.pic_error = false;
 
     $scope.query = {
-        userName: "",
+        teacherName: "",
         courseName: "",
         isPrimary: true,
-        isMiddle: true
+        isMiddle: true,
+        PageSize: 10,
+        CurPage: 1
     }
+
+    initList();
+    function initList() {
+        $scope.loadingForm = true;
+        courseService.GetCoursePageData($scope.query).then(function (data) {
+            if (data == "") {
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+                return;
+            }
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.courseList = data.result.PageList;
+                $scope.$apply();
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+            }
+        });
+    }
+
     $scope.addMore = function () {
         for (var i = 0; i < 3 && i < courseStore.length; i++) {
             var course = _.clone(courseStore[i]);
@@ -16,23 +47,9 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
         }
     }
 
-    $scope.serachData = function () {
-        for (var i = 0; i < $scope.courseList.length; i++) {
-            $scope.courseList[i].show = true;
-            if ($scope.query.userName != "" && $scope.courseList[i].userName.indexOf($scope.query.userName) < 0) {
-                $scope.courseList[i].show = false;
-            }
-            if ($scope.query.courseName != "" && $scope.courseList[i].courseName.indexOf($scope.query.courseName) < 0) {
-                $scope.courseList[i].show = false;
-            }
-            if ($scope.courseList[i].layerType == "小学" && $scope.query.isPrimary != true) {
-                $scope.courseList[i].show = false;
-            }
-            if ($scope.courseList[i].layerType == "中学" && $scope.query.isMiddle != true) {
-                $scope.courseList[i].show = false;
-            }
-
-        }
+    //搜索数据
+    $scope.serachData = function () { 
+        initList();
     }
 
     $scope.newcourse = {
@@ -40,25 +57,56 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
         userName: "",
         layerType: "中学",
         note: "",
-        content: "2017年3月27号加入",
+        content: "",
         show: true,
         title: "",
-        imageUrl: "UI/themes/images/course_mathG1.jpg",
+        pic: "",
+        linkBook: "",
     }
 
     $scope.userCtrlType = "add";
     $scope.showAddCourse = function () {
         $scope.userCtrlType = 'add';
+        $scope.pic_error = false;
         $scope.newcourse = {
             courseName: "",
             userName: "",
             layerType: "中学",
             note: "",
-            content: "2017年3月27号加入",
+            content: "",
             show: true,
             title: "",
-            imageUrl: "UI/themes/images/course_mathG1.jpg",
+            pic: "",
+            linkBook: "",
         }
+    }
+
+    //改变图片时候触发
+    $scope.showImg = function (file) {
+        if (file.length == 0)
+            return;
+        if (file[0].size / 1024 > 300) {
+            $scope.pic_error = true;
+            $scope.$apply();
+            return;
+        }
+        //console.log("imgUrl" + $scope.newperson);
+        $scope.btn_upload = "图片上传中...";
+        var nowInput = $("#ImgUpload");
+        var nowfile = {
+            file: file[0],
+            picName: 'course',
+            type: 'course'
+        }
+        toolService.uploadFile(nowfile).then(function (data) {
+            //data = JSON.parse(data);
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_upload = "浏览图片";
+                $scope.newcourse.pic = data.data;
+                $scope.pic_error = false;
+            }
+        })
     }
 
     //表单是否正确
@@ -66,22 +114,36 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
     $scope.$watch("newcourse", function () {
         $scope.validate =
         $scope.newcourse.courseName &&
-        $scope.newcourse.userName &&
-        $scope.newcourse.note;
+        $scope.newcourse.linkBook &&
+        $scope.newcourse.pic &&
+        $scope.newcourse.title;
     }, true);
 
     $scope.editCourseIndex = 0;
 
     $scope.addNewCourse = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
-            $scope.newcourse.title = $scope.newcourse.layerType;
-            $scope.courseList.push($scope.newcourse);
-            $('#form-dialog').modal('hide');
+            courseService.AddCourse($scope.newcourse).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    //$scope.courseList.push($scope.newcourse);
+                    //$('#form-dialog').modal('hide');
+                    //$scope.$apply();
+                    initList();
+                }
+            });
         }
         else if ($scope.userCtrlType == 'edit' && $scope.validate) {
-            $scope.courseList[$scope.editCourseIndex] = $scope.newcourse;
-            $('#form-dialog').modal('hide');
-        }
+            courseService.UpdateCourse($scope.newcourse).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    //$scope.courseList[$scope.editPersonIndex] = $scope.newcourse;
+                    //$('#form-dialog').modal('hide');
+                    //$scope.$apply();
+                    initList();
+                }
+            });
+        } 
     }
 
     $scope.nowindex = 0;
@@ -100,16 +162,27 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
         $('#form-dialog').modal('show');
     }
 
-    $scope.confirmDel = function () {
-        $scope.courseList.splice($scope.delCourseIndex, 1);
-        $scope.delCourseIndex = 0;
-        $('#form-dialog').modal('hide');
+    $scope.confirmDel = function () { 
+        var strDelete = {
+            strDelete: ""
+        };
+        strDelete.strDelete = $scope.courseList[$scope.delCourseIndex].Id;
+        courseService.DeleteCourse(strDelete).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.courseList.splice($scope.delCourseIndex, 1);
+                $scope.delCourseIndex = 0;
+                $('#form-dialog').modal('hide');
+                $scope.$apply();
+            }
+        });
     }
 
     $scope.showEditWnd = function (index) {
         $scope.userCtrlType = 'edit';
         $scope.editCourseIndex = index;
         $scope.newcourse = {
+            id: $scope.courseList[index].Id,
             courseName: $scope.courseList[index].courseName,
             userName: $scope.courseList[index].userName,
             layerType: $scope.courseList[index].layerType,
@@ -117,7 +190,8 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore) {
             content: $scope.courseList[index].content,
             show: $scope.courseList[index].show,
             title: $scope.courseList[index].title,
-            imageUrl: $scope.courseList[index].imageUrl,
+            linkBook: $scope.courseList[index].linkBook,
+            pic: $scope.courseList[index].pic,
         }
         /*$scope.newcourse = $scope.courseList[index];*/
         $('#form-dialog').modal('show');

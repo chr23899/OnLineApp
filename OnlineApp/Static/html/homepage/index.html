@@ -1,4 +1,4 @@
-﻿<div id="content" class="pmd-content content-area dashboard" ng-if="menuList.nowmenu == 'homePage'">
+﻿<div id="content" class="pmd-content content-area dashboard" ng-if="menuList.nowmenu == 'homePage'" ng-controller="homePageManager">
     <div class="container-fluid">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="pmd-card pmd-z-depth">
@@ -43,7 +43,7 @@
                     <div class="media-body media-middle">
                         <h2 class="pmd-card-title-text typo-fill-secondary">本周用户活动<span class="grow-up"><img src="UI/themes/images/grow-up-arrow.png" alt="grow-up"></span></h2>
                     </div>
-                    <div class="media-right datetimepicker"> 
+                    <div class="media-right datetimepicker">
                     </div>
                 </div>
                 <div class="pmd-card-body">
@@ -372,6 +372,15 @@
                     </li>
                 </ul>
                 <span class="btn-loader loader hidden">Loading...</span>
+            </div>
+        </div>
+        <div tabindex="-1" class="modal fade in" id="form-dialog" style="display: block;">
+            <!-- loading form-->
+            <div class="modal-dialog modal-sm" style="margin-top: 230px; width: 150px;">
+                <div class="">
+                    <img width="1184" height="666" class="img-responsive" src="/Static/img/loading.gif">
+                    <div class="modal-body text-center" style="color: white;"> 玩命加载中 </div>
+                </div>
             </div>
         </div>
     </div>

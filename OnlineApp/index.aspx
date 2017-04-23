@@ -20,6 +20,7 @@
     <script src="/Static/script/service/userService.js"></script>
     <script src="/Static/script/service/toolService.js"></script>
     <script src="/Static/script/service/homeWorkService.js"></script>
+    <script src="/Static/script/service/courseService.js"></script>
 
     <!-- load the angularjs javascript-->
     <script src="/Static/script/controller/index/head.js"></script>
@@ -33,6 +34,7 @@
     <script src="/Static/script/controller/menu/dataManager.js"></script>
     <script src="/Static/script/controller/menu/testManager.js"></script>
     <script src="/Static/script/controller/menu/systemSetting.js"></script>
+    <script src="/Static/script/controller/menu/homePageManager.js"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -64,6 +66,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <script>
         var ContextPath = "<%=nowPath%>";
+        var nowUserNickName = "<%=pTUsers.Nickname%>";
+        var nowUserLayer = "<%=pTUsers.Layer%>";
     </script>
     <script>
         $(document).ready(function () {
