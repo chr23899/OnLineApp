@@ -1,7 +1,9 @@
 ﻿//define menu controller 作业管理
-OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $window, homeWorkStore) {
+OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkService, homeWorkStore, USER_LAYERS) {
     //显示当前作业列表内容
     $scope.homeWorkList = homeWorkStore;
+    $scope.loadingForm = true;
+    $scope.userLayers = USER_LAYERS;
     $('#form-dialog').modal('show');
 
     $scope.query = {
@@ -13,6 +15,7 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
     
     initList();
     function initList() {
+        $scope.loadingForm = true;
         homeWorkService.GetAssignmentPageData($scope.query).then(function (data) {
             if (data == "") {
                 $('#form-dialog').modal('hide');
@@ -102,13 +105,13 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
                     $scope.loadingForm = false;
                     return;
                 }
-
                 data = JSON.parse(data);
                 if (data.type == "success") {
-                    $scope.homeWorkList.push($scope.newHomeWork);
-                    $scope.newHomeWork.title = $scope.newHomeWork.layerType;
+                   $scope.homeWorkList.push($scope.newHomeWork);
+                   $scope.newHomeWork.title = $scope.newHomeWork.layerType;
                     $('#form-dialog').modal('hide');
                     $scope.$apply();
+                   // initList();
                 }
             });
            
@@ -120,6 +123,7 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
                     $scope.homeWorkList[$scope.editHomeWorkIndex] = $scope.newHomeWork;
                     $('#form-dialog').modal('hide');
                     $scope.$apply();
+                    //initList();
                 }
             });
         }
@@ -144,12 +148,12 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
     }
 
    
-    //可能有问题
+    
     $scope.confirmDel = function () {
         var strDelete = {
             strDelete: ""
         };
-        strDelete.strDelete = $scope.homeWorkList[$scope.delHomeWorkIndex].task;
+        strDelete.strDelete = $scope.homeWorkList[$scope.delHomeWorkIndex].Id;
         homeWorkService.DeleteAssignment(strDelete).then(function (data) {
           
             data = JSON.parse(data);
@@ -167,6 +171,7 @@ OnlineApp.controller('homeWorkManager', function ($scope,homeWorkService, $windo
         $scope.userCtrlType = 'edit';
         $scope.editHomeWorkIndex = index;
         $scope.newHomeWork = {
+            id:$scope.homeWorkList[index].Id,
             homeWorkTask: $scope.homeWorkList[index].task,
             courseName: $scope.homeWorkList[index].courseName,
             layerType: $scope.homeWorkList[index].layerType,
