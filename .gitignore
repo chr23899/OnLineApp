@@ -18,3 +18,5 @@ Web.config
 # 添加忽略的文件 
 OnlineApp.v12.suo
 /OnlineApp/Properties/PublishProfiles
+# 忽略视频文件
+/OnlineApp/Static/video
