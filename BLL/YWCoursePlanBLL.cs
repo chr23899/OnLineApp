@@ -213,19 +213,19 @@ namespace Chr.OnlineApp.BLL
             List<SqlParameter> paramList = new List<SqlParameter>(); 
             if (courseId != null && courseId != "")
             {
-                parameter.SqlString += " AND [YW_Course_Data].[courseId] = @courseId ";
+                parameter.SqlString += " AND [YW_Course_Plan].[courseId] = @courseId ";
                 SqlParameter sqlParameter = new SqlParameter("@courseId", SqlDbType.NVarChar, 50) { Value = courseId };
                 paramList.Add(sqlParameter);
             }
             if (courseName != null && courseName != "")
             {
-                parameter.SqlString += " AND [YW_Course_Data].[courseName] LIKE @courseName ";
+                parameter.SqlString += " AND [YW_Course_Plan].[courseName] LIKE @courseName ";
                 SqlParameter sqlParameter = new SqlParameter("@courseName", SqlDbType.NVarChar, 50) { Value = "%" + courseName + "%" };
                 paramList.Add(sqlParameter);
             } 
             if (status != null && status != "")
             {
-                parameter.SqlString += " AND [YW_Course_Data].[status] = @status ";
+                parameter.SqlString += " AND [YW_Course_Plan].[status] = @status ";
                 SqlParameter sqlParameter = new SqlParameter("@status", SqlDbType.Int, 4) { Value = status };
                 paramList.Add(sqlParameter);
             }

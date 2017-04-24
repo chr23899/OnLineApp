@@ -70,6 +70,7 @@
     <Content Include="Static\html\comon\sidebar.html" />
     <Content Include="Static\html\course\action.html" />
     <Content Include="Static\html\course\index.html" />
+    <Content Include="Static\html\course\plan.html" />
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
     <Content Include="Static\html\homework\index.html" />
@@ -100,6 +101,7 @@
     <Content Include="Static\script\factory\index\menusStore.js" />
     <Content Include="Static\script\factory\index\noticesStore.js" />
     <Content Include="Static\script\factory\index\peopleStore.js" />
+    <Content Include="Static\script\service\coursePlanService.js" />
     <Content Include="Static\script\service\courseService.js" />
     <Content Include="Static\script\service\homeWorkService.js" />
     <Content Include="Static\script\service\toolService.js" />

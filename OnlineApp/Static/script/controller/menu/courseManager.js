@@ -1,11 +1,16 @@
 ﻿//define menu controller 课程管理
-OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS, toolService) {
+OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS, toolService, coursePlanService, PLAN_TYPES) {
     //显示当前课程列表内容
     $scope.courseList = courseStore;
     //是否正在加载页面
     $scope.loadingForm = true;
     //用来保存用户所在层级(小学、中学)
     $scope.userLayers = USER_LAYERS;
+    //当前显示的页面
+    $scope.pageType = "list";
+    //计划类型
+    $scope.planTypes = PLAN_TYPES;
+
 
 
     $('#form-dialog').modal('show');
@@ -231,12 +236,73 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         });
     }
 
-    //当前计划的课程
+    //当前课程的所有计划
     $scope.planIndex = 0;
     $scope.showPlan = function (index) {
-        $scope.userCtrlType = 'plancourse';
+        $scope.pageType = 'plancourse';
         $scope.planIndex = index;
+        $scope.initPlanList();
+    }
 
+    //课程关联的计划查询
+    $scope.queryPlan = {
+    }
+
+    //初始化课程计划
+    $scope.initPlanList = function () {
+        $('#form-dialog').modal('show');
+        $scope.loadingForm = true;
+        $scope.queryPlan = {
+            PageSize: 100,
+            CurPage: 1,
+            teacherId: $scope.courseList[$scope.planIndex].teacherId,
+            teacherName: $scope.courseList[$scope.planIndex].teacherName,
+            courseId: $scope.courseList[$scope.planIndex].Id,
+            courseName: $scope.courseList[$scope.planIndex].courseName
+        } 
+        coursePlanService.GetCoursePlanPageData($scope.queryPlan).then(function (data) { 
+            if (data == "") {
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+                return;
+            }
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.coursePlanList = data.result.PageList;
+                $scope.$apply();
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+            }
+        });
+    }
+
+
+    //返回列表页面
+    $scope.backToList = function () {
+        $scope.pageType = "list";
+    }
+
+    //绑定新的课程计划
+    $scope.newplan = {};
+
+    //显示新增课程计划窗体
+    $scope.showAddPlan = function () {
+        $scope.userCtrlType = 'addplan';
+        $scope.pic_error = false;
+        $scope.newplan = {
+            courseId: courseList[planIndex].Id,
+            courseName: courseList[planIndex].courseName,
+            name: "",
+            type: "",
+            video: "",
+            pic: "",
+            content: "",
+            status: true,
+            study: "", 
+            test: "",
+            startTime: "",
+            planTime: ""
+        }
     }
 });
 

@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
+                <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}课程</h2>
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
@@ -100,6 +100,66 @@
         <div class="">
             <img width="1184" height="666" class="img-responsive" src="/Static/img/loading.gif">
             <div class="modal-body text-center" style="color: white;"> 玩命加载中 </div>
+        </div>
+    </div>
+    <!-- add new plan -->
+    <div class="modal-dialog" ng-show="(userCtrlType=='addplan' || userCtrlType=='editplan')  && !loadingForm">
+        <div class="modal-content">
+            <div class="modal-header bordered">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h2 class="pmd-card-title-text">{{userCtrlType=='addplan' ?'新增':'修改'}}课程计划</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">课程名:</label>
+                        <input type="text" class="form-control" id="name" value="{{newplan.courseName}}" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划名称:</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="newplan.name">
+                    </div> 
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">计划图片</label>
+                        <div class="row text-center" ng-show="newplan.pic">
+                            <img ng-src="{{newplan.pic}}" width="65%" height="120" style="margin:10px;">
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planPic').click();"> {{btn_upload}}</button>
+                        <input type="file" id="ImgUpload_planPic" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
+                        图片大小要介于<a href="javascript:void(0);" class="alert-link">0K~300K</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="role in planTypes track by $index">
+                            <input type="radio" id="planType{{role.id}}" name="planType{{role.id}}" value="{{role.id}}" ng-model="newplan.type"><span class="pmd-checkbox-label">&nbsp;</span>
+                            <span> {{role.name}}</span>
+                        </label>
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">视频</label>
+                        <div class="row text-center" ng-show="newplan.pic">
+                            <video width="352" height="264" controls autobuffer>
+                                <source src="../media/cat.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+                            </video>
+                            <img ng-src="{{newplan.video}} width="65%" height="120" style="margin:10px;">
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planVideo').click();"> {{btn_upload}}</button>
+                        <input type="file" id="ImgUpload_planVideo" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
+                        视频大小要介于<a href="javascript:void(0);" class="alert-link">0K~300M</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label class="control-label">内容及注意事项</label>
+                        <textarea required class="form-control" ng-model="newplan.content"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="pmd-modal-action">
+                <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewCourse()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
+                <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+            </div>
         </div>
     </div>
 </div>

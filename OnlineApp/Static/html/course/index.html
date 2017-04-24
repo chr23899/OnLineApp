@@ -49,8 +49,10 @@
             </div> <!-- section content end -->
         </div>
 
-        <div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;" ng-show="userCtrlType!='plancourse'">
-            <!--#include file="action.html" -->
+
+        <!--#include file="action.html" -->
+
+        <div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;" ng-show="pageType=='list'">
             <!--窗口显示-->
             <div class="col-md-4 col-sm-6 masonry-brick" ng-if="course.show" ng-repeat="course in courseList track by $index">
                 <div class="text-left alert-custom title-span">
@@ -90,43 +92,7 @@
             </div>
             <a type="button" class="btn pmd-ripple-effect btn-success btn-block btn-loadmore" ng-click="addMore()">加载更多</a>
         </div>
-        <div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;margin-top: 15px;" ng-show="userCtrlType=='plancourse'">
-            <div class="col-lg-12 col-sm-12 col-xs-12">
-                <div class="pmd-card pmd-z-depth project-progress">
-                    <div class="pmd-card-title">
-                        <div class="media-left set-svg">
-                            <span class="service-icon img-circle">
-                                <img ng-src="{{courseList[planIndex].pic}}" width="40" height="40" style="border-radius:50%;">
-                            </span>
-                        </div>
-                        <div class="media-body media-middle">
-                            <h2 class="pmd-card-title-text typo-fill-secondary">{{courseList[planIndex].courseName}}</h2>
-                            <h4 class="pmd-card-title-text typo-fill-secondary">主讲老师: {{courseList[planIndex].teacherName}}</h4>
-                        </div>
-                    </div>
-                    <div class="content-section">
-                        <ul class="list-group pmd-card-list pmd-list todo-lists">
-                            <li class="list-group-item timeline project-info">
-                                Graphics changes. Need to change icons for few sections.
-                                <h5 class="typo-fill-secondary">Low Priority</h5>
-                            </li>
-
-                            <li class="list-group-item timeline project-notification">
-                                Clean html/css/js code. Remove commented code from all the files. Also, enhance the code.
-                                <h5 class="typo-fill-secondary">High Priority</h5>
-                            </li>
-
-                            <li class="list-group-item timeline  project-notification">
-                                Make website responsive. Need to check the website in devices like Mobile and Ipad.
-                                <h5 class="typo-fill-secondary">High Priority</h5>
-                            </li>
-                        </ul>
-                        <div class="blank-state-section text-center"> 
-                            <h4>You Don't Have Any Notifications</h4>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
+        <!--#include file="plan.html" -->
+        
     </div>
 </div>
