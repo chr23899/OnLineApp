@@ -14,7 +14,7 @@
     <RootNamespace>OnlineApp</RootNamespace>
     <AssemblyName>OnlineApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -106,6 +106,9 @@
     <Content Include="Static\script\service\homeWorkService.js" />
     <Content Include="Static\script\service\toolService.js" />
     <Content Include="Static\script\service\userService.js" />
+    <Content Include="Static\video\hd1.mp4" />
+    <Content Include="Static\video\movie.mp4" />
+    <Content Include="Static\video\hd2.mp4" />
     <Content Include="UI\404.html" />
     <Content Include="UI\about.html" />
     <Content Include="UI\accordion.html" />
@@ -2659,7 +2662,9 @@
     <Content Include="UI\themes\js\moment.min.js" />
     <Content Include="UI\tooltip.html" />
     <Content Include="UI\typography.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.aspx.cs">
@@ -2963,11 +2968,10 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>33692</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:33692/</IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:33692/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

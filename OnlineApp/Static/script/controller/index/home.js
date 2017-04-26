@@ -6,4 +6,9 @@ OnlineApp.controller('indexHome', function ($scope, $window, menusStore) {
     $scope.showMenu = function (menuControl) {
         $scope.menuList.nowmenu = menuControl;
     }
+
+    //更新上传信息
+    $scope.$on("Process->Index", function (evt, dat) {
+        $scope.$broadcast("Index->UpdateProcess", dat);
+    })
 });

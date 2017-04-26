@@ -56,7 +56,9 @@
             <!--窗口显示-->
             <div class="col-md-4 col-sm-6 masonry-brick" ng-if="course.show" ng-repeat="course in courseList track by $index">
                 <div class="text-left alert-custom title-span">
-                    <button type="button" ng-repeat="tilte in course.title.split(',') track by $index" ng-class="$index % 4 == 0? 'btn-primary' : $index % 4 == 1 ? 'btn-info' :$index % 4 == 2 ? 'btn-danger' :'btn-success'" class="btn-sm btn-primary">{{course.title.split(',')[$index]}}</button>
+                    <!--<button type="button" ng-repeat="tilte in course.title.split(',') track by $index" ng-class="$index % 4 == 0? 'btn-primary' : $index % 4 == 1 ? 'btn-info' :$index % 4 == 2 ? 'btn-danger' :'btn-success'" class="btn-sm btn-primary">{{course.title.split(',')[$index]}}</button>
+                    <button type="button" ng-repeat="tilte in course.title.split(',') track by $index" class="btn-sm btn-primary btn-primary">{{course.title.split(',')[$index]}}</button>-->
+                    <button type="button" class="btn-sm">{{course.title.split(",").join(" | ")}}</button>
                 </div>
                 <div class="pmd-card pmd-card-default pmd-z-depth-3">
                     <div class="pmd-card-title">

@@ -65,7 +65,7 @@ namespace OnlineApp.Server
         public void AddCoursePlan(HttpContext context)
         {
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["coursePlanName"];
+            string strcourseName = context.Request["courseName"];
             string strname = context.Request["name"];
             string strcontent = context.Request["content"];
             string strtype = context.Request["type"];
@@ -83,6 +83,9 @@ namespace OnlineApp.Server
             string strAlternate4 = context.Request["Alternate4"];
             string strAlternate5 = context.Request["Alternate5"];
             string strCallBack = context.Request["callback"];
+            strplanTime = strplanTime == "" ? null : strplanTime;
+            strstartTime = strstartTime == "" ? null : strstartTime;
+            strfinishTime = strfinishTime == "" ? null : strfinishTime;
 
             YWCoursePlan coursePlan = new YWCoursePlan();
             coursePlan.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
@@ -114,7 +117,7 @@ namespace OnlineApp.Server
         {
             string strId = context.Request["id"];
             string strcourseId = context.Request["courseId"];
-            string strcourseName = context.Request["coursePlanName"];
+            string strcourseName = context.Request["courseName"];
             string strname = context.Request["name"];
             string strcontent = context.Request["content"];
             string strtype = context.Request["type"];

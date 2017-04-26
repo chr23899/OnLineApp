@@ -11,3 +11,8 @@ OnlineApp.config(function ($routeProvider, $locationProvider) {
     })
     .otherwise('/');
 });
+OnlineApp.filter("trustUrl", ['$sce', function ($sce) {
+    return function (recordingUrl) {
+        return $sce.trustAsResourceUrl(recordingUrl);
+    };
+}]);

@@ -101,7 +101,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             picName: 'course',
             type: 'course'
         }
-        toolService.uploadFile(nowfile).then(function (data) {
+        toolService.uploadImg(nowfile).then(function (data) {
             //data = JSON.parse(data);
             if (data.status == "200") {
                 console.log(data.data);
@@ -112,7 +112,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         })
     }
 
-    //表单是否正确
+    //新增或修改课程表单是否正确
     $scope.validate = false;
     $scope.$watch("newcourse", function () {
         $scope.validate =
@@ -290,20 +290,170 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         $scope.userCtrlType = 'addplan';
         $scope.pic_error = false;
         $scope.newplan = {
-            courseId: courseList[planIndex].Id,
-            courseName: courseList[planIndex].courseName,
+            courseId: $scope.courseList[$scope.planIndex].Id,
+            courseName: $scope.courseList[$scope.planIndex].courseName,
             name: "",
             type: "",
             video: "",
             pic: "",
             content: "",
-            status: true,
+            status: 1,
             study: "", 
             test: "",
             startTime: "",
             planTime: ""
         }
     }
+
+    //关闭视频播放
+    $('#form-dialog').on('hide.bs.modal', function () {
+        // 执行一些动作...
+        console.log("你关了我了 ~V~");
+        var video = $('#plan_video');
+        if (video[0]) {
+            video[0].pause();
+        }
+    })
+     
+    //改变计划图片时候触发
+    $scope.showPlanImg = function (file) {
+        if (file.length == 0)
+            return;
+        if (file[0].size / 1024 > 300) {
+            $scope.pic_error = true;
+            $scope.$apply();
+            return;
+        }
+        $scope.btn_upload = "图片上传中..."; 
+        var nowfile = {
+            file: file[0],
+            picName: 'planPic',
+            type: 'planPic'
+        }
+        toolService.uploadImg(nowfile).then(function (data) {
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_upload = "浏览图片";
+                $scope.newplan.pic = data.data;
+                $scope.pic_error = false;
+            }
+        })
+    }
+
+    $scope.btn_uploadvideo = "浏览视频";
+    $scope.video_error = false;
+
+    //改变视频时触发
+    $scope.showPlanVideo = function (file) {
+        if (file.length == 0)
+            return;
+        for (var i = 0; i < file.length; i++) {
+            if (file[i].size / 1024 / 1024 > 300) {
+                $scope.video_error = true;
+                $scope.$apply();
+                return;
+            }
+        }
+        $scope.btn_uploadvideo = "视频上传中..."; 
+        var nowfile = {
+            file: file[0],
+            picName: 'planVideo',
+            type: 'planVideo'
+        }
+        toolService.uploadFile(nowfile).then(function (data) {
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_uploadvideo = "浏览视频"; 
+                $scope.newplan.video = data.data.split(";")[0];
+                $scope.pic_error = false;
+            }
+        })
+    }
+
+    //更新上传信息
+    $scope.$on("Index->UpdateProcess", function (evt, dat) {
+        $scope.btn_uploadvideo = dat;
+    })
+
+    //改变课件时触发
+    $scope.showPlanStudy = function (file) {
+        if (file.length == 0)
+            return;
+        for (var i = 0; i < file.length; i++) {
+            if (file[i].size / 1024 / 1024 > 30) {
+                $scope.video_error = true;
+                $scope.$apply();
+                return;
+            }
+        }
+        $scope.btn_uploadvideo = "文件上传中...";
+        var nowfile = {
+            file: file[0],
+            picName: 'planStudy',
+            type: 'planStudy'
+        }
+        toolService.uploadFile(nowfile).then(function (data) {
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_uploadvideo = "浏览文件";
+                $scope.newplan.study = data.data.split(";")[0].split("planStudy_")[1];
+                $scope.pic_error = false;
+            }
+        })
+    }
+    
+    //改变课程计划类型时候触发
+    $scope.changePlanType = function () {
+        if ($scope.newplan.type == 1) {
+            $scope.btn_uploadvideo = "浏览视频";
+        }
+        else if ($scope.newplan.type == 2) {
+            $scope.btn_uploadvideo = "浏览文件";
+        }
+    }
+
+    //新增或修改课程表单是否正确
+    $scope.planvalidate = false;
+    $scope.$watch("newplan", function () {
+        $scope.planvalidate =
+        (($scope.newplan.type == 1 &&  $scope.newplan.video) ||
+        ($scope.newplan.type == 2 && $scope.newplan.study) ||
+        $scope.newplan.type == 3) &&
+        $scope.newplan.content &&
+        $scope.newplan.pic &&
+        $scope.newplan.name;
+    }, true);
+
+    //新增或编辑课程计划
+    $scope.addNewCoursePlan = function () {
+        if ($scope.newplan.type == 1) {
+            $scope.newplan.study = "";
+            $scope.newplan.test = "";
+        }
+        else if ($scope.newplan.type == 2) {
+            $scope.newplan.video = "";
+            $scope.newplan.test = "";
+        }
+        else if ($scope.newplan.type == 3) {
+            $scope.newplan.study = "";
+            $scope.newplan.video = "";  
+        }
+        if ($scope.userCtrlType == 'addplan' && $scope.planvalidate) {
+            coursePlanService.AddCoursePlan($scope.newplan).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") { 
+                    $scope.initPlanList();
+                }
+            });
+        }
+        else if ($scope.userCtrlType == 'editplan' && $scope.planvalidate) {
+            coursePlanService.UpdateCoursePlan($scope.newplan).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") { 
+                    $scope.initPlanList();
+                }
+            });
+        }
+    } 
+
 });
-
-

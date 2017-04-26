@@ -229,7 +229,7 @@ namespace Chr.OnlineApp.BLL
                 SqlParameter sqlParameter = new SqlParameter("@status", SqlDbType.Int, 4) { Value = status };
                 paramList.Add(sqlParameter);
             }
-            parameter.SqlString += "  order by [createTime] desc ";
+            parameter.SqlString += "  order by [createTime] ";
             parameter.Parameters = paramList.ToArray();
 
             return BLL.CommonToolsBLL.GetPageListByParamsOutBound(pageSize, curPage, parameter);

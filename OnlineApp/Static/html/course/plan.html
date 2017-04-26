@@ -18,21 +18,18 @@
                         <h2>该课程还没有任何计划,等待更新。。。</h2>
                     </li>
                 </ul>
-                <ul class="list-group pmd-card-list pmd-list todo-lists" ng-repeat="plan in coursePlanList">
-                    <li class="list-group-item timeline project-info">
-                        Graphics changes. Need to change icons for few sections.
+                <ul class="list-group pmd-card-list pmd-list todo-lists">
+                    <li class="list-group-item timeline project-info" ng-repeat="plan in coursePlanList">
+                        <img ng-src="{{plan.pic}}" class="planImg" />
+                        {{plan.name}}
                         <h5 class="typo-fill-secondary">Low Priority</h5>
                     </li>
 
-                    <li class="list-group-item timeline project-notification">
+                    <!--<li class="list-group-item timeline project-notification">
+                        <img ng-src="{{plan.pic}}" class="planImg" />
                         Clean html/css/js code. Remove commented code from all the files. Also, enhance the code.
                         <h5 class="typo-fill-secondary">High Priority</h5>
-                    </li>
-
-                    <li class="list-group-item timeline  project-notification">
-                        Make website responsive. Need to check the website in devices like Mobile and Ipad.
-                        <h5 class="typo-fill-secondary">High Priority</h5>
-                    </li>
+                    </li>--> 
                 </ul>
                 <div class="blank-state-section text-center" style="margin:5px;">
                     <button data-target="#form-dialog" data-toggle="modal" type="button" class="btn btn-info" ng-click="showAddPlan()">新增计划</button>
