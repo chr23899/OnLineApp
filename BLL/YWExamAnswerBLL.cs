@@ -38,6 +38,7 @@ namespace Chr.OnlineApp.BLL
         }
 
 
+
         /// <summary>
         /// 对基础对象名称（YWExamAnswer）实例对象，进行数据有效性检查。
         /// </summary>
@@ -84,8 +85,8 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWExamAnswer.ObjectAnswer, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWExamAnswer.ObjectPic, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWExamAnswer.ObjectPic, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWExamAnswer.CreateUserName, 20))
                 throw new CustomException("“”长度不能超过 20 个汉字或字符，请您确认输入是否正确。");
@@ -110,6 +111,7 @@ namespace Chr.OnlineApp.BLL
 
             #endregion
         }
+
 
 
         /// <summary>

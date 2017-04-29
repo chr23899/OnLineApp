@@ -45,7 +45,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@score"          , SqlDbType.Decimal  , 9  ){ Value = yWExamAnswer.Score          },
                 new SqlParameter("@chanceAnswer"   , SqlDbType.NVarChar , 50 ){ Value = yWExamAnswer.ChanceAnswer   },
                 new SqlParameter("@objectAnswer"   , SqlDbType.NVarChar , 500){ Value = yWExamAnswer.ObjectAnswer   },
-                new SqlParameter("@objectPic"      , SqlDbType.NVarChar , 50 ){ Value = yWExamAnswer.ObjectPic      },
+                new SqlParameter("@objectPic"      , SqlDbType.NVarChar , 500){ Value = yWExamAnswer.ObjectPic      },
                 new SqlParameter("@result"         , SqlDbType.Int      , 4  ){ Value = yWExamAnswer.Result         },
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWExamAnswer.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWExamAnswer.UpdateTime     },
@@ -83,7 +83,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@score"          , SqlDbType.Decimal  , 9  ){ Value = yWExamAnswer.Score          },
                 new SqlParameter("@chanceAnswer"   , SqlDbType.NVarChar , 50 ){ Value = yWExamAnswer.ChanceAnswer   },
                 new SqlParameter("@objectAnswer"   , SqlDbType.NVarChar , 500){ Value = yWExamAnswer.ObjectAnswer   },
-                new SqlParameter("@objectPic"      , SqlDbType.NVarChar , 50 ){ Value = yWExamAnswer.ObjectPic      },
+                new SqlParameter("@objectPic"      , SqlDbType.NVarChar , 500){ Value = yWExamAnswer.ObjectPic      },
                 new SqlParameter("@result"         , SqlDbType.Int      , 4  ){ Value = yWExamAnswer.Result         },
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWExamAnswer.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWExamAnswer.UpdateTime     },
@@ -99,7 +99,8 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@Id"             , SqlDbType.Int      , 4  ){ Value = yWExamAnswer.Id             }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
-        }
+        } 
+
 
 
         /// <summary>

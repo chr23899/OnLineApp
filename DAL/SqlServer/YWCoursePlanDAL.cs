@@ -44,7 +44,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@name"       , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Name       },
                 new SqlParameter("@content"    , SqlDbType.NVarChar , 500){ Value = yWCoursePlan.Content    },
                 new SqlParameter("@type"       , SqlDbType.NVarChar , 10 ){ Value = yWCoursePlan.Type       },
-                new SqlParameter("@pic"        , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Pic        },
+                new SqlParameter("@pic"        , SqlDbType.NVarChar , 500){ Value = yWCoursePlan.Pic        },
                 new SqlParameter("@video"      , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Video      },
                 new SqlParameter("@study"      , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Study      },
                 new SqlParameter("@test"       , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Test       },
@@ -82,7 +82,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@name"       , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Name       },
                 new SqlParameter("@content"    , SqlDbType.NVarChar , 500){ Value = yWCoursePlan.Content    },
                 new SqlParameter("@type"       , SqlDbType.NVarChar , 10 ){ Value = yWCoursePlan.Type       },
-                new SqlParameter("@pic"        , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Pic        },
+                new SqlParameter("@pic"        , SqlDbType.NVarChar , 500){ Value = yWCoursePlan.Pic        },
                 new SqlParameter("@video"      , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Video      },
                 new SqlParameter("@study"      , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Study      },
                 new SqlParameter("@test"       , SqlDbType.NVarChar , 50 ){ Value = yWCoursePlan.Test       },
@@ -101,6 +101,8 @@ namespace Chr.OnlineApp.DAL.SqlServer
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
+
+
 
 
         /// <summary>

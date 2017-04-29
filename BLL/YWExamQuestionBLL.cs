@@ -66,8 +66,8 @@ namespace Chr.OnlineApp.BLL
             #endregion
 
             #region 检查字符串是否超出规定长度
-            if (DataValid.IsOutLength(yWExamQuestion.Pic, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWExamQuestion.Pic, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWExamQuestion.Chance1, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
@@ -93,8 +93,8 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWExamQuestion.ObjectAnswer, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWExamQuestion.ObjectPic, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWExamQuestion.ObjectPic, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWExamQuestion.Alternate1, 50))
                 throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
@@ -113,6 +113,7 @@ namespace Chr.OnlineApp.BLL
 
             #endregion
         }
+
 
 
         /// <summary>
