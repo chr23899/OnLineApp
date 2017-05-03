@@ -30,8 +30,8 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     //更新列表信息
     initList();
     function initList() {
-        $('#form-dialog').modal('show');
         $scope.loadingForm = true;
+        $('#form-dialog').modal('show');
         courseService.GetCoursePageData($scope.query).then(function (data) {
             if (data == "") {
                 $('#form-dialog').modal('hide');

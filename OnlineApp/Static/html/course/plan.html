@@ -19,17 +19,36 @@
                     </li>
                 </ul>
                 <ul class="list-group pmd-card-list pmd-list todo-lists">
-                    <li class="list-group-item timeline project-info" ng-repeat="plan in coursePlanList">
+                    <div ng-repeat="plan in coursePlanList">
+                        <div class="col-sm-2">
+                            <img ng-src="{{plan.pic}}" class="planImg" />
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="list-group-item timeline project-info"> 
+                                <h2>{{plan.name}}</h2>
+                                <h3>{{plan.content}}</h3>
+                                <h5 class="typo-fill-secondary">计划开始时间: {{plan.planTime.toString().substr(0,plan.planTime.length-3)}} ————  计划结束时间: {{plan.finishTime.toString().substr(0,plan.finishTime.length-3)}}</h5>
+
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showDeatil($index)">查看</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="showDeatil($index)">更新</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-danger" ng-click="delCourse($index)">删除</button> 
+                            </div> 
+                        </div>
+                        <div class="col-sm-12">
+                            <hr />
+                        </div>
+                    <!--<li class="list-group-item timeline project-info" ng-repeat="plan in coursePlanList">
                         <img ng-src="{{plan.pic}}" class="planImg" />
-                        {{plan.name}}
-                        <h5 class="typo-fill-secondary">Low Priority</h5>
+                        <h2>{{plan.name}}</h2>
+                        <h3>{{plan.content}}</h3>
+                        <h5 class="typo-fill-secondary">计划开始时间: {{plan.planTime.toString().substr(0,plan.planTime.length-3)}} ————  计划结束时间: {{plan.finishTime.toString().substr(0,plan.finishTime.length-3)}}</h5>
                     </li>
 
-                    <!--<li class="list-group-item timeline project-notification">
+                    <li class="list-group-item timeline project-notification">
                         <img ng-src="{{plan.pic}}" class="planImg" />
                         Clean html/css/js code. Remove commented code from all the files. Also, enhance the code.
                         <h5 class="typo-fill-secondary">High Priority</h5>
-                    </li>--> 
+                    </li>-->
                 </ul>
                 <div class="blank-state-section text-center" style="margin:5px;">
                     <button data-target="#form-dialog" data-toggle="modal" type="button" class="btn btn-info" ng-click="showAddPlan()">新增计划</button>

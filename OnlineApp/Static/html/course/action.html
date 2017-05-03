@@ -1,6 +1,6 @@
 ﻿<div tabindex="-1" class="modal fade" id="form-dialog">
     <!--add or edit new form-->
-    <div class="modal-dialog" ng-if="(userCtrlType=='add' || userCtrlType=='edit')  && !loadingForm">
+    <div class="modal-dialog" ng-if="!loadingForm  && (userCtrlType=='add' || userCtrlType=='edit')">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
@@ -19,7 +19,7 @@
                     <div class="form-group pmd-textfield ">
                         <label for="first-name">课程标签:(中间使用英文逗号分隔)</label>
                         <input type="text" class=" form-control" id="phone" ng-model="newcourse.title">
-                    </div> 
+                    </div>
                     <div class="form-group pmd-textfield">
                         <label for="first-name">课程图片</label>
                         <div class="row text-center" ng-show="newcourse.pic">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <!-- view new form -->
-    <div class="modal-dialog" ng-if="userCtrlType=='view'  && !loadingForm">
+    <div class="modal-dialog" ng-if="!loadingForm && userCtrlType=='view'">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
@@ -87,7 +87,7 @@
     </div>
 
     <!-- add new plan -->
-    <div class="modal-dialog" ng-if="(userCtrlType=='addplan' || userCtrlType=='editplan')  && !loadingForm">
+    <div class="modal-dialog" ng-if="!loadingForm  && (userCtrlType=='addplan' || userCtrlType=='editplan')">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 1">
                         <label for="first-name">视频</label>
-                        <div class="row text-center" ng-show="newplan.video" style="margin-top:-15px;"> 
+                        <div class="row text-center" ng-show="newplan.video" style="margin-top:-15px;">
                             <video ng-src="{{newplan.video | trustUrl}}" width="90%" height="340" style="margin-top: 20px;" controls></video>
                         </div>
                         <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览视频' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planVideo').click();"> {{btn_uploadvideo}}</button>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 2">
                         <label for="first-name">课件</label>
-                        <div class="row text-center" ng-show="newplan.study" style="margin-top:5px;"> 
+                        <div class="row text-center" ng-show="newplan.study" style="margin-top:5px;">
                             文件名称: {{newplan.study}}
                         </div>
                         <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览文件' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planStudy').click();"> {{btn_uploadvideo}}</button>
@@ -156,7 +156,7 @@
     </div>
 
     <!-- confirm delete-->
-    <div class="modal-dialog" ng-if="userCtrlType=='delete'  && !loadingForm" style="margin-top: 204px;">
+    <div class="modal-dialog" ng-if="!loadingForm  && userCtrlType=='delete'" style="margin-top: 204px;">
         <div class="modal-content">
             <div class="modal-body"> 你确定删除当前对象吗? </div>
             <div class="pmd-modal-action text-right">
@@ -167,7 +167,7 @@
     </div>    
         
     <!-- loading form-->
-    <div class="modal-dialog modal-sm" ng-if="loadingForm" style="margin-top: 230px; width: 150px;">
+    <div class="modal-dialog modal-sm" ng-show="loadingForm" style="margin-top: 230px; width: 150px;">
         <div class="">
             <img width="1184" height="666" class="img-responsive" src="/Static/img/loading.gif">
             <div class="modal-body text-center" style="color: white;"> 玩命加载中 </div>
