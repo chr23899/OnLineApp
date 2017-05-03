@@ -103,6 +103,71 @@
                         <label for="first-name">计划名称:</label>
                         <input type="text" class=" form-control" id="phone" ng-model="newplan.name">
                     </div>
+
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划开始时间:</label>
+                        <section class="row component-section">
+                            <div class="component-box">
+                                <!--Datepicke in popup example -->
+                                <div class="pmd-card pmd-z-depth pmd-card-custom-view">
+                                    <div class="pmd-card-body">
+                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                            <label for="regular1" class="control-label">点击选择</label>
+                                            <input type="text" data-datepicker-popup="true" data-datepicker="datepicker-popup-inline" class="form-control" data-target="#datepicker-dialog" data-toggle="modal" />
+                                        </div>
+                                        <div tabindex="-1" class="modal fade" id="datepicker-dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div id="datepicker-popup-inline"></div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn pmd-ripple-effect btn-default" aria-hidden="true" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn pmd-ripple-effect btn-primary">确定</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dialog Simple datepicker-->
+                                    </div>
+                                </div> <!--Datepicker in popup example end -->
+                            </div>
+                            <!-- datepicker in popup code and example end -->
+                        </section> <!-- Datepicke in popup end -->
+                   </div>
+                    
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划结束时间:</label>
+                        <section class="row component-section">
+                            <div class="component-box">
+                                <!--Datepicke in popup example -->
+                                <div class="pmd-card pmd-z-depth pmd-card-custom-view">
+                                    <div class="pmd-card-body">
+                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                            <label for="regular1" class="control-label">点击选择</label>
+                                            <input type="text" data-datepicker-popup="true" data-datepicker="datepicker-popup-inline" class="form-control" data-target="#datepicker-dialog" data-toggle="modal" />
+                                        </div>
+                                        <div tabindex="-1" class="modal fade" id="datepicker-dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div id="datepicker-popup-inline"></div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn pmd-ripple-effect btn-default" aria-hidden="true" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn pmd-ripple-effect btn-primary">确定</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dialog Simple datepicker-->
+                                    </div>
+                                </div> <!--Datepicker in popup example end -->
+                            </div>
+                            <!-- datepicker in popup code and example end -->
+                        </section> <!-- Datepicke in popup end -->
+                    </div>
+                        
+                    
+
+                    
+
                     <div class="form-group pmd-textfield">
                         <label for="first-name">计划图片</label>
                         <div class="row text-center" ng-show="newplan.pic">
