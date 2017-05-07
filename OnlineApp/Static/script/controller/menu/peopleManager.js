@@ -139,7 +139,7 @@ OnlineApp.controller('peopleManager', function ($scope, userService,toolService,
             picName: 'test',
             type: 'user'
         }
-        toolService.uploadFile(nowfile).then(function (data) { 
+        toolService.uploadImg(nowfile).then(function (data) {
             //data = JSON.parse(data);
             if (data.status == "200") {
                 console.log(data.data);

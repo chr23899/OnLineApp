@@ -83,16 +83,16 @@ namespace OnlineApp.Server
 
             YWAssignment assignment = new YWAssignment();
             assignment.PlanId = strplanId != null ? Convert.ToInt32(strplanId) : 0;
-            assignment.PlanName = strplanName != null ? strcontent : "zanwujihua";
+            assignment.PlanName = strplanName != null ? strplanName : "zanwujihua";
             assignment.CourseId = strcourseId != null ? Convert.ToInt32(strcourseId) : 0;
-            assignment.CourseName = strcourseName != null ? strcontent : "zanwukechen";
+            assignment.CourseName = strcourseName != null ? strcourseName : "zanwukechen";
             assignment.CreateUserName = pTUsers.Nickname;
             assignment.CreateUserId = pTUsers.Id;
             assignment.UpdateUserName = pTUsers.Nickname;
             assignment.UpdateUserId = pTUsers.Id;
-            assignment.Title = strtitle != null ? strcontent : "zanwubiaoti";
+            assignment.Title = strtitle != null ? strtitle : "zanwubiaoti";
             assignment.Content = strcontent != null ? strcontent : "";
-            assignment.Link = strlink != null ? strcontent : "";
+            assignment.Link = strlink != null ? strlink : "";
             assignment.CreateTime = DateTime.Now;
             assignment.UpdateTime = DateTime.Now;
             assignment.Status = strstatus != null ? Convert.ToInt32(strstatus) : 0;
