@@ -72,6 +72,7 @@
     <Content Include="Static\html\course\index.html" />
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
+    <Content Include="Static\html\homework\action.html" />
     <Content Include="Static\html\homework\index.html" />
     <Content Include="Static\html\people\action.html" />
     <Content Include="Static\html\people\index.html" />
