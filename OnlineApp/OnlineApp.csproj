@@ -14,7 +14,7 @@
     <RootNamespace>OnlineApp</RootNamespace>
     <AssemblyName>OnlineApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -73,6 +73,7 @@
     <Content Include="Static\html\course\plan.html" />
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
+    <Content Include="Static\html\homework\action.html" />
     <Content Include="Static\html\homework\index.html" />
     <Content Include="Static\html\people\action.html" />
     <Content Include="Static\html\people\index.html" />
@@ -3004,7 +3005,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>33692</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/</IISUrl>
+          <IISUrl>http://localhost:33692/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://localhost:33692/</CustomServerUrl>

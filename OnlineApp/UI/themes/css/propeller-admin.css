@@ -516,9 +516,9 @@ h2.typo-fill-secondary{ color:rgba(77, 87, 93, 0.68); font-size:22px;}
 .profile-edit .pmd-textfield .form-control-static{ padding-top:4px;}
 
 .pmd-card{ margin-bottom:0;}
-.component-section{ margin-bottom: 20px; margin-top: 30px;}
+.component-section{ margin-bottom:0px; margin-top: 0px;}
 .component-section h2{ margin-top:0;}
-.component-box{ margin-bottom: 20px;}
+.component-box{ margin-bottom: 5px;}
 .component-desc{ font-size:14px; margin-top:4px;}
 @media (max-width: 767px) {
 .component-section{ margin-top:0;}

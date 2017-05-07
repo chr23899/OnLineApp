@@ -1,0 +1,105 @@
+﻿<div tabindex="-1" class="modal fade" id="form-dialog">
+    <!--add or edit new form-->
+    <div class="modal-dialog" ng-show="(userCtrlType=='add' || userCtrlType=='edit')  && !loadingForm">
+        <div class="modal-content">
+            <div class="modal-header bordered">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">课程名:</label>
+                        <input type="text" class="form-control" id="name" ng-model="newcourse.courseName">
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">参考书籍:</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="newcourse.linkBook">
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">课程标签:(中间使用英文逗号分隔)</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="newcourse.title">
+                    </div> 
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">课程图片</label>
+                        <div class="row text-center" ng-show="newcourse.pic">
+                            <img ng-src="{{newcourse.pic}}" width="65%" height="120" style="margin:10px;">
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload').click();"> {{btn_upload}}</button>
+                        <input type="file" id="ImgUpload" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
+                        图片大小要介于<a href="javascript:void(0);" class="alert-link">0K~300K</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label class="control-label">课程说明</label>
+                        <textarea required class="form-control" ng-model="newcourse.content"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="pmd-modal-action">
+                <button class="btn pmd-ripple-effect btn-primary" ng-class="validate ? '' : 'disabled'" type="button" ng-click="addNewCourse()">{{userCtrlType=='add' ?'新增':'修改'}}</button>
+                <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- view new form -->
+    <div class="modal-dialog" ng-show="userCtrlType=='view'  && !loadingForm">
+        <div class="modal-content">
+            <div class="modal-header bordered">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h2 class="pmd-card-title-text">{{courseList[nowindex].title}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">课程名</label>
+                        <input type="text" class="form-control" id="name" value="{{courseList[nowindex].courseName}}" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">主讲教师</label>
+                        <input type="text" class="form-control" id="phone" ng-model="courseList[nowindex].teacherName" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">参考书籍:</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="courseList[nowindex].linkBook" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">课程标签:(中间使用英文逗号分隔)</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="courseList[nowindex].title" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">课程图片</label>
+                        <div class="row text-center" ng-show="courseList[nowindex].pic">
+                            <img ng-src="{{courseList[nowindex].pic}}" width="65%" height="120" style="margin:10px;">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label class="control-label">课程说明</label>
+                        <textarea required class="form-control" ng-model="courseList[nowindex].content" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="pmd-modal-action">
+                <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- confirm delete-->
+    <div class="modal-dialog" ng-show="userCtrlType=='delete'  && !loadingForm" style="margin-top: 204px;">
+        <div class="modal-content">
+            <div class="modal-body"> 你确定删除当前对象吗? </div>
+            <div class="pmd-modal-action text-right">
+                <button class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button" ng-click="confirmDel()">确定</button>
+                <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- loading form-->
+    <div class="modal-dialog modal-sm" ng-show="loadingForm" style="margin-top: 230px; width: 150px;">
+        <div class="">
+            <img width="1184" height="666" class="img-responsive" src="/Static/img/loading.gif">
+            <div class="modal-body text-center" style="color: white;"> 玩命加载中 </div>
+        </div>
+    </div>
+</div>

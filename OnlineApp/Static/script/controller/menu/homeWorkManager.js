@@ -1,11 +1,12 @@
 ﻿//define menu controller 作业管理
-OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkService, homeWorkStore, USER_LAYERS) {
+OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkService, homeWorkStore,toolService, USER_LAYERS) {
     //显示当前作业列表内容
     $scope.homeWorkList = homeWorkStore;
     $scope.loadingForm = true;
     $scope.userLayers = USER_LAYERS;
     $('#form-dialog').modal('show');
-
+    $scope.btn_upload = "浏览图片";
+    $scope.pic_error = false;
     $scope.query = {
         userName: "",
         homeWorkTask: "",
@@ -86,6 +87,33 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             show: true,
             title: "",
         }
+    }
+    //改变图片时候触发
+    $scope.showImg = function (file) {
+        if (file.length == 0)
+            return;
+        if (file[0].size / 1024 > 300) {
+            $scope.pic_error = true;
+            $scope.$apply();
+            return;
+        }
+        //console.log("imgUrl" + $scope.newperson);
+        $scope.btn_upload = "图片上传中...";
+        var nowInput = $("#ImgUpload");
+        var nowfile = {
+            file: file[0],
+            picName: 'homework',
+            type: 'homework'
+        }
+        toolService.uploadFile(nowfile).then(function (data) {
+            //data = JSON.parse(data);
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_upload = "浏览图片";
+                $scope.homeWork.pic = data.data;
+                $scope.pic_error = false;
+            }
+        })
     }
 
     //表单是否正确
