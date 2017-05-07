@@ -1,5 +1,5 @@
 ﻿//define tool Service
-OnlineApp.service('toolService', function ($http, Upload) {
+OnlineApp.service('toolService', function ($rootScope, $http, Upload) {
     //对应到 工具类 UploadHandler
 
     //上传文件,支持多个文件同时上传
@@ -8,7 +8,7 @@ OnlineApp.service('toolService', function ($http, Upload) {
             url: 'Server/UploadHandler.ashx',
             data: {
                 file: params["file"],
-                'command': 'UploadImg',
+                'command': 'UploadFile',
                 'picName': params["picName"],
                 'type': params["type"]
             }
@@ -21,6 +21,8 @@ OnlineApp.service('toolService', function ($http, Upload) {
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            $rootScope.$broadcast("Process->Index", "文件: " + evt.config.data.file.name + " 上传进度" + progressPercentage + "%");
+            //$rootScope.processData = "文件: " + evt.config.data.file.name + " 上传进度" + progressPercentage;
         });
     }
 
@@ -35,7 +37,7 @@ OnlineApp.service('toolService', function ($http, Upload) {
                 'type': params["type"]
             }
         }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
             return resp;
         }, function (resp) {
             //console.log('Error status: ' + resp.status);

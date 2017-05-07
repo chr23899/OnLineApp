@@ -8,4 +8,8 @@ OnlineApp.constant("USER_ROLES", {
 }).constant("USER_LAYERS", {
     "1": { "id": "1", "name": "中学" },
     "2": { "id": "2", "name": "小学" } 
+}).constant("PLAN_TYPES", {
+    "1": { "id": "1", "name": "讲课" },
+    "2": { "id": "2", "name": "自习" },
+    "3": { "id": "3", "name": "测试" }
 })

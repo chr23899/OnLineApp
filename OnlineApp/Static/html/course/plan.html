@@ -1,0 +1,60 @@
+﻿<div class="row masonry" id="card-masonry-people" style="position: relative; opacity: 1;margin-top: 15px;" ng-show="pageType=='plancourse'">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="pmd-card pmd-z-depth project-progress">
+            <div class="pmd-card-title">
+                <div class="media-left set-svg">
+                    <span class="service-icon img-circle">
+                        <img ng-src="{{courseList[planIndex].pic}}" width="40" height="40" style="border-radius:50%;">
+                    </span>
+                </div>
+                <div class="media-body media-middle">
+                    <h2 class="pmd-card-title-text typo-fill-secondary">{{courseList[planIndex].courseName}}</h2>
+                    <h4 class="pmd-card-title-text typo-fill-secondary">主讲老师: {{courseList[planIndex].teacherName}}</h4>
+                </div>
+            </div>
+            <div class="content-section">
+                <ul class="list-group pmd-card-list pmd-list todo-lists" ng-show="coursePlanList.length == 0">
+                    <li class="list-group-item timeline project-notification">
+                        <h2>该课程还没有任何计划,等待更新。。。</h2>
+                    </li>
+                </ul>
+                <ul class="list-group pmd-card-list pmd-list todo-lists">
+                    <div ng-repeat="plan in coursePlanList">
+                        <div class="col-sm-2">
+                            <img ng-src="{{plan.pic}}" class="planImg" />
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="list-group-item timeline project-info"> 
+                                <h2>{{plan.name}}</h2>
+                                <h3>{{plan.content}}</h3>
+                                <h5 class="typo-fill-secondary">计划开始时间: {{plan.planTime.toString().substr(0,plan.planTime.length-3)}} ————  计划结束时间: {{plan.finishTime.toString().substr(0,plan.finishTime.length-3)}}</h5>
+
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showDeatil($index)">查看</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="showDeatil($index)">更新</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-danger" ng-click="delCourse($index)">删除</button> 
+                            </div> 
+                        </div>
+                        <div class="col-sm-12">
+                            <hr />
+                        </div>
+                    <!--<li class="list-group-item timeline project-info" ng-repeat="plan in coursePlanList">
+                        <img ng-src="{{plan.pic}}" class="planImg" />
+                        <h2>{{plan.name}}</h2>
+                        <h3>{{plan.content}}</h3>
+                        <h5 class="typo-fill-secondary">计划开始时间: {{plan.planTime.toString().substr(0,plan.planTime.length-3)}} ————  计划结束时间: {{plan.finishTime.toString().substr(0,plan.finishTime.length-3)}}</h5>
+                    </li>
+
+                    <li class="list-group-item timeline project-notification">
+                        <img ng-src="{{plan.pic}}" class="planImg" />
+                        Clean html/css/js code. Remove commented code from all the files. Also, enhance the code.
+                        <h5 class="typo-fill-secondary">High Priority</h5>
+                    </li>-->
+                </ul>
+                <div class="blank-state-section text-center" style="margin:5px;">
+                    <button data-target="#form-dialog" data-toggle="modal" type="button" class="btn btn-info" ng-click="showAddPlan()">新增计划</button>
+                    <button type="button" class="btn" ng-click="backToList()">返回列表</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,10 @@
 ﻿<div tabindex="-1" class="modal fade" id="form-dialog">
     <!--add or edit new form-->
-    <div class="modal-dialog" ng-show="(userCtrlType=='add' || userCtrlType=='edit')  && !loadingForm">
+    <div class="modal-dialog" ng-if="!loadingForm  && (userCtrlType=='add' || userCtrlType=='edit')">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}</h2>
+                <h2 class="pmd-card-title-text">{{userCtrlType=='add' ?'新增':'修改'}}课程</h2>
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
@@ -19,7 +19,7 @@
                     <div class="form-group pmd-textfield ">
                         <label for="first-name">课程标签:(中间使用英文逗号分隔)</label>
                         <input type="text" class=" form-control" id="phone" ng-model="newcourse.title">
-                    </div> 
+                    </div>
                     <div class="form-group pmd-textfield">
                         <label for="first-name">课程图片</label>
                         <div class="row text-center" ng-show="newcourse.pic">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <!-- view new form -->
-    <div class="modal-dialog" ng-show="userCtrlType=='view'  && !loadingForm">
+    <div class="modal-dialog" ng-if="!loadingForm && userCtrlType=='view'">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
@@ -85,8 +85,143 @@
             </div>
         </div>
     </div>
+
+    <!-- add new plan -->
+    <div class="modal-dialog" ng-if="!loadingForm  && (userCtrlType=='addplan' || userCtrlType=='editplan')">
+        <div class="modal-content">
+            <div class="modal-header bordered">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h2 class="pmd-card-title-text">{{userCtrlType=='addplan' ?'新增':'修改'}}课程计划</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">课程名:</label>
+                        <input type="text" class="form-control" id="name" value="{{newplan.courseName}}" disabled>
+                    </div>
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划名称:</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="newplan.name">
+                    </div>
+
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划开始时间:</label>
+                        <section class="row component-section">
+                            <div class="component-box">
+                                <!--Datepicke in popup example -->
+                                <div class="pmd-card pmd-z-depth pmd-card-custom-view">
+                                    <div class="pmd-card-body">
+                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                            <label for="regular1" class="control-label">点击选择</label>
+                                            <input type="text" data-datepicker-popup="true" data-datepicker="datepicker-popup-inline" class="form-control" data-target="#datepicker-dialog" data-toggle="modal" />
+                                        </div>
+                                        <div tabindex="-1" class="modal fade" id="datepicker-dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div id="datepicker-popup-inline"></div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn pmd-ripple-effect btn-default" aria-hidden="true" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn pmd-ripple-effect btn-primary">确定</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dialog Simple datepicker-->
+                                    </div>
+                                </div> <!--Datepicker in popup example end -->
+                            </div>
+                            <!-- datepicker in popup code and example end -->
+                        </section> <!-- Datepicke in popup end -->
+                   </div>
+                    
+                    <div class="form-group pmd-textfield ">
+                        <label for="first-name">计划结束时间:</label>
+                        <section class="row component-section">
+                            <div class="component-box">
+                                <!--Datepicke in popup example -->
+                                <div class="pmd-card pmd-z-depth pmd-card-custom-view">
+                                    <div class="pmd-card-body">
+                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                            <label for="regular1" class="control-label">点击选择</label>
+                                            <input type="text" data-datepicker-popup="true" data-datepicker="datepicker-popup-inline" class="form-control" data-target="#datepicker-dialog" data-toggle="modal" />
+                                        </div>
+                                        <div tabindex="-1" class="modal fade" id="datepicker-dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div id="datepicker-popup-inline"></div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn pmd-ripple-effect btn-default" aria-hidden="true" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn pmd-ripple-effect btn-primary">确定</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dialog Simple datepicker-->
+                                    </div>
+                                </div> <!--Datepicker in popup example end -->
+                            </div>
+                            <!-- datepicker in popup code and example end -->
+                        </section> <!-- Datepicke in popup end -->
+                    </div>
+                        
+                    
+
+                    
+
+                    <div class="form-group pmd-textfield">
+                        <label for="first-name">计划图片</label>
+                        <div class="row text-center" ng-show="newplan.pic">
+                            <img ng-src="{{newplan.pic}}" width="65%" height="120" style="margin:10px;">
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planPic').click();"> {{btn_upload}}</button>
+                        <input type="file" id="ImgUpload_planPic" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
+                        图片大小要介于<a href="javascript:void(0);" class="alert-link">0K~300K</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="role in planTypes track by $index">
+                            <input type="radio" id="planType{{role.id}}" name="planType{{role.id}}" value="{{role.id}}" ng-model="newplan.type" ng-change="changePlanType()"><span class="pmd-checkbox-label">&nbsp;</span>
+                            <span> {{role.name}}</span>
+                        </label>
+                    </div>
+                    <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 1">
+                        <label for="first-name">视频</label>
+                        <div class="row text-center" ng-show="newplan.video" style="margin-top:-15px;">
+                            <video ng-src="{{newplan.video | trustUrl}}" width="90%" height="340" style="margin-top: 20px;" controls></video>
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览视频' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planVideo').click();"> {{btn_uploadvideo}}</button>
+                        <input type="file" id="ImgUpload_planVideo" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanVideo(this.files)" class="hidden" name="File" accept=".mp4">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-if="video_error && newplan.type == 1">
+                        视频大小要介于<a href="javascript:void(0);" class="alert-link">0K~300M</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 2">
+                        <label for="first-name">课件</label>
+                        <div class="row text-center" ng-show="newplan.study" style="margin-top:5px;">
+                            文件名称: {{newplan.study}}
+                        </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览文件' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planStudy').click();"> {{btn_uploadvideo}}</button>
+                        <input type="file" id="ImgUpload_planStudy" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanStudy(this.files)" class="hidden" name="File" accept=".docx,.doc">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-if="video_error && newplan.type == 2">
+                        课件大小要介于<a href="javascript:void(0);" class="alert-link">0K~30M</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label class="control-label">内容及注意事项</label>
+                        <textarea required class="form-control" ng-model="newplan.content"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="pmd-modal-action">
+                <button class="btn pmd-ripple-effect btn-primary" ng-class="planvalidate ? '' : 'disabled'" type="button" ng-click="addNewCoursePlan()">{{userCtrlType=='addplan' ?'新增':'修改'}}</button>
+                <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+
     <!-- confirm delete-->
-    <div class="modal-dialog" ng-show="userCtrlType=='delete'  && !loadingForm" style="margin-top: 204px;">
+    <div class="modal-dialog" ng-if="!loadingForm  && userCtrlType=='delete'" style="margin-top: 204px;">
         <div class="modal-content">
             <div class="modal-body"> 你确定删除当前对象吗? </div>
             <div class="pmd-modal-action text-right">
@@ -94,7 +229,8 @@
                 <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button">取消</button>
             </div>
         </div>
-    </div>
+    </div>    
+        
     <!-- loading form-->
     <div class="modal-dialog modal-sm" ng-show="loadingForm" style="margin-top: 230px; width: 150px;">
         <div class="">

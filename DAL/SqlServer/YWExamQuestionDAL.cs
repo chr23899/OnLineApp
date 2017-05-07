@@ -41,7 +41,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
             {
                 new SqlParameter("@examId"       , SqlDbType.Int      , 4  ){ Value = yWExamQuestion.ExamId       },
                 new SqlParameter("@type"         , SqlDbType.Int      , 4  ){ Value = yWExamQuestion.Type         },
-                new SqlParameter("@pic"          , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.Pic          },
+                new SqlParameter("@pic"          , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Pic          },
                 new SqlParameter("@score"        , SqlDbType.Decimal  , 9  ){ Value = yWExamQuestion.Score        },
                 new SqlParameter("@chance1"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Chance1      },
                 new SqlParameter("@chance2"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Chance2      },
@@ -51,7 +51,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@content"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Content      },
                 new SqlParameter("@chanceAnswer" , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.ChanceAnswer },
                 new SqlParameter("@objectAnswer" , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.ObjectAnswer },
-                new SqlParameter("@objectPic"    , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.ObjectPic    },
+                new SqlParameter("@objectPic"    , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.ObjectPic    },
                 new SqlParameter("@createTime"   , SqlDbType.DateTime , 8  ){ Value = yWExamQuestion.CreateTime   },
                 new SqlParameter("@updateTime"   , SqlDbType.DateTime , 8  ){ Value = yWExamQuestion.UpdateTime   },
                 new SqlParameter("@Alternate1"   , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.Alternate1   },
@@ -79,7 +79,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
             {
                 new SqlParameter("@examId"       , SqlDbType.Int      , 4  ){ Value = yWExamQuestion.ExamId       },
                 new SqlParameter("@type"         , SqlDbType.Int      , 4  ){ Value = yWExamQuestion.Type         },
-                new SqlParameter("@pic"          , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.Pic          },
+                new SqlParameter("@pic"          , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Pic          },
                 new SqlParameter("@score"        , SqlDbType.Decimal  , 9  ){ Value = yWExamQuestion.Score        },
                 new SqlParameter("@chance1"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Chance1      },
                 new SqlParameter("@chance2"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Chance2      },
@@ -89,7 +89,7 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@content"      , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.Content      },
                 new SqlParameter("@chanceAnswer" , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.ChanceAnswer },
                 new SqlParameter("@objectAnswer" , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.ObjectAnswer },
-                new SqlParameter("@objectPic"    , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.ObjectPic    },
+                new SqlParameter("@objectPic"    , SqlDbType.NVarChar , 500){ Value = yWExamQuestion.ObjectPic    },
                 new SqlParameter("@createTime"   , SqlDbType.DateTime , 8  ){ Value = yWExamQuestion.CreateTime   },
                 new SqlParameter("@updateTime"   , SqlDbType.DateTime , 8  ){ Value = yWExamQuestion.UpdateTime   },
                 new SqlParameter("@Alternate1"   , SqlDbType.NVarChar , 50 ){ Value = yWExamQuestion.Alternate1   },
@@ -101,6 +101,8 @@ namespace Chr.OnlineApp.DAL.SqlServer
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
+
+
 
 
         /// <summary>

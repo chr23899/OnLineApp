@@ -9,7 +9,7 @@ namespace Chr.OnlineApp.COL
     /// 对象名称：基础对象名称数据实体类（数据实体层）
     /// 对象说明：该类作为数据载体，供业务逻辑层、数据访问层调用。
     /// 作者姓名：陈焕然
-    /// 编写日期：2017/4/13 23:24:14
+    /// 编写日期：2017/4/29 9:33:49
     /// </summary>
     [Serializable]
     public class YWCoursePlan

@@ -70,6 +70,7 @@
     <Content Include="Static\html\comon\sidebar.html" />
     <Content Include="Static\html\course\action.html" />
     <Content Include="Static\html\course\index.html" />
+    <Content Include="Static\html\course\plan.html" />
     <Content Include="Static\html\datamanage\index.html" />
     <Content Include="Static\html\homepage\index.html" />
     <Content Include="Static\html\homework\action.html" />
@@ -78,6 +79,42 @@
     <Content Include="Static\html\people\index.html" />
     <Content Include="Static\html\setting\index.html" />
     <Content Include="Static\html\testmanage\index.html" />
+    <Content Include="Static\img\course\s1\chinese_down.jpg" />
+    <Content Include="Static\img\course\s1\chinese_up.jpg" />
+    <Content Include="Static\img\course\s1\english_down.jpg" />
+    <Content Include="Static\img\course\s1\english_up.jpg" />
+    <Content Include="Static\img\course\s1\math_down.jpg" />
+    <Content Include="Static\img\course\s1\math_up.jpg" />
+    <Content Include="Static\img\course\s2\chinese_down.jpg" />
+    <Content Include="Static\img\course\s2\chinese_up.jpg" />
+    <Content Include="Static\img\course\s2\english_down.jpg" />
+    <Content Include="Static\img\course\s2\english_up.jpg" />
+    <Content Include="Static\img\course\s2\math_down.jpg" />
+    <Content Include="Static\img\course\s2\math_up.jpg" />
+    <Content Include="Static\img\course\s3\chinese_down.jpg" />
+    <Content Include="Static\img\course\s3\chinese_up.jpg" />
+    <Content Include="Static\img\course\s3\english_down.jpg" />
+    <Content Include="Static\img\course\s3\english_up.jpg" />
+    <Content Include="Static\img\course\s3\math_down.jpg" />
+    <Content Include="Static\img\course\s3\math_up.jpg" />
+    <Content Include="Static\img\course\s4\chinese_down.jpg" />
+    <Content Include="Static\img\course\s4\chinese_up.jpg" />
+    <Content Include="Static\img\course\s4\english_down.jpg" />
+    <Content Include="Static\img\course\s4\english_up.jpg" />
+    <Content Include="Static\img\course\s4\math_down.jpg" />
+    <Content Include="Static\img\course\s4\math_up.jpg" />
+    <Content Include="Static\img\course\s5\chinese_down.jpg" />
+    <Content Include="Static\img\course\s5\chinese_up.jpg" />
+    <Content Include="Static\img\course\s5\english_down.jpg" />
+    <Content Include="Static\img\course\s5\english_up.jpg" />
+    <Content Include="Static\img\course\s5\math_down.jpg" />
+    <Content Include="Static\img\course\s5\math_up.jpg" />
+    <Content Include="Static\img\course\s6\chinese_down.jpg" />
+    <Content Include="Static\img\course\s6\chinese_up.jpg" />
+    <Content Include="Static\img\course\s6\english_down.jpg" />
+    <Content Include="Static\img\course\s6\english_up.jpg" />
+    <Content Include="Static\img\course\s6\math_down.jpg" />
+    <Content Include="Static\img\course\s6\math_up.jpg" />
     <Content Include="Static\img\loading.gif" />
     <Content Include="Static\img\user\admin.png" />
     <Content Include="Static\img\user\leo.png" />
@@ -101,10 +138,14 @@
     <Content Include="Static\script\factory\index\menusStore.js" />
     <Content Include="Static\script\factory\index\noticesStore.js" />
     <Content Include="Static\script\factory\index\peopleStore.js" />
+    <Content Include="Static\script\service\coursePlanService.js" />
     <Content Include="Static\script\service\courseService.js" />
     <Content Include="Static\script\service\homeWorkService.js" />
     <Content Include="Static\script\service\toolService.js" />
     <Content Include="Static\script\service\userService.js" />
+    <Content Include="Static\video\hd1.mp4" />
+    <Content Include="Static\video\movie.mp4" />
+    <Content Include="Static\video\hd2.mp4" />
     <Content Include="UI\404.html" />
     <Content Include="UI\about.html" />
     <Content Include="UI\accordion.html" />
@@ -2658,7 +2699,9 @@
     <Content Include="UI\themes\js\moment.min.js" />
     <Content Include="UI\tooltip.html" />
     <Content Include="UI\typography.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.aspx.cs">
@@ -2965,8 +3008,7 @@
           <IISUrl>http://localhost:33692/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:33692/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
