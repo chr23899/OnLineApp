@@ -29,9 +29,10 @@
                                 <h3>{{plan.content}}</h3>
                                 <h5 class="typo-fill-secondary">计划开始时间: {{plan.planTime.toString().substr(0,plan.planTime.length-3)}} ————  计划结束时间: {{plan.finishTime.toString().substr(0,plan.finishTime.length-3)}}</h5>
 
-                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showDeatil($index)">查看</button>
-                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="showDeatil($index)">更新</button>
-                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-danger" ng-click="delCourse($index)">删除</button> 
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-primary" ng-click="showPlanDeatil($index)">查看</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-default" ng-click="showEditPlanWnd($index)">更新</button>
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-danger" ng-click="delCoursePlan($index)">删除</button> 
+                                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-success" ng-click="showHomeWork($index)">随堂作业</button> 
                             </div> 
                         </div>
                         <div class="col-sm-12">

@@ -17,10 +17,16 @@
     <link rel="stylesheet" type="text/css" href="../UI/assets/css/propeller.min.css">
     <!-- Propeller theme css-->
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-theme.css" />
+    <!-- third party css-->   
+    <!-- Propeller date time picker css-->
+    <link rel="stylesheet" type="text/css" href="/UI/components/datetimepicker/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/UI/components/datetimepicker/css/pmd-datetimepicker.css" />
+
     <!-- main page theme css-->
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-admin.css">
     <!-- app page theme css-->
     <link rel="stylesheet" type="text/css" href="../Static/css/OnlineApp.css">
+
         
     <script src="../UI/node_modules/angular/angular.js"></script>
     <script src="../UI/node_modules/angular-route/angular-route.js"></script>
@@ -35,6 +41,13 @@
     <script src="../UI/node_modules/ng-file/ng-file-upload-all.min.js"></script>
     <script src="../UI/node_modules/ng-file/ng-file-upload-shim.min.js"></script>
     <script src="../UI/node_modules/ng-file/FileAPI.min.js"></script>
+
+    
+    <!-- Scripts Starts -->
+    <script src="../UI/assets/js/jquery-1.12.2.min.js"></script>
+    <script src="../UI/assets/js/bootstrap.min.js"></script>
+    <script src="../UI/assets/js/propeller.min.js"></script>
+
     
     <asp:ContentPlaceHolder ID="head" runat="server"> 
     </asp:ContentPlaceHolder> 
@@ -44,10 +57,6 @@
 <body ng-app="OnlineApp">   
     <asp:ContentPlaceHolder ID="content" runat="server">
     </asp:ContentPlaceHolder>  
-    <!-- Scripts Starts -->
-    <script src="../UI/assets/js/jquery-1.12.2.min.js"></script>
-    <script src="../UI/assets/js/bootstrap.min.js"></script>
-    <script src="../UI/assets/js/propeller.min.js"></script>
 
     <asp:ContentPlaceHolder ID="footer" runat="server">
     </asp:ContentPlaceHolder>

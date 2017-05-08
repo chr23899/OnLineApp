@@ -11,7 +11,23 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     //计划类型
     $scope.planTypes = PLAN_TYPES;
 
+    // Linked date and time picker 
+    // start date date and time picker 
+    $('#datepicker-start').datetimepicker();
 
+    // End date date and time picker 
+    $('#datepicker-end').datetimepicker({
+        useCurrent: false
+    });
+
+    // start date picke on chagne event [select minimun date for end date datepicker]
+    $("#datepicker-start").on("dp.change", function (e) {
+        $('#datepicker-end').data("DateTimePicker").minDate(e.date);
+    });
+    // Start date picke on chagne event [select maxmimum date for start date datepicker]
+    $("#datepicker-end").on("dp.change", function (e) {
+        $('#datepicker-start').data("DateTimePicker").maxDate(e.date);
+    });
 
     $('#form-dialog').modal('show');
     $scope.btn_upload = "浏览图片";
@@ -301,7 +317,8 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             study: "", 
             test: "",
             startTime: "",
-            planTime: ""
+            planTime: "",
+            finishTime: ""
         }
     }
 
@@ -420,7 +437,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         ($scope.newplan.type == 2 && $scope.newplan.study) ||
         $scope.newplan.type == 3) &&
         $scope.newplan.content &&
-        $scope.newplan.pic &&
+        $scope.newplan.pic && 
         $scope.newplan.name;
     }, true);
 
@@ -455,5 +472,70 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             });
         }
     } 
+    
+    //显示当前计划
+    $scope.showPlanDeatil = function (index) {
+        $scope.userCtrlType = 'viewplan';
+        $scope.nowindex = index;
+        $('#form-dialog').modal('show');
+    }
+ 
+    //当前删除项
+    $scope.delCoursePlanIndex = 0;
+
+    //删除当前选中的课程计划
+    $scope.delCoursePlan = function (index) {
+        $scope.userCtrlType = 'deletePlan';
+        $scope.delCoursePlanIndex = index;
+        $('#form-dialog').modal('show');
+    }
+
+    //执行课程计划删除操作
+    $scope.confirmDelPlan = function () {
+        var strDelete = {
+            strDelete: ""
+        };
+        strDelete.strDelete = $scope.coursePlanList[$scope.delCoursePlanIndex].Id;
+        coursePlanService.DeleteCoursePlan(strDelete).then(function (data) {
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                $scope.coursePlanList.splice($scope.delCoursePlanIndex, 1);
+                $scope.delCoursePlanIndex = 0;
+                $('#form-dialog').modal('hide');
+                $scope.$apply(); 
+            }
+        });
+    }
+
+    //当前编辑的课程计划对象
+    $scope.editCoursePlanIndex = 0;
+
+    //弹出编辑课程计划窗口
+    $scope.showEditPlanWnd = function (index) {
+        $scope.userCtrlType = 'editplan';
+        $scope.editCoursePlanIndex = index; 
+        $scope.newplan = {
+            id: $scope.coursePlanList[index].Id,
+            courseId: $scope.courseList[$scope.planIndex].Id,
+            courseName: $scope.courseList[$scope.planIndex].courseName,
+            name: $scope.coursePlanList[index].name,
+            type: $scope.coursePlanList[index].type,
+            video: $scope.coursePlanList[index].video,
+            pic: $scope.coursePlanList[index].pic,
+            content: $scope.coursePlanList[index].content,
+            status: $scope.coursePlanList[index].status,
+            study: $scope.coursePlanList[index].study,
+            test: $scope.coursePlanList[index].test,
+            startTime: $scope.coursePlanList[index].startTime,
+            planTime: $scope.coursePlanList[index].planTime,
+            finishTime: $scope.coursePlanList[index].finishTime,
+        } 
+        $('#form-dialog').modal('show');
+        $scope.changePlanType();
+    }
+
+    $scope.showHomeWork = function (index) {
+
+    }
 
 });
