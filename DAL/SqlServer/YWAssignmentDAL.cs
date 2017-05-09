@@ -53,11 +53,11 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWAssignment.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWAssignment.UpdateTime     },
                 new SqlParameter("@status"         , SqlDbType.Int      , 4  ){ Value = yWAssignment.Status         },
-                new SqlParameter("@Alternate1"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate1     },
-                new SqlParameter("@Alternate2"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate2     },
-                new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate3     },
-                new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate4     },
-                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate5     }
+                new SqlParameter("@Alternate1"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate1     },
+                new SqlParameter("@Alternate2"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate2     },
+                new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate3     },
+                new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate4     },
+                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate5     }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);
         }
@@ -91,11 +91,11 @@ namespace Chr.OnlineApp.DAL.SqlServer
                 new SqlParameter("@createTime"     , SqlDbType.DateTime , 8  ){ Value = yWAssignment.CreateTime     },
                 new SqlParameter("@updateTime"     , SqlDbType.DateTime , 8  ){ Value = yWAssignment.UpdateTime     },
                 new SqlParameter("@status"         , SqlDbType.Int      , 4  ){ Value = yWAssignment.Status         },
-                new SqlParameter("@Alternate1"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate1     },
-                new SqlParameter("@Alternate2"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate2     },
-                new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate3     },
-                new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate4     },
-                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 50 ){ Value = yWAssignment.Alternate5     },
+                new SqlParameter("@Alternate1"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate1     },
+                new SqlParameter("@Alternate2"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate2     },
+                new SqlParameter("@Alternate3"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate3     },
+                new SqlParameter("@Alternate4"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate4     },
+                new SqlParameter("@Alternate5"     , SqlDbType.NVarChar , 500){ Value = yWAssignment.Alternate5     },
                 new SqlParameter("@Id"             , SqlDbType.Int      , 4  ){ Value = yWAssignment.Id             }
             };
             return SFL.SqlHelper.ExecuteNonQuery(sqlText, parameters);

@@ -1,12 +1,14 @@
 ﻿//define menu controller 作业管理
-OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkService, homeWorkStore,toolService, USER_LAYERS) {
+OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkService, homeWorkStore, toolService, USER_LAYERS) {
     //显示当前作业列表内容
     $scope.homeWorkList = homeWorkStore;
     $scope.loadingForm = true;
     $scope.userLayers = USER_LAYERS;
+
     $('#form-dialog').modal('show');
     $scope.btn_upload = "浏览图片";
     $scope.pic_error = false;
+
     $scope.query = {
         userName: "",
         homeWorkTask: "",
@@ -20,19 +22,27 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
     function initList() {
         $scope.loadingForm = true;
         homeWorkService.GetAssignmentPageData($scope.query).then(function (data) {
-            if (data == "") {
-                $('#form-dialog').modal('hide');
-                $scope.loadingForm = false;
-                return;
-            }
+           // if (data == "") {
+             //   $('#form-dialog').modal('hide');
+               // $scope.loadingForm = false;
+                //return;
+           // }
             data = JSON.parse(data);
             if (data.type == "success") {
+                debugger;
                 $scope.homeWorkList = data.result.PageList;
                 $scope.$apply();
                 $('#form-dialog').modal('hide');
                 $scope.loadingForm = false;
             }
         });
+    }
+
+    //对input为file的控件包含的文件进行清空处理
+    function clearSelect() {
+        var obj = document.getElementById('ImgUpload');
+     obj.outerHTML = obj.outerHTML;
+     obj.outerHTML = obj.outerHTML;
     }
 
     $scope.addMore = function () {
@@ -71,12 +81,16 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
         note: "",
         content: "",
         show: true,
+        Alternate2: "",
         title: "",
     }
 
     $scope.userCtrlType = "add";
     $scope.showAddHomeWork = function () {
+        $scope.pic_error = false;
+        clearSelect();
         $scope.userCtrlType = 'add';
+        $scope.pic_error = false;
         $scope.newHomeWork = {
             homeWorkTask: "",
             courseName: "",
@@ -85,9 +99,25 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             note: "",
             content: "",
             show: true,
+            Alternate2: "",
             title: "",
         }
     }
+    
+
+    //表单是否正确
+    $scope.validate = false;
+    $scope.$watch("newHomeWork", function () {
+        $scope.validate =
+        $scope.newHomeWork.homeWorkTask &&
+        $scope.newHomeWork.courseName &&
+        $scope.newHomeWork.content;
+        $scope.newHomeWork.Alternate2 &&
+        $scope.btn_upload == "浏览图片";
+    }, true);
+
+    $scope.editHomeWorkIndex = 0;
+
     //改变图片时候触发
     $scope.showImg = function (file) {
         if (file.length == 0)
@@ -97,7 +127,7 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             $scope.$apply();
             return;
         }
-        //console.log("imgUrl" + $scope.newperson);
+
         $scope.btn_upload = "图片上传中...";
         var nowInput = $("#ImgUpload");
         var nowfile = {
@@ -105,27 +135,16 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             picName: 'homework',
             type: 'homework'
         }
-        toolService.uploadFile(nowfile).then(function (data) {
+        toolService.uploadImg(nowfile).then(function (data) {
             //data = JSON.parse(data);
             if (data.status == "200") {
                 console.log(data.data);
                 $scope.btn_upload = "浏览图片";
-                $scope.homeWork.pic = data.data;
+                $scope.newHomeWork.Alternate2 = data.data;
                 $scope.pic_error = false;
             }
         })
     }
-
-    //表单是否正确
-    $scope.validate = false;
-    $scope.$watch("newHomeWork", function () {
-        $scope.validate =
-        $scope.newHomeWork.homeWorkTask &&
-        $scope.newHomeWork.courseName &&
-        $scope.newHomeWork.content;
-    }, true);
-
-    $scope.editHomeWorkIndex = 0;
 
     $scope.addNewHomeWork = function () {
         if ($scope.userCtrlType == 'add' && $scope.validate) {
@@ -138,7 +157,7 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
                 data = JSON.parse(data);
                 if (data.type == "success") {
                    $scope.homeWorkList.push($scope.newHomeWork);
-                   $scope.newHomeWork.title = $scope.newHomeWork.layerType;
+                   //$scope.newHomeWork.title = $scope.newHomeWork.layerType;
                     $('#form-dialog').modal('hide');
                     $scope.$apply();
                    // initList();
@@ -197,6 +216,8 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
    
 
     $scope.showEditWnd = function (index) {
+        $scope.pic_error = false;
+        clearSelect();
         $scope.userCtrlType = 'edit';
         $scope.editHomeWorkIndex = index;
         $scope.newHomeWork = {
@@ -208,6 +229,7 @@ OnlineApp.controller('homeWorkManager', function ($scope, $window, homeWorkServi
             content: $scope.homeWorkList[index].content,
             show: $scope.homeWorkList[index].show,
             title: $scope.homeWorkList[index].title,
+            Alternate2:$scope.homeWorkList[index].Alternate2,
         }
         /*$scope.newHomeWork = $scope.homeWorkList[index];*/
         $('#form-dialog').modal('show');
