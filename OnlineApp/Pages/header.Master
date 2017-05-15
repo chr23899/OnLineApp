@@ -17,8 +17,9 @@
     <link rel="stylesheet" type="text/css" href="../UI/assets/css/propeller.min.css">
     <!-- Propeller theme css-->
     <link rel="stylesheet" type="text/css" href="../UI/themes/css/propeller-theme.css" />
+
     <!-- third party css-->   
-    <!-- Propeller date time picker css-->
+    <!-- Propeller date time picker css -->
     <link rel="stylesheet" type="text/css" href="/UI/components/datetimepicker/css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" type="text/css" href="/UI/components/datetimepicker/css/pmd-datetimepicker.css" />
 
@@ -43,14 +44,14 @@
     <script src="../UI/node_modules/ng-file/FileAPI.min.js"></script>
 
     
-    <!-- Scripts Starts -->
+    
     <script src="../UI/assets/js/jquery-1.12.2.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server"> 
+    </asp:ContentPlaceHolder> 
+    <!-- Scripts Starts -->
     <script src="../UI/assets/js/bootstrap.min.js"></script>
     <script src="../UI/assets/js/propeller.min.js"></script>
 
-    
-    <asp:ContentPlaceHolder ID="head" runat="server"> 
-    </asp:ContentPlaceHolder> 
     <title>我的E伙伴</title>
 
 </head>

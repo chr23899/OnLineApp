@@ -87,14 +87,14 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWCoursePlan.Pic, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWCoursePlan.Video, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWCoursePlan.Video, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWCoursePlan.Study, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWCoursePlan.Study, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWCoursePlan.Test, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWCoursePlan.Test, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWCoursePlan.Alternate1, 50))
                 throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");

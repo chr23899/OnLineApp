@@ -79,6 +79,7 @@
     <Content Include="Static\html\people\index.html" />
     <Content Include="Static\html\setting\index.html" />
     <Content Include="Static\html\testmanage\index.html" />
+    <Content Include="Static\img\comment.jpg" />
     <Content Include="Static\img\course\s1\chinese_down.jpg" />
     <Content Include="Static\img\course\s1\chinese_up.jpg" />
     <Content Include="Static\img\course\s1\english_down.jpg" />

@@ -135,7 +135,7 @@
                     <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 2">
                         <label for="first-name">课件</label>
                         <div class="row text-center" ng-show="newplan.study" style="margin-top:5px;">
-                            文件名称: {{newplan.study}}
+                            文件名称: {{newplan.study.split("planStudy_")[1]}}
                         </div>
                         <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览文件' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planStudy').click();"> {{btn_uploadvideo}}</button>
                         <input type="file" id="ImgUpload_planStudy" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanStudy(this.files)" class="hidden" name="File" accept=".docx,.doc">
@@ -210,7 +210,7 @@
                     <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="coursePlanList[nowindex].type == 2">
                         <label for="first-name">课件</label>
                         <div class="row text-center" ng-show="coursePlanList[nowindex].study" style="margin-top:5px;">
-                            文件名称: {{coursePlanList[nowindex].study}}
+                            文件名称: {{coursePlanList[nowindex].study.split("planStudy_")[1]}}
                         </div>
                     </div> 
                     <div class="form-group pmd-textfield">
@@ -241,87 +241,46 @@
         </div>
     </div>
 
-    <!-- add or edit new plan -->
-    <div class="modal-dialog" ng-show="!loadingForm  && (userCtrlType=='addhomework' || userCtrlType=='edithomework')">
+    <!-- add or edit new homework -->
+    <div class="modal-dialog" ng-show="!loadingForm  && userCtrlType=='viewHomeWork'">
         <div class="modal-content">
             <div class="modal-header bordered">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h2 class="pmd-card-title-text">{{userCtrlType=='addhomework' ?'新增':'修改'}}课程作业</h2>
+                <h2 class="pmd-card-title-text">{{nowHomeWork.title=='' ?'新增':'修改'}}课程作业</h2>
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
                     <div class="form-group pmd-textfield ">
                         <label for="first-name">课程名:</label>
-                        <input type="text" class="form-control" id="name" value="{{newhomework.courseName}}" disabled>
+                        <input type="text" class="form-control" id="name" value="{{nowHomeWork.courseName}}" disabled>
                     </div>
                     <div class="form-group pmd-textfield ">
                         <label for="first-name">计划名称:</label>
-                        <input type="text" class=" form-control" id="phone" value="{{newhomework.planName}}">
-                    </div>
-
-                    <div class="form-group pmd-textfield">
-                        <label for="first-name">计划图片</label>
-                        <div class="row text-center" ng-show="newplan.pic">
-                            <img ng-src="{{newplan.pic}}" width="65%" height="120" style="margin:10px;">
-                        </div>
-                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_upload == '浏览图片' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planPic').click();"> {{btn_upload}}</button>
-                        <input type="file" id="ImgUpload_planPic" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanImg(this.files)" class="hidden" name="File" accept=".jpg,.png,.gif">
-                    </div>
-                    <div class="alert alert-danger text-center" role="alert" ng-show="pic_error">
-                        图片大小要介于<a href="javascript:void(0);" class="alert-link">0K~300K</a>, 请重新选择!
-                    </div>
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect" ng-repeat="role in planTypes track by $index">
-                            <input type="radio" id="planType{{role.id}}" name="planType{{role.id}}" value="{{role.id}}" ng-model="newplan.type" ng-change="changePlanType()"><span class="pmd-checkbox-label">&nbsp;</span>
-                            <span> {{role.name}}</span>
-                        </label>
-                    </div>
-                    <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 1">
-                        <label for="first-name">视频</label>
-                        <div class="row text-center" ng-show="newplan.video" style="margin-top:-15px;">
-                            <video ng-src="{{newplan.video | trustUrl}}" width="90%" height="340" style="margin-top: 20px;" controls></video>
-                        </div>
-                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览视频' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planVideo').click();"> {{btn_uploadvideo}}</button>
-                        <input type="file" id="ImgUpload_planVideo" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanVideo(this.files)" class="hidden" name="File" accept=".mp4">
-                    </div>
-                    <div class="alert alert-danger text-center" role="alert" ng-if="video_error && newplan.type == 1">
-                        视频大小要介于<a href="javascript:void(0);" class="alert-link">0K~300M</a>, 请重新选择!
-                    </div>
-                    <div class="form-group pmd-textfield" style="margin-top:30px;" ng-if="newplan.type == 2">
-                        <label for="first-name">课件</label>
-                        <div class="row text-center" ng-show="newplan.study" style="margin-top:5px;">
-                            文件名称: {{newplan.study}}
-                        </div>
-                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadvideo == '浏览文件' ? '' : 'disabled'" type="button" onclick="$('#ImgUpload_planStudy').click();"> {{btn_uploadvideo}}</button>
-                        <input type="file" id="ImgUpload_planStudy" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showPlanStudy(this.files)" class="hidden" name="File" accept=".docx,.doc">
-                    </div>
-                    <div class="alert alert-danger text-center" role="alert" ng-if="video_error && newplan.type == 2">
-                        课件大小要介于<a href="javascript:void(0);" class="alert-link">0K~30M</a>, 请重新选择!
-                    </div>
-                    <div class="form-group pmd-textfield">
-                        <label class="control-label">内容及注意事项</label>
-                        <textarea required class="form-control" ng-model="newplan.content"></textarea>
+                        <input type="text" class=" form-control" id="phone" value="{{nowHomeWork.planName}}" disabled>
                     </div>
                     <div class="form-group pmd-textfield ">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group pmd-textfield">
-                                    <label for="regular1" class="control-label">计划开始时间</label>
-                                    <input type="text" id="datepicker-start" ng-model="newplan.startTime" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group pmd-textfield">
-                                    <label for="regular1" class="control-label">计划结束时间</label>
-                                    <input type="text" id="datepicker-end" ng-model="newplan.finishTime" class="form-control" />
-                                </div>
-                            </div>
+                        <label for="first-name">作业标题:</label>
+                        <input type="text" class=" form-control" id="phone" ng-model="nowHomeWork.title">
+                    </div> 
+                    <div class="form-group pmd-textfield" style="margin-top:30px;">
+                        <label for="first-name">附件</label>
+                        <div class="row text-center" ng-show="nowHomeWork.link" style="margin-top:5px;">
+                            附件名称: {{nowHomeWork.link.split("homeWorkLink_")[1]}}
                         </div>
+                        <button class="btn pmd-btn-raised btn-primary btn-block pmd-ripple-effect" ng-class="btn_uploadHomeWorkLink == '上传附件' ? '' : 'disabled'" type="button" onclick="$('#FileUpload_homeWorkLink').click();"> {{btn_uploadHomeWorkLink}}</button>
+                        <input type="file" id="FileUpload_homeWorkLink" data-url="/Server/UploadHandler.ashx" onchange="angular.element(this).scope().showHomeWorkLink(this.files)" class="hidden" name="File" accept=".docx,.doc">
                     </div>
+                    <div class="alert alert-danger text-center" role="alert" ng-if="homeWork_error">
+                        附件大小要介于<a href="javascript:void(0);" class="alert-link">0K~30M</a>, 请重新选择!
+                    </div>
+                    <div class="form-group pmd-textfield">
+                        <label class="control-label">作业内容及注意事项</label>
+                        <textarea required class="form-control" ng-model="nowHomeWork.content"></textarea>
+                    </div> 
                 </div>
             </div>
             <div class="pmd-modal-action">
-                <button class="btn pmd-ripple-effect btn-primary" ng-class="planvalidate ? '' : 'disabled'" type="button" ng-click="addNewCoursePlan()">{{userCtrlType=='addplan' ?'新增':'修改'}}</button>
+                <button class="btn pmd-ripple-effect btn-primary" ng-class="homeWorkvalidate ? '' : 'disabled'" type="button" ng-click="addOrEditHomeWork()">{{nowHomeWork.title==''?'新增':'修改'}}</button>
                 <button data-dismiss="modal" class="btn pmd-ripple-effect btn-default" type="button">取消</button>
             </div>
         </div>

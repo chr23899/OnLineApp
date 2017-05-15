@@ -1,7 +1,6 @@
-﻿<div class="pmd-sidebar-overlay pmd-sidebar-overlay-active"></div>
-<!-- Left sidebar -->
-<aside class="pmd-sidebar sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation" ng-controller="indexSide">
-    <ul class="nav pmd-sidebar-nav">
+﻿<!-- Left sidebar -->
+<aside class="pmd-sidebar sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation">
+    <ul class="nav pmd-sidebar-nav" ng-controller="indexSide">
         <!-- User info -->
         <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
             <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
@@ -21,7 +20,7 @@
             <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" ng-class="menu.control == menuList.nowmenu ? 'active':''" data-sidebar="true">
                 <i class="material-icons media-left pmd-sm">{{menu.icon}}</i>
                 <span class="media-body" ng-click="showMenu(menu.control)">{{menu.name}}</span>
-            </a> 
+            </a>
         </li>
 
     </ul>
