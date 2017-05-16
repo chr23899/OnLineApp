@@ -102,20 +102,20 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWAssignment.Link, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Alternate1, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Alternate1, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Alternate2, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Alternate2, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Alternate3, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Alternate3, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Alternate4, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Alternate4, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Alternate5, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Alternate5, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             #endregion
         }
