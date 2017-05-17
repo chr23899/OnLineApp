@@ -1,5 +1,5 @@
 ﻿//define menu controller 课程管理
-OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS, toolService, coursePlanService, PLAN_TYPES) {
+OnlineApp.controller('courseManager', function ($scope, $window, courseStore, courseService, USER_LAYERS, toolService, coursePlanService, PLAN_TYPES, homeWorkService) {
     //显示当前课程列表内容
     $scope.courseList = courseStore;
     //是否正在加载页面
@@ -73,12 +73,12 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     }
 
     //搜索数据
-    $scope.serachData = function () { 
+    $scope.serachData = function () {
         initList();
     }
 
     //新课程对象
-    $scope.newcourse = { 
+    $scope.newcourse = {
     }
 
     $scope.userCtrlType = "add";
@@ -164,7 +164,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
                     initList();
                 }
             });
-        } 
+        }
     }
 
     //当前选中项
@@ -188,7 +188,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     }
 
     //执行删除操作
-    $scope.confirmDel = function () { 
+    $scope.confirmDel = function () {
         var strDelete = {
             strDelete: ""
         };
@@ -275,8 +275,8 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             teacherName: $scope.courseList[$scope.planIndex].teacherName,
             courseId: $scope.courseList[$scope.planIndex].Id,
             courseName: $scope.courseList[$scope.planIndex].courseName
-        } 
-        coursePlanService.GetCoursePlanPageData($scope.queryPlan).then(function (data) { 
+        }
+        coursePlanService.GetCoursePlanPageData($scope.queryPlan).then(function (data) {
             if (data == "") {
                 $('#form-dialog').modal('hide');
                 $scope.loadingForm = false;
@@ -314,7 +314,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             pic: "",
             content: "",
             status: 1,
-            study: "", 
+            study: "",
             test: "",
             startTime: "",
             planTime: "",
@@ -331,7 +331,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             video[0].pause();
         }
     })
-     
+
     //改变计划图片时候触发
     $scope.showPlanImg = function (file) {
         if (file.length == 0)
@@ -341,7 +341,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             $scope.$apply();
             return;
         }
-        $scope.btn_upload = "图片上传中..."; 
+        $scope.btn_upload = "图片上传中...";
         var nowfile = {
             file: file[0],
             picName: 'planPic',
@@ -371,7 +371,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
                 return;
             }
         }
-        $scope.btn_uploadvideo = "视频上传中..."; 
+        $scope.btn_uploadvideo = "视频上传中...";
         var nowfile = {
             file: file[0],
             picName: 'planVideo',
@@ -380,7 +380,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         toolService.uploadFile(nowfile).then(function (data) {
             if (data.status == "200") {
                 console.log(data.data);
-                $scope.btn_uploadvideo = "浏览视频"; 
+                $scope.btn_uploadvideo = "浏览视频";
                 $scope.newplan.video = data.data.split(";")[0];
                 $scope.pic_error = false;
             }
@@ -413,12 +413,12 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             if (data.status == "200") {
                 console.log(data.data);
                 $scope.btn_uploadvideo = "浏览文件";
-                $scope.newplan.study = data.data.split(";")[0].split("planStudy_")[1];
+                $scope.newplan.study = data.data.split(";")[0];
                 $scope.pic_error = false;
             }
         })
     }
-    
+
     //改变课程计划类型时候触发
     $scope.changePlanType = function () {
         if ($scope.newplan.type == 1) {
@@ -433,11 +433,11 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     $scope.planvalidate = false;
     $scope.$watch("newplan", function () {
         $scope.planvalidate =
-        (($scope.newplan.type == 1 &&  $scope.newplan.video) ||
+        (($scope.newplan.type == 1 && $scope.newplan.video) ||
         ($scope.newplan.type == 2 && $scope.newplan.study) ||
         $scope.newplan.type == 3) &&
         $scope.newplan.content &&
-        $scope.newplan.pic && 
+        $scope.newplan.pic &&
         $scope.newplan.name;
     }, true);
 
@@ -453,12 +453,12 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         }
         else if ($scope.newplan.type == 3) {
             $scope.newplan.study = "";
-            $scope.newplan.video = "";  
+            $scope.newplan.video = "";
         }
         if ($scope.userCtrlType == 'addplan' && $scope.planvalidate) {
             coursePlanService.AddCoursePlan($scope.newplan).then(function (data) {
                 data = JSON.parse(data);
-                if (data.type == "success") { 
+                if (data.type == "success") {
                     $scope.initPlanList();
                 }
             });
@@ -466,20 +466,20 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
         else if ($scope.userCtrlType == 'editplan' && $scope.planvalidate) {
             coursePlanService.UpdateCoursePlan($scope.newplan).then(function (data) {
                 data = JSON.parse(data);
-                if (data.type == "success") { 
+                if (data.type == "success") {
                     $scope.initPlanList();
                 }
             });
         }
-    } 
-    
+    }
+
     //显示当前计划
     $scope.showPlanDeatil = function (index) {
         $scope.userCtrlType = 'viewplan';
         $scope.nowindex = index;
         $('#form-dialog').modal('show');
     }
- 
+
     //当前删除项
     $scope.delCoursePlanIndex = 0;
 
@@ -502,7 +502,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
                 $scope.coursePlanList.splice($scope.delCoursePlanIndex, 1);
                 $scope.delCoursePlanIndex = 0;
                 $('#form-dialog').modal('hide');
-                $scope.$apply(); 
+                $scope.$apply();
             }
         });
     }
@@ -513,7 +513,7 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
     //弹出编辑课程计划窗口
     $scope.showEditPlanWnd = function (index) {
         $scope.userCtrlType = 'editplan';
-        $scope.editCoursePlanIndex = index; 
+        $scope.editCoursePlanIndex = index;
         $scope.newplan = {
             id: $scope.coursePlanList[index].Id,
             courseId: $scope.courseList[$scope.planIndex].Id,
@@ -529,13 +529,134 @@ OnlineApp.controller('courseManager', function ($scope, $window, courseStore, co
             startTime: $scope.coursePlanList[index].startTime,
             planTime: $scope.coursePlanList[index].planTime,
             finishTime: $scope.coursePlanList[index].finishTime,
-        } 
+        }
         $('#form-dialog').modal('show');
         $scope.changePlanType();
     }
 
-    $scope.showHomeWork = function (index) {
+    //查询课程计划下面的作业
+    $scope.queryHomeWork = {
+    };
 
+    //当前作业对象
+    $scope.nowHomeWork = {
+    };
+
+    //弹出该课程计划下的作业
+    $scope.showHomeWork = function (index) {
+        $('#form-dialog').modal('show');
+        $scope.loadingForm = true;
+        $scope.queryHomeWork = {
+            PageSize: 100,
+            CurPage: 1,
+            teacherId: $scope.courseList[$scope.planIndex].teacherId,
+            teacherName: $scope.courseList[$scope.planIndex].teacherName,
+            courseId: $scope.courseList[$scope.planIndex].Id,
+            courseName: $scope.courseList[$scope.planIndex].courseName,
+            planId: $scope.coursePlanList[index].Id,
+            planName: $scope.coursePlanList[index].name
+        } 
+        homeWorkService.GetAssignmentPageData($scope.queryHomeWork).then(function (data) {
+            if (data == "") {
+                $('#form-dialog').modal('hide');
+                $scope.loadingForm = false;
+                return;
+            }
+            data = JSON.parse(data);
+            if (data.type == "success") {
+                if (data.result.PageList.length == 0) {
+                    $scope.nowHomeWork = {
+                        courseId: $scope.courseList[$scope.planIndex].Id,
+                        courseName: $scope.courseList[$scope.planIndex].courseName,
+                        planId: $scope.coursePlanList[index].Id,
+                        planName: $scope.coursePlanList[index].name,
+                        id: "",
+                        title: "",
+                        content: "",
+                        link: ""
+                    }
+                }
+                else {
+                    //$scope.nowHomeWork = data.result.PageList[0];
+                    $scope.nowHomeWork = {
+                        courseId: data.result.PageList[0].courseId,
+                        courseName: data.result.PageList[0].courseName,
+                        planId: data.result.PageList[0].planId,
+                        planName: data.result.PageList[0].planName,
+                        id: data.result.PageList[0].Id,
+                        title: data.result.PageList[0].title,
+                        content: data.result.PageList[0].content,
+                        link: data.result.PageList[0].link
+                    } 
+                }
+                $scope.userCtrlType = 'viewHomeWork';
+                $scope.loadingForm = false;
+                $('#form-dialog').modal('show');
+                $scope.$apply();
+            }
+        });
     }
 
+    //上传作业附件按钮
+    $scope.btn_uploadHomeWorkLink = "上传附件";
+
+    //是否显示上传附件错误
+    $scope.homeWork_error = false;
+
+    //改变附件时触发
+    $scope.showHomeWorkLink = function (file) {
+        if (file.length == 0)
+            return;
+        for (var i = 0; i < file.length; i++) {
+            if (file[i].size / 1024 / 1024 > 30) {
+                $scope.homeWork_error = true;
+                $scope.$apply();
+                return;
+            }
+        }
+        $scope.btn_uploadHomeWorkLink = "附件上传中...";
+        var nowfile = {
+            file: file[0],
+            picName: 'homeWorkLink',
+            type: 'homeWorkLink'
+        }
+        toolService.uploadFile(nowfile).then(function (data) {
+            if (data.status == "200") {
+                console.log(data.data);
+                $scope.btn_uploadHomeWorkLink = "上传附件";
+                $scope.nowHomeWork.link = data.data.split(";")[0];
+                $scope.homeWork_error = false;
+            }
+        })
+    }
+
+    //当前作业是否可以提交
+    $scope.homeWorkvalidate = false;
+
+    //监听家庭作业对象是否发生了改变
+    $scope.$watch("nowHomeWork", function () {
+        $scope.homeWorkvalidate =
+        $scope.nowHomeWork.content &&
+        $scope.nowHomeWork.title;
+    }, true);
+
+    //新增或者编辑随堂作业
+    $scope.addOrEditHomeWork = function () {
+        if ($scope.nowHomeWork.id == '' && $scope.homeWorkvalidate) {
+            homeWorkService.AddAssignment($scope.nowHomeWork).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $('#form-dialog').modal('hide');
+                }
+            });
+        }
+        else if ($scope.homeWorkvalidate) {
+            homeWorkService.UpdateAssignment($scope.nowHomeWork).then(function (data) {
+                data = JSON.parse(data);
+                if (data.type == "success") {
+                    $('#form-dialog').modal('hide');
+                }
+            });
+        }
+    }
 });

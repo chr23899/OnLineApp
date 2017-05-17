@@ -53,11 +53,13 @@ namespace OnlineApp.Server
             string strstudentName = context.Request["studentName"];
             string strcourseId = context.Request["courseId"];
             string strcourseName = context.Request["courseName"];
+            string strplanId = context.Request["planId"];
+            string strplanName = context.Request["planName"];
             string strcontent = context.Request["content"];
             string strtitle = context.Request["title"];
             string strstatus = context.Request["status"];
             string strCallBack = context.Request["callback"];
-            string strResult = CommonToolsBLL.PageDataToJson(YWAssignmentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus));
+            string strResult = CommonToolsBLL.PageDataToJson(YWAssignmentBLL.GetPageData(Convert.ToInt32(strPageSize), Convert.ToInt32(strCurPage), strcreateUserId, strcreateUserName, strcourseId, strcourseName, strstudentId, strstudentName, strstatus, strplanId,strplanName));
             CommonToolsBLL.OutputJson(context, strCallBack, strResult, "success", "获取数据成功");
         }
 

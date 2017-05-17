@@ -99,8 +99,8 @@ namespace Chr.OnlineApp.BLL
             if (DataValid.IsOutLength(yWAssignment.Content, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
-            if (DataValid.IsOutLength(yWAssignment.Link, 50))
-                throw new CustomException("“”长度不能超过 50 个汉字或字符，请您确认输入是否正确。");
+            if (DataValid.IsOutLength(yWAssignment.Link, 500))
+                throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
 
             if (DataValid.IsOutLength(yWAssignment.Alternate1, 500))
                 throw new CustomException("“”长度不能超过 500 个汉字或字符，请您确认输入是否正确。");
@@ -207,8 +207,10 @@ namespace Chr.OnlineApp.BLL
         /// <param name="studentId"></param>
         /// <param name="studentName"></param>
         /// <param name="status"></param>
+        /// <param name="planId"></param>
+        /// <param name="planName"></param>
         /// <returns></returns>
-        public static PageData GetPageData(int pageSize, int curPage, string createUserId, string createUserName, string courseId, string courseName, string studentId, string studentName, string status)
+        public static PageData GetPageData(int pageSize, int curPage, string createUserId, string createUserName, string courseId, string courseName, string studentId, string studentName, string status, string planId, string planName)
         {
             //构建查询条件
             Parameter parameter = new Parameter();
@@ -238,6 +240,18 @@ namespace Chr.OnlineApp.BLL
             {
                 parameter.SqlString += " AND [YW_Assignment].[courseName] LIKE @courseName ";
                 SqlParameter sqlParameter = new SqlParameter("@courseName", SqlDbType.NVarChar, 50) { Value = "%" + courseName + "%" };
+                paramList.Add(sqlParameter);
+            }
+            if (courseId != null && courseId != "")
+            {
+                parameter.SqlString += " AND [YW_Assignment].[planId] = @planId ";
+                SqlParameter sqlParameter = new SqlParameter("@planId", SqlDbType.NVarChar, 50) { Value = planId };
+                paramList.Add(sqlParameter);
+            }
+            if (courseName != null && courseName != "")
+            {
+                parameter.SqlString += " AND [YW_Assignment].[planName] LIKE @planName ";
+                SqlParameter sqlParameter = new SqlParameter("@planName", SqlDbType.NVarChar, 50) { Value = "%" + planName + "%" };
                 paramList.Add(sqlParameter);
             }
             if (studentId != null && studentId != "")

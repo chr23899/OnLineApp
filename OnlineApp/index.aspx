@@ -36,12 +36,11 @@
     <script src="/Static/script/controller/menu/dataManager.js"></script>
     <script src="/Static/script/controller/menu/testManager.js"></script>
     <script src="/Static/script/controller/menu/systemSetting.js"></script>
-    <script src="/Static/script/controller/menu/homePageManager.js"></script>
-
+    <script src="/Static/script/controller/menu/homePageManager.js"></script>    
+    
     <!-- load the  third party elements -->
     <script type="text/javascript" src="/UI/components/datetimepicker/js/moment-with-locales.js"></script>
     <script type="text/javascript" src="/UI/components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <form id="home_index" runat="server" ng-controller="indexHome">
@@ -150,9 +149,5 @@
 
         ga('create', 'UA-124615-22', 'auto');
         ga('send', 'pageview');
-    </script>
-    <script>
-        
-    </script>
-    
+    </script>     
 </asp:Content>
