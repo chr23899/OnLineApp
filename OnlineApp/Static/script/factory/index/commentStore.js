@@ -1,0 +1,3 @@
+﻿OnlineApp.factory('commentStore', function () {
+    
+});
